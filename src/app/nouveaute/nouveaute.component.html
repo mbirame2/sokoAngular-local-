@@ -1,0 +1,165 @@
+
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Nouveautés</strong>  </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+       
+        <div class="row mb-5">
+          <div class="col-md-9 order-2">
+
+            <div class="row">
+              <div class="col-md-12 mb-5">
+                <div class="float-md-left mb-4"><h2 class="text-black h5">Toutes les nouveautés</h2> <a href="/new#"> {{vete}}</a>  </div>
+                <div class="d-flex">
+                  <div class="dropdown mr-1 ml-md-auto">
+                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Latest
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                      <a class="dropdown-item" (click)="homme()">Homme</a>
+                      <a class="dropdown-item" (click)="femme()">Femme</a>
+                 
+                    </div>
+                  </div>
+               
+                </div>
+              </div>
+            </div>
+            <div class="modal fade bd-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body" *ngIf="proda" >
+                    <div class="row">
+                      <div class="col-md-6">
+                        <img  src="data:image/png;base64,{{proda.article.ImageName}}" class="img-fluid" alt="">
+                      </div>
+                      <div class="col-md-6">
+                        <h1 class="text-black">{{proda.article.Titre}}</h1>
+                        <p>{{proda.article.Description}}</p>
+                        <p>{{proda.article.Taille}}</p>
+                        <p><strong class="text-primary h4">{{proda.article.Prix}} FCFA</strong></p>
+                        <p *ngIf="isLoggedIn"><a (click)="OnAddCart(proda)" class="buy-now btn btn-sm btn-primary">Ajouter au panier</a></p>
+                        <div id="accordion" *ngIf="proda.article.Confid=='true'" >
+                         
+                            <div class="card-header" id="headingOne" >
+                              <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <button class="btn btn-link">
+                                  Voir Cordonnées du vendeur
+                                </button>
+                              </h5>
+                            </div>
+                        
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                              <div class="card-body">
+                                <h4 class="text-black">Infos Vendeur</h4>
+                                <p><strong class="text-primary h6">{{nom}} <br> +221 {{tele}} </strong></p>
+                                Soko n'intervient plus dans le processus d'achat. Les deux parties doivent convenir ensemble d'un mode de livraison et de paiement
+                              </div>
+                            </div>
+                         
+                        </div>
+                        <h5 class="text-black" *ngIf="!isLoggedIn">Connectez vous pour passer vos commandes</h5>
+                        <h6 class="text-black" *ngIf="!isLoggedIn">Pas de compte? <a routerLink="/inscription">Inscrivez</a> vous maintenant</h6>
+                      </div> 
+                    </div>
+                  </div>
+    
+    
+            
+                </div>
+              </div>
+            </div>
+            <div class="row mb-5" >
+              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" *ngFor="let prod of allProducts">
+                <div class="block-4 text-center border">
+                  <figure class="block-4-image">
+                    <a routerLink="/voir_produit" data-toggle="modal" data-target=".bd-example-modal-lg">
+                      <img  src="data:image/png;base64,{{prod.article.ImageName}}" class="img-fluid" (click)="display(prod,prod.article_id)" alt=""></a>
+                  </figure>
+                  <div class="block-4-text p-4">
+                    <h3><a href="/voir_produit">{{prod.article.Titre}}</a></h3>
+                    <p class="mb-0">Categorie: {{prod.categorie.name}}</p>
+                    <p> Sous Categorie: {{prod.sscategorie.name}} </p>
+                    <p class="text-primary font-weight-bold">{{prod.article.Prix}} FCFA</p>
+                
+                  </div>
+                </div>
+              </div>
+             
+          
+    
+            </div>
+      
+          </div>
+          <div class="col-md-3 order-1 mb-5 mb-md-0">
+            
+                  <div class="border p-4 rounded mb-4">
+                    <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+                    <ul class="list-unstyled mb-0">
+                      <li class="mb-1"><a  class="d-flex" (click)="tout()"  href="/new#"><span>Tout</span> </a></li>
+                      <li class="mb-1"><a  class="d-flex" (click)="homme()"  href="/new#"><span>Hommes</span> </a></li>
+                      <li class="mb-1"><a (click)="femme()"  href="/new#" class="d-flex"><span>Femmes</span> </a></li>
+                    </ul>
+                  </div>
+      
+                  <div class="border p-4 rounded mb-4">
+                      <h3 class="mb-3 h6 text-uppercase text-black d-block">Sous Categories</h3>
+                      <ul class="list-unstyled mb-0">
+                        <li><a (click)="sscategorieVetements()"  href="/new#" class="d-flex">Vetements </a></li>
+                        <li><a (click)="sscategorieChaussures()" href="/new#" class="d-flex">Chaussures </a></li>
+                        <li><a (click)="sscategorieSacs()"  href="/new#" class="d-flex">Sacs</a></li>
+
+                      </ul>
+                    </div>
+               
+  
+              <div class="border p-4 rounded mb-4">
+              
+             
+  
+                <div class="mb-4">
+                  <h3 class="mb-3 h6 text-uppercase text-black d-block">Filtrer par couleur</h3>
+                  <a href="#" class="d-flex color-item align-items-center" >
+                      <span class="bg-dark color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Noir </span>
+                    </a>
+                  <a href="#" class="d-flex color-item align-items-center" >
+                    <span class="bg-danger color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Rouge </span>
+                  </a>
+                  <a href="#" class="d-flex color-item align-items-center" >
+                    <span class="bg-success color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Vert</span>
+                  </a>
+                  <a href="#" class="d-flex color-item align-items-center" >
+                      <span class="bg-light color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Blanc </span>
+                    </a>
+                  <a href="#" class="d-flex color-item align-items-center" >
+                    <span class="bg-info color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Bleu </span>
+                  </a>
+                  <a href="#" class="d-flex color-item align-items-center" >
+                    <span class="bg-warning color d-inline-block rounded-circle mr-2"></span> <span class="text-black">Jaune</span>
+                  </a>
+                </div>
+  
+              </div>
+            </div>
+        
+        </div>
+
+     
+        
+      </div>
+    </div>
+
+
+
+  

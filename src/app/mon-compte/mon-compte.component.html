@@ -1,0 +1,107 @@
+<div class="bg-light py-3">
+    <div class="container">
+      <div class="row">
+<br><div class="col-md-12 mb-0"><a routerLink="/">Acceuil</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Mon Compte</strong></div> <br>
+</div>
+</div>
+</div>
+<div class="container">
+<div class="col-md-12">
+        <nav class="site-navigation text-right text-md-center" role="navigation">
+           
+<br>
+              <ul class="nav nav-pills mb-8  " id="pills-tab" role="tablist">
+                
+            
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Informations Personnelles</a>
+              </li>
+          
+              <li class="nav-item">
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Mes Achats</a>
+              </li> 
+      
+              <li class="nav-item">
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Mes Ventes</a>
+              </li>
+
+              <li class="nav-item">
+                  <a class="nav-link" id="pills-notif-tab" data-toggle="pill" href="#pills-notif" role="tab" aria-controls="pills-notif" aria-selected="false">Notifications</a>
+                </li>
+  
+            </ul>
+          
+        
+       </nav>
+     
+         
+       <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> <br>
+              <h2 class="text-black h3">Informations du compte</h2> <br>
+              <ul class="list-group list-group-flush">
+                  <li class="list-group-item">Nom: {{ getuser.nom}} </li>
+                  <li class="list-group-item">Prenom: {{ getuser.prenom}}  </li>
+                  <li class="list-group-item">N. Téléphone: {{ getuser.telephone}} </li>
+                  <li class="list-group-item">Adresse: {{ getuser.adresse}}</li>
+                  <li class="list-group-item">Inscrit depuis: {{ getuser.created_at}} </li>
+                </ul>
+          </div>  <br>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"> <br>
+            <h2 class="text-black h3">Détails des Achats éffectués</h2> <br>
+              <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">N. Commande</th>
+                      <th scope="col">Nom du Produit</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Status de la commande</th>
+                      <th scope="col">Montant TTC</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let achat of achat">
+                      <th scope="row">{{ achat.id}}</th>
+                      <td>{{ achat.article.Titre}}</td>
+                      <td>{{ achat.commande.created_at}}</td>
+                      <td>{{ achat.commande.statut_commande}}</td>
+                      <td>{{ achat.article.Prix}}</td>
+                    </tr>
+                
+                  
+                 
+                  </tbody>
+                </table>
+          </div>
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"> <br>
+            <h2 class="text-black h3">Détails des Ventes éffectués</h2> <br>
+              <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Référence Article</th>
+                      <th scope="col">Nom article</th>
+                      <th scope="col">Prix TTC</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let us of user">
+                      <th scope="row">{{ us.article.id }}</th>
+                      <td>{{ us.article.Titre }}</td>
+                      <td>{{ us.article.Prix }}</td>
+                 
+                    </tr>
+                   
+                  </tbody>
+                </table>
+          </div>
+          <div class="tab-pane fade" id="pills-notif" role="tabpanel" aria-labelledby="pills-notif-tab">Cette fonctionnalité n'est pas nécessaire pour le lancement du site.
+
+            </div>
+     
+    </div>
+  </div>  </div>
+
+
+
+
+
+

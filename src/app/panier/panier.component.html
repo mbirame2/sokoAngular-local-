@@ -1,0 +1,94 @@
+
+<div class="site-section"  *ngIf="isLoggedIn">
+  <div class="container">
+    <div class="row mb-5">
+    
+      <form class="col-md-12" method="post">
+        <div class="site-blocks-table">
+          <div class="row">
+            <div class="col-md-12 text-left border-bottom mb-5">
+              <h3 class="text-black h2 text-uppercase">MON PANIER</h3>
+            </div>
+          </div>
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th class="product-thumbnail">Image</th>
+                <th class="product-name">Produit</th>
+                <th class="product-price">Prix</th>
+                <th class="product-quantity">Condition</th>
+                <th class="product-remove">Supprimer</th> 
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let prod of productAddedTocart">
+                <td class="product-thumbnail">
+                  <img  src="data:image/png;base64,{{prod.article.ImageName}}" class="img-fluid" alt="" class="img-fluid">
+                </td>
+                <td class="product-name">
+                  <h2 class="h5 text-black">{{prod.article.Titre}}</h2>
+                </td>
+                <td>{{prod.article.Prix}}</td>
+                <td>{{prod.article.Condition}}</td>
+      
+                <td><a  (click)="onRemoveQuantity(prod)" class="btn btn-danger btn-sm">Supprimer</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+            <button class="btn btn-outline-primary btn-sm btn-block" (click)="backClicked()">Continuer Achat</button>
+      </div>
+      <div class="col-md-6 pl-5">
+        <div class="row justify-content-end">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12 text-right border-bottom mb-5">
+                <h3 class="text-black h4 text-uppercase">Total Panier</h3>
+              </div>
+            </div>
+            <div class="row mb-3" *ngFor="let prod of productAddedTocart">
+              <div class="col-md-6">
+                <span class="text-black">{{prod.article.Titre}} </span>
+              </div>
+              <div class="col-md-6 text-right">
+                <strong class="text-black">{{prod.article.Prix}} FCFA</strong>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="col-md-6">
+                <span class="text-black">Total</span>
+              </div>
+              <div class="col-md-6 text-right">
+                <strong class="text-black">{{allTotal}} FCFA</strong>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <button class="btn btn-primary btn-lg py-3 btn-block" routerLink="/finaliser_commande">Valider Commande</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="site-section"  *ngIf="!isLoggedIn">
+  <div class="container">
+    <div class="col-md-12  border-bottom mb-5">
+      <h3 class="text-black h2 text-uppercase">Votre Panier est vide</h3>
+    </div>
+    <div class="col-md-12">
+      <button class="btn btn-outline-primary btn-sm btn-block" (click)="backClicked()">Continuer Achat</button>
+</div>
+  </div>
+
+</div>
+

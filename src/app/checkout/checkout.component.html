@@ -1,0 +1,96 @@
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0"><a href="index.html">Accueil</a> <span class="mx-2 mb-0">/</span> <a routerLink="/mon_panier">Mon Panier</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Finaliser commande</strong></div>
+    </div>
+  </div>
+</div>
+
+<div class="site-section">
+  <div class="container">
+
+  
+   
+      <div class="col-md-12">
+        
+        
+        <div class="row mb-5">
+          <div class="col-md-12">
+            <h2 class="h3 mb-3 text-black">Vos Commandes</h2>
+            <div class="p-3 p-lg-5 border">
+              <table class="table site-block-order-table mb-5">
+                <thead>
+                  <th>Articles</th>
+                  <th>Total</th>
+                </thead>
+                <tbody>
+                  <tr  *ngFor="let prod of productAddedTocart">
+                    <td>{{prod.article.Titre}} </td>
+                    <td>{{prod.article.Prix}} FCFA</td>
+                  </tr>
+              
+                  <tr>
+                    <td class="text-black font-weight-bold"><strong>Frais Livraison </strong>(Partout à Dakar)</td>
+                    <td class="text-black">1500 FCFA</td>
+                  </tr>
+                  <tr>
+                    <td class="text-black font-weight-bold"><strong>Total à payer</strong></td>
+                    <td class="text-black font-weight-bold"><strong>{{allTotal}} FCFA</strong></td>
+                  </tr>
+                </tbody>
+              </table>
+                <form method="POST">
+              <div class="form-row">
+                <div class="form-group col">
+                    <label for="c_fname" class="text-black">Adresse <span class="text-danger">*</span></label>
+                    <input type="text"  class="form-control" placeholder="Adresse exacte pour la livraison" name="adresse" [(ngModel)]="loginUserData.adresse" />
+                  </div>
+                </div>
+                <label for="c_fname" class="text-black">Mode de Paiement <span class="text-danger">*</span></label>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="loginUserData.modpai" value="A la livraison" data-toggle="collapse" href="#collapsebank" id="exampleRadios1" aria-expanded="false" aria-controls="collapsebank" >
+                  <label class="form-check-label" for="exampleRadios1">
+                   Paiement à la livraison
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="loginUserData.modpai" value="Orange Money" data-toggle="collapse" href="#collapsecheque" id="exampleRadios2" aria-expanded="false" aria-controls="collapsecheque">
+                  <label class="form-check-label" for="exampleRadios2">
+                    Immediat (Par Orange Money)
+                  </label> 
+                </div><br>
+              <div class="border p-3 mb-3">
+                <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">A la livraison</a></h3>
+
+                <div >
+                  <div class="py-2">
+                    <p class="mb-0">Assurer vous d'avoir le montant total avant la livraison</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="border p-3 mb-3">
+                <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsecheque"  role="button" aria-expanded="false" aria-controls="collapsecheque">Par Orange Money</a></h3>
+
+                <div>
+                  <div class="py-2">
+                    <p class="mb-0">Veillez effectuez un depot sur ce numero de telephone <strong>777777777</strong></p>
+                  </div>
+                </div>
+              </div>
+
+      
+
+              <div class="form-group">
+                <button class="btn btn-primary btn-lg py-3 btn-block" (click)="commande()">Valider</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+
+    
+    </div>
+    <!-- </form> -->
+  </div>
+</div>

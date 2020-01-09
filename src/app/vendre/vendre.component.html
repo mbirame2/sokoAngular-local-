@@ -1,0 +1,176 @@
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0"><a routerLink="/">Acceuil</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Ajouter un article</strong></div>
+    </div>
+  </div>
+</div>  
+
+<div class="site-section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h2 class="h3 mb-3 text-black">REDIGEZ VOTRE ANNONCE</h2>
+      </div>
+      <div class="col-md-6">
+
+        <form method="POST">
+          
+          
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_fname" class="text-black">Titre <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" [(ngModel)]="loginUserData.titre"  placeholder="Ex: Robe rouge Zara" id="c_fname" name="c_fname" required >
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-6">
+                <label for="c_lname" class="text-black">Prix <span class="text-danger">*</span></label>
+                <input type="number" class="form-control" (input)="onSearchChange($event.target.value)" [(ngModel)]="loginUserData.prix" id="c_lname" name="c_lname" placeholder="en CFA" required>
+              </div>
+              <div class="col-md-6">
+                <label for="c_lname" class="text-black">Prix pour Vous <span class="text-danger">*</span></label>
+                <div class="alert alert-primary" role="alert">{{pro}} FCFA</div>
+              </div>
+              <label class="form-check-label"> Une comission de 15% nous sera attribué </label>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_message" class="text-black">Description </label>
+                <textarea name="c_message" id="c_message" cols="30" rows="7" class="form-control" name="description" [(ngModel)]="loginUserData.description" placeholder="Renseigner le plus de détails possible" required></textarea>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_fname" class="text-black">Taille <span class="text-danger">*</span></label>
+                <input type="text" class="form-control" [(ngModel)]="loginUserData.taille"  placeholder="Taille L" id="c_fname" name="c_fname" required>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_fname" class="text-black">Genre <span class="text-danger">*</span></label>
+                <select class="custom-select col-md-12" name="genre" [(ngModel)]="loginUserData.genre">
+              
+                  <option value="Homme">Homme</option>
+                  <option value="Femme">Femme</option>
+           
+                </select> 
+                <div class="invalid-tooltip">
+                    Please select a valid state.
+                  </div>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <label for="c_fname" class="text-black">Catégorie <span class="text-danger">*</span></label>
+                <select class="custom-select col-md-12" name="categorie"  [(ngModel)]="loginUserData.categorie" required>
+      
+                <option *ngFor="let cat of categorie" [value]="cat.name">{{cat.name}}</option>
+                      
+                </select> 
+              </div>
+            </div>
+            
+              <div class="col-md-12">
+                  <div class="form-group row">
+                    <label for="c_fname" class="text-black">Sous Catégorie <span class="text-danger">*</span></label>
+                    <select class="custom-select col-md-12" name="sscategorie" [(ngModel)]="loginUserData.sscategorie" required>
+                  
+                 
+                        <option *ngFor="let sscat of sscategorie" [value]="sscat.name">{{sscat.name}}</option>
+                          
+                    </select> 
+
+              </div>
+
+            </div>
+
+            <div class="col-md-12">
+                <div class="form-group row">
+                  <label for="c_fname" class="text-black">Couleur <span class="text-danger">*</span></label>
+              <select class="custom-select col-md-12" [(ngModel)]="loginUserData.couleur" name="couleur" required>
+             
+                <option value="noir">Noir </option>
+                <option value="rouge">Rouge </option>  
+                <option value="vert">Vert </option>
+                <option value="blanc">Blanc</option>  
+                <option value="bleu">Bleu</option>
+                <option value="jaune">Jaune </option>  
+                <option value="autres">Autres</option>          
+              </select> 
+
+            </div>
+
+          </div>
+           
+            <div class="col-md-12">
+                <div class="form-group row">
+                    <label for="c_message" class="text-black">Condition <span class="text-danger">*</span> </label> 
+                  </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" [(ngModel)]="loginUserData.condition" value="tres bon etat" checked>
+                <label class="form-check-label" for="exampleRadios1">
+                  Trés Bon Etat
+                </label>
+              </div>
+              <div class="form-check">
+                  <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="bon etat" [(ngModel)]="loginUserData.condition" >
+                  <label class="form-check-label" for="exampleRadios2">
+                    Bon Etat
+                  </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="correct" [(ngModel)]="loginUserData.condition" >
+                    <label class="form-check-label" for="exampleRadios3">
+                      Correct
+                    </label>
+
+
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="form-group row">
+                <label for="c_message" class="text-black">Confidentialité <span class="text-danger">*</span> </label> 
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox"  name="exampleRadios" [(ngModel)]="loginUserData.confidientialite" value="oui">
+            <label class="form-check-label" >
+            J'accepte que Soko transmette mes coordonnées à l'acheteur si celui-ci les demande ?
+            </label>
+          </div>
+        </div>
+
+      </div>
+            <div class="form-group row">
+              <div class="col-lg-12">
+                <input type="submit" (click)="vente()" class="btn btn-warning btn-lg btn-block" value="Valider">
+              </div>
+            </div>
+          </form>
+          </div>
+      
+      <div class="col-md-6">
+          
+          <form method="POST">
+              <div class="row">
+                  <div class="col-md-12">
+                <div class="mdb-lightbox no-margin">
+                  <label for="c_fname" class="text-black">Inserer une Image <span class="text-danger">*</span></label>
+
+                    <figure class="col-md-4" *ngFor="let url of urls">
+                      <a>
+                        <img alt="picture" [src]="url" class="img-fluid" />
+                      </a>
+                    </figure>
+                  </div></div>
+                </div>
+
+        <div class="btn btn-primary btn-sm float-left">
+            <input type="file" #ImageFile accept="image/*" (change)="detectFiles($event)">
+          </div>
+
+
+         
+        </form>
+      </div>
+    </div>
+  </div></div>
