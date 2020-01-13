@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import Swal from 'sweetalert2';
+import { SokoService } from './../soko.service';
 
 import { Product } from '../Models/Product.Model';
 import { All } from '../Models/All.Model';
@@ -20,8 +21,10 @@ export class HommesComponent implements OnInit {
   proda:[];
   isLoggedIn:boolean=false;
   prod: Product[];
+  tele:number;
+  nom:string
   vete=""
-  constructor(private productService:ProductService,private sharedService:SharedServiceService) { }
+  constructor(private productService:ProductService,private _auth: SokoService ,private sharedService:SharedServiceService) { }
 
   ngOnInit() {
     this.productService.getAllHomme()
@@ -51,9 +54,19 @@ export class HommesComponent implements OnInit {
               }   this.vete=""
  }
 
- display(prod){
-this.proda=prod;
- }
+ display(prod,id){
+
+  this._auth.onevente(id).subscribe(
+    res => { 
+      
+  this.tele=res.body.user.telephone
+  this.nom= res.body.user.prenom+" "+res.body.user.nom
+  
+  ////////////console.log(this.tele);
+  }  
+    ,err =>{console.log(err) })
+    this.proda=prod;
+   }
 
  OnAddCart(product:Product)
  {

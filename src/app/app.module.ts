@@ -14,7 +14,6 @@ import { CovendreComponent } from './covendre/covendre.component';
 import { CgvComponent } from './cgv/cgv.component';
 import { FaqComponent } from './faq/faq.component';
 import { RetourremboComponent } from './retourrembo/retourrembo.component';
-import { ViewproductComponent } from './viewproduct/viewproduct.component';
 import { AproposComponent } from './apropos/apropos.component';
 import { PanierComponent } from './panier/panier.component';
 import { CheckoutComponent } from './checkout/checkout.component';
@@ -39,7 +38,6 @@ const appRoutes: Routes=[
   { path: 'faq', component:FaqComponent} ,
   { path: 'cgv', component:CgvComponent} ,
   { path: 'à_propos', component:AproposComponent} ,
-  { path: 'voir_produit', component:ViewproductComponent} ,
   { path: 'mon_panier', component:PanierComponent} ,
   { path: 'finaliser_commande', component:CheckoutComponent} ,
   { path: 'inscription', component:InscriptionComponent} ,
@@ -62,7 +60,6 @@ const appRoutes: Routes=[
     CgvComponent,
     FaqComponent,
     RetourremboComponent,
-    ViewproductComponent,
     AproposComponent,
     PanierComponent,
     CheckoutComponent,

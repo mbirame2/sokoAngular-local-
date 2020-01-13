@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import Swal from 'sweetalert2';
+import { SokoService } from './../soko.service';
 
 import { Product } from '../Models/Product.Model';
 import { All } from '../Models/All.Model';
@@ -20,12 +21,13 @@ export class FemmesComponent implements OnInit {
   allProducts: Product[];
   prod: Product[];
   proda:[];
+  tele:number;
+  nom:string
   vete=""
   isLoggedIn:boolean=false;
-  constructor(private productService:ProductService,private sharedService:SharedServiceService) { }
-
+  constructor(private productService:ProductService,private _auth: SokoService ,private sharedService:SharedServiceService) { }
   ngOnInit() {
-    this.productService.getAllFemme()
+    this.productService.getAllNouveaute()
             .subscribe((result) => {
               this.globalResponse = result.body;              
             },
@@ -33,15 +35,14 @@ export class FemmesComponent implements OnInit {
               console.log(error.message);
             },
             () => {
-                //  This is Success part
                 console.log("Product fetched sucssesfully.");
                 //console.log(this.globalResponse);
                 this.allProducts=this.globalResponse;
                 this.prod=this.allProducts
-                console.log(this.allProducts);
+                console.log(this.prod);
+
                 }
               )
-
               var token = localStorage.getItem('token');
 
               // It should work, but I think it's far less comprehensive
@@ -49,14 +50,25 @@ export class FemmesComponent implements OnInit {
                 this.isLoggedIn=false;
               }else{
                 this.isLoggedIn=true;
-
+               
               }
               this.vete=""
+
  }
 
- display(prod){
-this.proda=prod;
- }
+ display(prod,id){
+
+  this._auth.onevente(id).subscribe(
+    res => { 
+      
+  this.tele=res.body.user.telephone
+  this.nom= res.body.user.prenom+" "+res.body.user.nom
+  
+  ////////////console.log(this.tele);
+  }  
+    ,err =>{console.log(err) })
+    this.proda=prod;
+   }
 
  
   OnAddCart(product:Product)

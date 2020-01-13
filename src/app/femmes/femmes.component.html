@@ -3,7 +3,7 @@
 <div class="bg-light py-3">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 mb-0"><a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Femmes</strong></div>
+      <div class="col-md-12 mb-0"><a href="index.html">Accueil</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Femmes</strong></div>
     </div>
   </div>
 </div>
@@ -41,7 +41,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body" >
+              <div class="modal-body" *ngIf="proda">
                 <div class="row">
                   <div class="col-md-6">
                     <img  src="data:image/png;base64,{{proda.article.ImageName}}" class="img-fluid" alt="">
@@ -52,7 +52,25 @@
                     <p>{{proda.article.Taille}}</p>
                     <p><strong class="text-primary h4">{{proda.article.Prix}} FCFA</strong></p>
                     <p *ngIf="isLoggedIn"><a (click)="OnAddCart(proda)" class="buy-now btn btn-sm btn-primary">Ajouter au panier</a></p>
-            
+                    <div id="accordion" *ngIf="proda.article.Confid=='true'" >
+                         
+                      <div class="card-header" id="headingOne" >
+                        <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          <button class="btn btn-link">
+                            Voir Cordonnées du vendeur
+                          </button>
+                        </h5>
+                      </div>
+                  
+                      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                        <div class="card-body">
+                          <h4 class="text-black">Infos Vendeur</h4>
+                          <p><strong class="text-primary h6">{{nom}} <br> +221 {{tele}} </strong></p>
+                          Soko n'intervient plus dans le processus d'achat. Les deux parties doivent convenir ensemble d'un mode de livraison et de paiement
+                        </div>
+                      </div>
+                   
+                  </div>
                     <h5 class="text-black" *ngIf="!isLoggedIn">Connectez vous pour passer vos commandes</h5>
                     <h6 class="text-black" *ngIf="!isLoggedIn">Pas de compte? <a routerLink="/inscription">Inscrivez</a> vous maintenant</h6>
                   </div> 
