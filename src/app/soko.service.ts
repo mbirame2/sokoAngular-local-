@@ -16,35 +16,36 @@ export class SokoService {
   jwt:string;
   username:string;
   roles:string;
+  routes='http://5.189.184.223/'
   constructor(private httpClient: HttpClient) { }
   loginUser(user){
     
-    return this.httpClient.post<any>(`http://localhost:8000/api/login`, user,{observe:'response'});
+    return this.httpClient.post<any>(this.routes+`api/login`, user,{observe:'response'});
   }
   commande(user){
     
-    return this.httpClient.post<any>(`http://localhost:8000/api/commande`, user,{headers:this.headers,observe:'response'});
+    return this.httpClient.post<any>(this.routes+`api/commande`, user,{headers:this.headers,observe:'response'});
   }
 
 
   getUser(){
-    return this.httpClient.get<any>(`http://localhost:8000/api/getuser`,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.routes+`api/getuser`,{headers:this.headers,observe:'response'});
   }
   getcat(){
-    return this.httpClient.get<any>(`http://localhost:8000/api/allcat`,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.routes+`api/allcat`,{headers:this.headers,observe:'response'});
   }
   getsscat(){
-    return this.httpClient.get<any>(`http://localhost:8000/api/allsscat`,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.routes+`api/allsscat`,{headers:this.headers,observe:'response'});
   }
   venteuser(){
    
    // console.log(this.headers);
-    return this.httpClient.get<any>(`http://localhost:8000/api/allvente`,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.routes+`api/allvente`,{headers:this.headers,observe:'response'});
   }
   allachat(){
    
     //console.log(this.headers);
-    return this.httpClient.get<any>(`http://localhost:8000/api/allachat`,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.routes+`api/allachat`,{headers:this.headers,observe:'response'});
   }
   vendre(user){
     const formData: FormData = new FormData();
@@ -61,7 +62,7 @@ export class SokoService {
     formData.append('genre',user.genre);
     formData.append('confid',user.confidientialite);
     formData.append('condition',user.condition);
-    return this.httpClient.post<any>(`http://localhost:8000/api/ventearticle`, formData,{headers:this.headers,observe:'response'});
+    return this.httpClient.post<any>(this.routes+`api/ventearticle`, formData,{headers:this.headers,observe:'response'});
   }
   inscripion(user){
     const formData: FormData = new FormData();
@@ -73,10 +74,10 @@ export class SokoService {
     formData.append('c_password',user.confirmPassword);
 
 
-    return this.httpClient.post<any>(`http://localhost:8000/api/register`,formData,{headers:this.headers,observe:'response'});
+    return this.httpClient.post<any>(this.routes+`api/register`,formData,{headers:this.headers,observe:'response'});
   }
   onevente(id){
-    return this.httpClient.get<any>(`http://localhost:8000/api/onevente/`+id,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.routes+`api/onevente/`+id,{headers:this.headers,observe:'response'});
   }
   removeToken(){
     localStorage.removeItem('token')
