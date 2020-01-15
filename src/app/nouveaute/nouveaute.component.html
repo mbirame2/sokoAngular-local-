@@ -50,7 +50,7 @@
                         <p>{{proda.article.Taille}}</p>
                         <p><strong class="text-primary h4">{{proda.article.Prix}} FCFA</strong></p>
                         <p *ngIf="isLoggedIn"><a (click)="OnAddCart(proda)" class="buy-now btn btn-sm btn-primary">Ajouter au panier</a></p>
-                        <div id="accordion" *ngIf="proda.article.Confid=='true'" >
+                        <div id="accordion" *ngIf="proda.article.Confid=='true' && isLoggedIn " >
                          
                             <div class="card-header" id="headingOne" >
                               <h5 class="mb-0" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">

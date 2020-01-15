@@ -11,22 +11,43 @@ import { SokoService } from './soko.service';
 export class ProductService {
 
   public apiURL:string="http://localhost:50148/api/Products";
-  routes='http://5.189.184.223/'
   private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
 
   constructor(private httpClient:HttpClient,private _auth: SokoService ) { }
 
+  saveProductInfo (product:any)
+  {
+    var reqHeader = new HttpHeaders({ 'Authorization':'Bearer '+this._auth.getToken()});
+        reqHeader.append('Content-Type', 'application/json');
+        const formData: FormData = new FormData();
+         formData.append('UnitPrice', product['Price']);
+         formData.append('Name', product.Name.toString());
+         formData.append('SellerId', product.SellerId.toString());
+         formData.append('SellerName', product.SellerName.toString());
+         formData.append('Category', product.Category.toString());
+         formData.append('TC', product['Conditions']);
+         formData.append('Quantity', product.Quantity.toString());
+         formData.append('Description', product.Description.toString());
+         formData.append('Image', product['ImageFile']);
+         
+        
+    return this.httpClient.post(this.apiURL,formData,{ headers: reqHeader })
+    .pipe(
+      map(res => res),
+       catchError( this.errorHandler)
+      );
+  }
 
   getAllNouveaute(){
-    return this.httpClient.get<any>(this.routes+"api/allnew",{headers:this.headers,observe:'response'})
+    return this.httpClient.get<any>("api.sokodakar.com/api/allnew",{headers:this.headers,observe:'response'})
   }
   
   getAllHomme(){
-    return this.httpClient.get<any>(this.routes+"api/allhomme",{headers:this.headers,observe:'response'})
+    return this.httpClient.get<any>("api.sokodakar.com/api/allhomme",{headers:this.headers,observe:'response'})
   }
 
   getAllFemme(){
-    return this.httpClient.get<any>(this.routes+"api/allfemme",{headers:this.headers,observe:'response'})
+    return this.httpClient.get<any>("api.sokodakar.com/api/allfemme",{headers:this.headers,observe:'response'})
   
   }
   addProductToCart(prodcuts: any) {
