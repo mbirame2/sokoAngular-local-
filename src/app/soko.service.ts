@@ -9,7 +9,7 @@ import { HttpHeaders } from '@angular/common/http';
 })
 export class SokoService {
 
-  private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+  private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')).append('content-type', 'application/json');
 
   private token=localStorage.getItem('token');
   
@@ -30,7 +30,7 @@ export class SokoService {
   getUser(){
     return this.httpClient.get<any>(`http://api.sokodakar.com//api/getuser`,{headers:this.headers,observe:'response'});
   }
-  
+
   getcat(){
     return this.httpClient.get<any>(`api.sokodakar.com/api/allcat`,{headers:this.headers,observe:'response'});
   }

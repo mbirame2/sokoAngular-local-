@@ -11,7 +11,7 @@ import { SokoService } from './soko.service';
 export class ProductService {
 
   public apiURL:string="http://localhost:50148/api/Products";
-  private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
+  private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')).append('content-type', 'application/json');
 
   constructor(private httpClient:HttpClient,private _auth: SokoService ) { }
 
