@@ -30,6 +30,7 @@ export class SokoService {
   getUser(){
     return this.httpClient.get<any>(`http://api.sokodakar.com//api/getuser`,{headers:this.headers,observe:'response'});
   }
+  
   getcat(){
     return this.httpClient.get<any>(`api.sokodakar.com/api/allcat`,{headers:this.headers,observe:'response'});
   }
