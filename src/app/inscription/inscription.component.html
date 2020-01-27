@@ -19,15 +19,15 @@
                 <label for="c_fname" class="text-black">Prenom <span class="text-danger">*</span></label>
 
                   <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                  <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                      <div *ngIf="f.firstName.errors.required">Champs Obligatoire</div>
+                  <div *ngIf="submitted && firstName.errors" class="invalid-feedback">
+                      <div *ngIf="firstName.errors.required">Champs Obligatoire</div>
                   </div>
               </div>
               <div class="form-group col-5">
                 <label for="c_fname" class="text-black">Nom <span class="text-danger">*</span></label>
                   <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
                   <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                      <div *ngIf="f.lastName.errors.required">Champs Obligatoire</div>
+                      <div *ngIf="lastName.errors.required">Champs Obligatoire</div>
                   </div>
               </div>
           </div>

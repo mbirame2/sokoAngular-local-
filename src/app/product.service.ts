@@ -1,3 +1,4 @@
+ 
 import { Injectable } from '@angular/core';
 import { HttpClient,HttpClientModule, HttpHeaders } from '@angular/common/http';
 import { Observable, of, throwError, pipe} from "rxjs"
@@ -11,7 +12,7 @@ import { SokoService } from './soko.service';
 export class ProductService {
 
   public apiURL:string="http://localhost:50148/api/Products";
-  private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')).append('content-type', 'application/json');
+  private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
 
   constructor(private httpClient:HttpClient,private _auth: SokoService ) { }
 
@@ -39,15 +40,15 @@ export class ProductService {
   }
 
   getAllNouveaute(){
-    return this.httpClient.get<any>("api.sokodakar.com/api/allnew",{headers:this.headers,observe:'response'})
+    return this.httpClient.get<any>("http://localhost:8000/api/allnew",{headers:this.headers,observe:'response'})
   }
   
   getAllHomme(){
-    return this.httpClient.get<any>("api.sokodakar.com/api/allhomme",{headers:this.headers,observe:'response'})
+    return this.httpClient.get<any>("http://localhost:8000/api/allhomme",{headers:this.headers,observe:'response'})
   }
 
   getAllFemme(){
-    return this.httpClient.get<any>("api.sokodakar.com/api/allfemme",{headers:this.headers,observe:'response'})
+    return this.httpClient.get<any>("http://localhost:8000/api/allfemme",{headers:this.headers,observe:'response'})
   
   }
   addProductToCart(prodcuts: any) {

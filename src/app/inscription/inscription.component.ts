@@ -78,10 +78,10 @@ inscrire(){
             return;
         }
 
-        console.log(this.registerForm.value)
+      
 
         // display form values on success
-        alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+    //    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
     }
 
     MustMatch(controlName: string, matchingControlName: string) {
