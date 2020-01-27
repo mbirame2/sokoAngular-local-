@@ -31,12 +31,16 @@ export class InscriptionComponent implements OnInit {
           validator: this.MustMatch('password', 'confirmPassword')
       }
         );
+      
       //  console.log(this.registerForm.value)
+    }
+    refresh(){
+      window.location.reload();
     }
 
     // convenience getter for easy access to form fields
 inscrire(){
-  console.log(this.registerForm.value)
+
   this._auth.inscripion(this.registerForm.value).subscribe(
     res => {console.log(res);
         

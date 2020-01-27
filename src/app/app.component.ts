@@ -30,7 +30,7 @@ export class AppComponent {
         res => { 
     this.ok=res.body;
     this.isLoggedIn=true;
-    console.log(this.ok);
+ 
      }
      )
     }
@@ -55,7 +55,7 @@ export class AppComponent {
  this.exact()
  window.location.reload();
    }   
-   ,err =>{console.log(err)
+   ,err =>{
     if(err.status==401 ||   err.error.errir=="Unauthorised"){
     Swal.fire(
       'Erreur',

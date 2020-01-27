@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import Swal from 'sweetalert2';
 import { SokoService } from './../soko.service';
+import {Router} from '@angular/router';
 
 import { Product } from '../Models/Product.Model';
 import { All } from '../Models/All.Model';
@@ -23,7 +24,7 @@ export class NouveauteComponent implements OnInit {
   proda:[];
   vete=""
   isLoggedIn:boolean=false;
-  constructor(private _auth: SokoService ,private productService:ProductService,private sharedService:SharedServiceService) { }
+  constructor(private _auth: SokoService ,private router: Router,private productService:ProductService,private sharedService:SharedServiceService) { }
 
   ngOnInit() {
     this.productService.getAllNouveaute()
@@ -57,15 +58,6 @@ export class NouveauteComponent implements OnInit {
 
  display(prod,id){
 
-this._auth.onevente(id).subscribe(
-  res => { 
-    
-this.tele=res.body.user.telephone
-this.nom= res.body.user.prenom+" "+res.body.user.nom
-
-////////////console.log(this.tele);
-}  
-  ,err =>{console.log(err) })
   this.proda=prod;
  }
  homme(){
@@ -136,7 +128,7 @@ sscategorieChaussures(){
  //  console.log(product);
    
    this.productAddedTocart=this.productService.getProductFromCart();
-   
+   if(this.isLoggedIn){
    if(this.productAddedTocart==null)
    {
     // this.productAddedTocart:Product[];
@@ -190,7 +182,21 @@ sscategorieChaussures(){
         )
      }
      
-   }
+   }}else{
+    Swal.fire({
+      title: 'Vous n\'etes pas connectés ',
+      text: "Connectez vous d'abord pour passer vos commandes. Pas de compte? Cliquez sur ce bouton pour s'inscrire ",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'S\'inscrire!'
+    }).then((result) => {
+      if (result.value) {
+       this.router.navigateByUrl("/inscription")
+      }
+    })
+  }
    //console.log(this.cartItemCount);
    this.cartItemCount=this.productAddedTocart.length;
    // this.cartEvent.emit(this.cartItemCount);

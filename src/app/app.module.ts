@@ -23,6 +23,7 @@ import { MonCompteComponent } from './mon-compte/mon-compte.component'
 import { HttpClientModule } from '@angular/common/http';
 import { SokoService } from './soko.service';
 import { SharedServiceService } from './shared-service.service';
+import { SuccessComponent } from './success/success.component';
 
 
 const appRoutes: Routes=[
@@ -42,6 +43,7 @@ const appRoutes: Routes=[
   { path: 'finaliser_commande', component:CheckoutComponent} ,
   { path: 'inscription', component:InscriptionComponent} ,
   { path: 'mon_compte', component:MonCompteComponent} ,
+  { path: 'success', component:SuccessComponent} ,
   { path: 'retour&remboursement', component:RetourremboComponent} ,
 ] ;
 
@@ -64,7 +66,8 @@ const appRoutes: Routes=[
     PanierComponent,
     CheckoutComponent,
     InscriptionComponent,
-    MonCompteComponent
+    MonCompteComponent,
+    SuccessComponent
   ],
   imports: [
     BrowserModule,

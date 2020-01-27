@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import Swal from 'sweetalert2';
 import { SokoService } from './../soko.service';
-
+import {Router} from '@angular/router';
 import { Product } from '../Models/Product.Model';
 import { All } from '../Models/All.Model';
 import { SharedServiceService } from '../shared-service.service';
@@ -24,7 +24,7 @@ export class HommesComponent implements OnInit {
   tele:number;
   nom:string
   vete=""
-  constructor(private productService:ProductService,private _auth: SokoService ,private sharedService:SharedServiceService) { }
+  constructor(private productService:ProductService,private router: Router,private _auth: SokoService ,private sharedService:SharedServiceService) { }
 
   ngOnInit() {
     this.productService.getAllHomme()
@@ -56,15 +56,7 @@ export class HommesComponent implements OnInit {
 
  display(prod,id){
 
-  this._auth.onevente(id).subscribe(
-    res => { 
-      
-  this.tele=res.body.user.telephone
-  this.nom= res.body.user.prenom+" "+res.body.user.nom
-  
-  ////////////console.log(this.tele);
-  }  
-    ,err =>{console.log(err) })
+
     this.proda=prod;
    }
 
@@ -74,6 +66,7 @@ export class HommesComponent implements OnInit {
    
    this.productAddedTocart=this.productService.getProductFromCart();
    console.log( product.article_id);
+   if(this.isLoggedIn){
    if(this.productAddedTocart==null)
    {
     // this.productAddedTocart:Product[];
@@ -127,7 +120,21 @@ export class HommesComponent implements OnInit {
         )
      }
      
-   }
+   } }else{
+    Swal.fire({
+      title: 'Vous n\'etes pas connectés ',
+      text: "Connectez vous d'abord pour passer vos commandes. Pas de compte? Cliquez sur ce bouton pour s'inscrire ",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'S\'inscrire!'
+    }).then((result) => {
+      if (result.value) {
+       this.router.navigateByUrl("/inscription")
+      }
+    })
+  }
    //console.log(this.cartItemCount);
    this.cartItemCount=this.productAddedTocart.length;
    // this.cartEvent.emit(this.cartItemCount);

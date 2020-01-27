@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import Swal  from 'sweetalert2';
+import { Router } from '@angular/router';
+
 import { SokoService } from './../soko.service';
 import { ProductService } from '../product.service';
 import { Product } from '../Models/Product.Model';
@@ -14,7 +16,7 @@ export class CheckoutComponent implements OnInit {
   allTotal:number;
   loginUserData = {product:[]}
 
-  constructor(private productService:ProductService,private aut:SokoService) { }
+  constructor(private productService:ProductService,private router:Router,private aut:SokoService) { }
 
   ngOnInit() {
     this.productAddedTocart=this.productService.getProductFromCart();
@@ -37,16 +39,12 @@ export class CheckoutComponent implements OnInit {
   // console.log(this.allTotal)
   }
   commande(){
-   console.log(this.loginUserData)
+
     this.aut.commande(this.loginUserData).subscribe((result) => {
      
-        console.log( result);    
-      
-          Swal.fire(
-            'Ok',
-            'Enregistrement fait avec succés',
-            'success'
-          )
+
+          this.productService.removeAllProductFromCart();
+          this.router.navigateByUrl("/success")
             },
       error => {
         console.log(error);

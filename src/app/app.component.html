@@ -33,18 +33,18 @@
                               <input id="user_remember_me" style="float: left; margin-right: 10px;" type="checkbox" name="user[remember_me]" value="1" />
                               <label class="string optional" for="user_remember_me"> Se souvenir</label>
                             
-                              <input class="btn btn-primary" routerLink="/" style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Valider"  (click)="loginUser()" /> 
+                              <input class="btn btn-primary"  style="clear: left; width: 100%; height: 32px; font-size: 13px;" type="submit" name="commit" value="Valider"  (click)="loginUser()" /> 
                             </form>
                             <br>  <span>Pas encore inscrit(e) ? ?</span>  
                             <a routerLink="/inscription"> Creer un compte</a>
          
                     </div>
                     </li>
-                    <li class="dropdown" *ngIf="isLoggedIn">
-                      <a class="dropdown-toggle" href="#" data-toggle="dropdown">    <span class="icon icon-person"></span>  </a>
-                      <div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;" *ngIf="ok">
-                          <strong class="text-black">{{ok.prenom}} {{ok.nom}}</strong> <br>
-                          <strong class="text-black">{{ok.telephone}} </strong> <br>
+                    <li class="dropdown" *ngIf="isLoggedIn" >
+                      <a class="dropdown-toggle" href="#" data-toggle="dropdown" >    <span class="icon icon-person"></span>  </a>
+                      <div class="dropdown-menu" style="padding: 15px; padding-bottom: 10px;" >
+                          <strong class="text-black" *ngIf="ok">{{ok.prenom}} {{ok.nom}}</strong> <br>
+                          <strong class="text-black" *ngIf="ok">{{ok.telephone}} </strong> <br>
                             <a routerLink="/" (click)="LogOut()" > Se Deconnecter</a>
          
                     </div>
