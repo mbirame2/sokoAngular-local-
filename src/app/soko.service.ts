@@ -72,7 +72,7 @@ export class SokoService {
     formData.append('password',user.password);
     formData.append('c_password',user.confirmPassword);
 
-
+console.log(formData);
     return this.httpClient.post<any>(`http://localhost:8000/api/register`,formData,{headers:this.headers,observe:'response'});
   }
   onevente(id){
