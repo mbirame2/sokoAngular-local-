@@ -18,26 +18,19 @@
               <div class="form-group col-5">
                 <label for="c_fname" class="text-black">Prenom <span class="text-danger">*</span></label>
 
-                  <input type="text" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
-                  <div *ngIf="submitted && firstName.errors" class="invalid-feedback">
-                      <div *ngIf="firstName.errors.required">Champs Obligatoire</div>
-                  </div>
+                  <input type="text" formControlName="firstName" class="form-control" />
+                
               </div>
               <div class="form-group col-5">
                 <label for="c_fname" class="text-black">Nom <span class="text-danger">*</span></label>
-                  <input type="text" formControlName="lastName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
-                  <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
-                      <div *ngIf="lastName.errors.required">Champs Obligatoire</div>
-                  </div>
+                  <input type="text" formControlName="lastName" class="form-control"  />
+          
               </div>
           </div>
           <div class="form-row">
           <div class="form-group col">
             <label for="c_fname" class="text-black">Numero Téléphone <span class="text-danger">*</span></label>
-              <input type="number"  formControlName="numtel" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.numtel.errors }" />
-              <div *ngIf="submitted && f.numtel.errors" class="invalid-feedback">
-                  <div *ngIf="f.numtel.errors.required">Champs Obligatoire</div>
-              </div>
+              <input type="number"  formControlName="numtel" class="form-control"  />
        
          
           </div>
@@ -45,34 +38,25 @@
         <div class="form-row">
           <div class="form-group col">
               <label for="c_fname" class="text-black">Adresse <span class="text-danger">*</span></label>
-              <input type="text" formControlName="adresse" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.adresse.errors }" />
-              <div *ngIf="submitted && f.adresse.errors" class="invalid-feedback">
-                  <div *ngIf="f.adresse.errors.required">Champs Obligatoire</div>
-              </div>
+              <input type="text" formControlName="adresse" class="form-control" />
+
             </div>
           </div>
           <div class="form-row">
               <div class="form-group col">
                   <label for="c_fname" class="text-black">Mot de Passe <span class="text-danger">*</span></label>
-                  <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
-                  <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                      <div *ngIf="f.password.errors.required">Champs Obligatoire</div>
-                      <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
-                  </div>
+                  <input type="password" formControlName="password" class="form-control" />
+              
               </div>
               <div class="form-group col">
                   <label for="c_fname" class="text-black">Confirmartion Mot de Passe <span class="text-danger">*</span></label>
-                  <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
-                  <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
-                      <div *ngIf="f.confirmPassword.errors.required">Champs Obligatoire</div>
-                      <div *ngIf="f.confirmPassword.errors.mustMatch">Mot de Passe différent</div>
-                  </div>
+                  <input type="password" formControlName="confirmPassword" class="form-control" />
+         
               </div>
           </div>
           <div class="form-group form-check">
-              <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
+              <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"  />
               <label for="c_fname" class="text-black">Accept Terms & Conditions</label>
-              <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Validez ce champs</div>
           </div>
           <div class="text-center">
               <button class="btn btn-primary mr-1" (click)="inscrire()">S'Inscrire</button>
