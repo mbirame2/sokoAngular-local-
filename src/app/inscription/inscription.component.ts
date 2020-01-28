@@ -40,10 +40,9 @@ export class InscriptionComponent implements OnInit {
 
     // convenience getter for easy access to form fields
 inscrire(){
-
+  console.log(this.registerForm.value);
   this._auth.inscripion(this.registerForm.value).subscribe(
     res => {console.log(res);
-        
       Swal.fire(
     
         {
