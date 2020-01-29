@@ -51,8 +51,8 @@
                     <p>{{proda.article.Description}}</p>
                     <p>{{proda.article.Taille}}</p>
                     <p><strong class="text-primary h4">{{proda.article.Prix}} FCFA</strong></p>
-                    <p><a (click)="OnAddCart(proda)" class="buy-now btn btn-sm btn-primary" data-dismiss="modal" aria-label="Close">Ajouter au panier</a></p>
-             
+                    <p><a (click)="OnAddCart(proda)" *ngIf="proda.article.Disponible=='oui'" class="buy-now btn btn-sm btn-primary" data-dismiss="modal" aria-label="Close">Ajouter au panier</a></p>
+                    <p><strong *ngIf="proda.article.Disponible=='non'" class="text-primary h4"> VENDU</strong></p>
                      </div> 
                 </div>
               </div>

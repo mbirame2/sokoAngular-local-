@@ -10,7 +10,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class SokoService {
 
   private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-
+  public apiURL:string="api.sokodakar.com/";
   private token=localStorage.getItem('token');
   
   jwt:string;
@@ -19,32 +19,32 @@ export class SokoService {
   constructor(private httpClient: HttpClient) { }
   loginUser(user){
     
-    return this.httpClient.post<any>(`http://api.sokodakar.com/api/login`, user,{observe:'response'});
+    return this.httpClient.post<any>(this.apiURL+`api/login`, user,{observe:'response'});
   }
   commande(user){
     
-    return this.httpClient.post<any>(`http://api.sokodakar.com/api/commande`, user,{headers:this.headers,observe:'response'});
+    return this.httpClient.post<any>(this.apiURL+`api/commande`, user,{headers:this.headers,observe:'response'});
   }
 
 
   getUser(){
-    return this.httpClient.get<any>(`http://api.sokodakar.com/api/getuser`,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.apiURL+`api/getuser`,{headers:this.headers,observe:'response'});
   }
   getcat(){
-    return this.httpClient.get<any>(`http://api.sokodakar.com/api/allcat`,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.apiURL+`api/allcat`,{headers:this.headers,observe:'response'});
   }
   getsscat(){
-    return this.httpClient.get<any>(`http://api.sokodakar.com/api/allsscat`,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.apiURL+`api/allsscat`,{headers:this.headers,observe:'response'});
   }
   venteuser(){
    
    // console.log(this.headers);
-    return this.httpClient.get<any>(`http://api.sokodakar.com/api/allvente`,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.apiURL+`api/allvente`,{headers:this.headers,observe:'response'});
   }
   allachat(){
    
     //console.log(this.headers);
-    return this.httpClient.get<any>(`http://api.sokodakar.com/api/allachat`,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.apiURL+`api/allachat`,{headers:this.headers,observe:'response'});
   }
   vendre(user){
     const formData: FormData = new FormData();
@@ -61,7 +61,7 @@ export class SokoService {
     formData.append('genre',user.genre);
     formData.append('confid',user.confidientialite);
     formData.append('condition',user.condition);
-    return this.httpClient.post<any>(`http://api.sokodakar.com/api/ventearticle`, formData,{headers:this.headers,observe:'response'});
+    return this.httpClient.post<any>(this.apiURL+`api/ventearticle`, formData,{headers:this.headers,observe:'response'});
   }
   inscripion(user){
     const formData: FormData = new FormData();
@@ -73,10 +73,10 @@ export class SokoService {
     formData.append('c_password',user.confirmPassword);
 
 console.log(formData);
-    return this.httpClient.post<any>(`http://api.sokodakar.com/api/register`,formData,{headers:this.headers,observe:'response'});
+    return this.httpClient.post<any>(this.apiURL+`api/register`,formData,{headers:this.headers,observe:'response'});
   }
   onevente(id){
-    return this.httpClient.get<any>(`http://api.sokodakar.com/api/onevente/`+id,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.apiURL+`api/onevente/`+id,{headers:this.headers,observe:'response'});
   }
   removeToken(){
     localStorage.removeItem('token')

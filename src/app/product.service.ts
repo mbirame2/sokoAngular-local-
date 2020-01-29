@@ -10,7 +10,7 @@ import { SokoService } from './soko.service';
 })
 export class ProductService {
 
-  public apiURL:string="http://localhost:50148/api/Products";
+  public apiURL:string="api.sokodakar.com/";
   private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')).append('content-type', 'application/json');
 
   constructor(private httpClient:HttpClient,private _auth: SokoService ) { }
@@ -39,15 +39,15 @@ export class ProductService {
   }
 
   getAllNouveaute(){
-    return this.httpClient.get<any>("api.sokodakar.com/api/allnew",{headers:this.headers,observe:'response'})
+    return this.httpClient.get<any>(this.apiURL+"api/allnew",{headers:this.headers,observe:'response'})
   }
   
   getAllHomme(){
-    return this.httpClient.get<any>("api.sokodakar.com/api/allhomme",{headers:this.headers,observe:'response'})
+    return this.httpClient.get<any>(this.apiURL+"api/allhomme",{headers:this.headers,observe:'response'})
   }
 
   getAllFemme(){
-    return this.httpClient.get<any>("api.sokodakar.com/api/allfemme",{headers:this.headers,observe:'response'})
+    return this.httpClient.get<any>(this.apiURL+"api/allfemme",{headers:this.headers,observe:'response'})
   
   }
   addProductToCart(prodcuts: any) {
