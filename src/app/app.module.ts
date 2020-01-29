@@ -24,6 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SokoService } from './soko.service';
 import { SharedServiceService } from './shared-service.service';
 import { SuccessComponent } from './success/success.component';
+import Swal from 'sweetalert2';
 
 
 const appRoutes: Routes=[
@@ -75,7 +76,8 @@ const appRoutes: Routes=[
     RouterModule.forRoot(appRoutes) ,
     HttpClientModule,
     FormsModule,
-ReactiveFormsModule
+ReactiveFormsModule,
+
   ],
   providers: [SokoService,SharedServiceService],
   bootstrap: [AppComponent]

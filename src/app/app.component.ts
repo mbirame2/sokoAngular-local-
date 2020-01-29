@@ -35,6 +35,44 @@ export class AppComponent {
      )
     }
   }
+  verification1(){
+if(this.isLoggedIn){
+  this.router.navigateByUrl("/vendre")
+}else{
+  Swal.fire({
+    title: 'Vous n\'etes pas connectés ',
+    text: "Connectez vous d'abord pour continuer . Pas de compte? Inscrivez-vous. ",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'S\'inscrire!'
+  }).then((result) => {
+    if (result.value) {
+     this.router.navigateByUrl("/inscription")
+    }
+  })
+}
+  }
+  verification2(){
+    if(this.isLoggedIn){
+      this.router.navigateByUrl("/mon_compte")
+    }else{
+      Swal.fire({
+        title: 'Vous n\'etes pas connectés ',
+        text: "Connectez vous d'abord pour continuer . Pas de compte? Inscrivez-vous. ",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'S\'inscrire!'
+      }).then((result) => {
+        if (result.value) {
+         this.router.navigateByUrl("/inscription")
+        }
+      })
+    }
+  }
   LogOut()
   {
     this.isLoggedIn=false;

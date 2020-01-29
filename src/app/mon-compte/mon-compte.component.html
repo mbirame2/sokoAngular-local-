@@ -38,7 +38,7 @@
        <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> <br>
               <h2 class="text-black h3">Informations du compte</h2> <br>
-              <ul class="list-group list-group-flush">
+              <ul class="list-group list-group-flush" *ngIf="getuser">
                   <li class="list-group-item">Nom: {{ getuser.nom}} </li>
                   <li class="list-group-item">Prenom: {{ getuser.prenom}}  </li>
                   <li class="list-group-item">N. Téléphone: {{ getuser.telephone}} </li>
@@ -64,7 +64,7 @@
                       <td>{{ achat.article.Titre}}</td>
                       <td>{{ achat.commande.created_at}}</td>
                       <td>{{ achat.commande.statut_commande}}</td>
-                      <td>{{ achat.article.Prix}}</td>
+                      <td>{{ achat.article.Prix}} FCFA</td>
                     </tr>
                 
                   
@@ -80,6 +80,7 @@
                       <th scope="col">Référence Article</th>
                       <th scope="col">Nom article</th>
                       <th scope="col">Prix TTC</th>
+                      <th scope="col">Remove</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -87,6 +88,7 @@
                       <th scope="row">{{ us.article.id }}</th>
                       <td>{{ us.article.Titre }}</td>
                       <td>{{ us.article.Prix }}</td>
+                      <td><a (click)="remove(us.article.id)" class="btn btn-primary btn-sm">X</a></td>
                  
                     </tr>
                    

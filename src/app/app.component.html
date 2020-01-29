@@ -94,15 +94,15 @@
           <li><a routerLink="/marques">Marques</a></li>
           <span class="menu-desktop-separator"></span>
       
-          <li *ngIf="isLoggedIn"> <a routerLink="/vendre">Vendre</a></li>
-          <li *ngIf="isLoggedIn"><a routerLink="/mon_compte">Mon Compte</a></li>
+          <li > <a (click)="verification1()">Vendre</a></li>
+          <li ><a (click)="verification2()">Mon Compte</a></li>
       
         </ul>
       </div>
     </nav>
   </header>
+  <router-outlet></router-outlet>
 
-<router-outlet></router-outlet>
 <footer id="footer" class="footer-1">
     <div class="main-footer widgets-dark typo-light">
     <div class="container">

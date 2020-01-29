@@ -78,6 +78,9 @@ console.log(formData);
   onevente(id){
     return this.httpClient.get<any>(this.apiURL+`api/onevente/`+id,{headers:this.headers,observe:'response'});
   }
+  remove(id){
+    return this.httpClient.get<any>(this.apiURL+`api/remove/`+id,{headers:this.headers,observe:'response'});
+  }
   removeToken(){
     localStorage.removeItem('token')
   }
