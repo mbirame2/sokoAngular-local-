@@ -24,7 +24,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { SokoService } from './soko.service';
 import { SharedServiceService } from './shared-service.service';
 import { SuccessComponent } from './success/success.component';
-import { ModalModule } from 'ngb-modal';
 
 const appRoutes: Routes=[
 
