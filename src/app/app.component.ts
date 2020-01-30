@@ -93,8 +93,8 @@ if(this.isLoggedIn){
  this.exact()
  window.location.reload();
    }   
-   ,err =>{
-    if(err.status==401 ||   err.error.errir=="Unauthorised"){
+   ,err =>{console.log(err)
+    if(err.status==401 ||   err.error=="Unauthorised"){
     Swal.fire(
       'Erreur',
       'Username ou Mot de passe incorrecte',

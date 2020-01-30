@@ -24,8 +24,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SokoService } from './soko.service';
 import { SharedServiceService } from './shared-service.service';
 import { SuccessComponent } from './success/success.component';
-import Swal from 'sweetalert2';
-
+import { ModalModule } from 'ngb-modal';
 
 const appRoutes: Routes=[
 
@@ -46,6 +45,7 @@ const appRoutes: Routes=[
   { path: 'mon_compte', component:MonCompteComponent} ,
   { path: 'success', component:SuccessComponent} ,
   { path: 'retour&remboursement', component:RetourremboComponent} ,
+
 ] ;
 
 
@@ -68,7 +68,7 @@ const appRoutes: Routes=[
     CheckoutComponent,
     InscriptionComponent,
     MonCompteComponent,
-    SuccessComponent
+    SuccessComponent,
   ],
   imports: [
     BrowserModule,

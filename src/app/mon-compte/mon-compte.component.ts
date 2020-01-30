@@ -3,7 +3,6 @@ import { Component,OnInit } from '@angular/core';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import{ Vente } from './../vente';
-import { forEach } from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-mon-compte',
@@ -51,6 +50,7 @@ this.user=res.body
          }
    )
   }
+
   remove(id){
 
     let tempProduct=this.user.find(p=>p.article_id==id);
@@ -96,5 +96,6 @@ if(tempProduct.article['Disponible']=="oui"){
   }
   
 }
+
 
 }

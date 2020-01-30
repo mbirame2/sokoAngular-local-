@@ -5,6 +5,7 @@
 </div>
 </div>
 </div>
+
 <div class="container">
 <div class="col-md-12">
         <nav class="site-navigation text-right text-md-center" role="navigation">
@@ -38,13 +39,104 @@
        <div class="tab-content" id="pills-tabContent">
           <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> <br>
               <h2 class="text-black h3">Informations du compte</h2> <br>
-              <ul class="list-group list-group-flush" *ngIf="getuser">
-                  <li class="list-group-item">Nom: {{ getuser.nom}} </li>
-                  <li class="list-group-item">Prenom: {{ getuser.prenom}}  </li>
-                  <li class="list-group-item">N. Téléphone: {{ getuser.telephone}} </li>
-                  <li class="list-group-item">Adresse: {{ getuser.adresse}}</li>
-                  <li class="list-group-item">Inscrit depuis: {{ getuser.created_at}} </li>
-                </ul>
+          
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Prenom</th>
+                      <th scope="col">N. Téléphone</th>
+                      <th scope="col">Adresse</th>
+                      <th scope="col">Inscrit depuis</th>
+                      <th scope="col">Modifier Information</th>
+                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr  *ngIf="getuser">
+                      <th scope="row">{{ getuser.nom}}</th>
+                      <th scope="row">{{ getuser.prenom}}</th>
+                      <td>{{ getuser.telephone}}</td>
+                      <td>{{ getuser.adresse}}</td>
+                      <td>{{ getuser.created_at}}</td>
+                      <td><button type="button" class="btn btn-outline-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >Modifier</button>   </td>
+                    </tr>
+                
+                  
+                 
+                  </tbody>
+                </table>
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                    <div class="card card-body">
+                      <h4 class="text-black h3">Cochez la case que vous voulez modifier</h4> <br>
+                      <div>
+                        <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1'>
+                        <label for="c_fname" class="text-black"> Prenom/Nom</label>
+                      </div>
+                      <div id='collapsediv1' class='collapse div1'>
+                        <div class="form-row">
+               
+                          <div class="form-group col-5">
+                            <label for="c_fname" class="text-black">Prenom <span class="text-danger">*</span></label>
+            
+                              <input type="text"  class="form-control" />
+                            
+                          </div>
+                          <div class="form-group col-5">
+                            <label for="c_fname" class="text-black">Nom <span class="text-danger">*</span></label>
+                              <input type="text" class="form-control"  />
+                      
+                          </div>
+                          <a routerLink="/mon_compte"> modifier</a>
+                      </div>
+                      </div>
+  
+                      <div>
+                        <input type='checkbox' data-toggle='collapse' data-target='#collapsediv3'>
+                        <label for="c_fname" class="text-black">Telephone</label>
+                      <div id='collapsediv3' class='collapse div1'>
+                        <div class="form-row">
+               
+                          <div class="form-group col-5">
+                            <label for="c_fname" class="text-black">Telephone <span class="text-danger">*</span></label>
+                              <input type="text" class="form-control"  />
+                      
+                          </div>
+                          <a routerLink="/mon_compte" >Modifier</a>
+                      </div>
+                      </div>
+  
+                      <div>
+                        <input type='checkbox' data-toggle='collapse' data-target='#collapsediv2'> 
+                        <label for="c_fname" class="text-black">Mot de Passe</label>
+                      </div>
+                      <div id='collapsediv2' class='collapse div2'>
+                        <div class="form-row">
+               
+                          <div class="form-group col-4">
+                            <label for="c_fname" class="text-black">Mot de passe actuel <span class="text-danger">*</span></label>
+            
+                              <input type="password"  class="form-control" />
+                            
+                          </div>
+                          <div class="form-group col-4">
+                            <label for="c_fname" class="text-black">Nouveau mot de passe <span class="text-danger">*</span></label>
+                              <input type="password" class="form-control"  />
+                      
+                          </div>
+                          <div class="form-group col-4">
+                            <label for="c_fname" class="text-black">Confirmer mot de passe <span class="text-danger">*</span></label>
+                              <input type="password"  class="form-control"  />
+                      
+                          </div>
+                      </div>
+                      <a routerLink="/mon_compte" >Modifier</a>
+                      </div>
+                  </div>
+            </div>
+                  </div>
+                </div>
           </div>  <br>
           <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"> <br>
             <h2 class="text-black h3">Détails des Achats éffectués</h2> <br>
@@ -52,6 +144,7 @@
                   <thead>
                     <tr>
                       <th scope="col">N. Commande</th>
+                      <th scope="col">Image</th>
                       <th scope="col">Nom du Produit</th>
                       <th scope="col">Date</th>
                       <th scope="col">Status de la commande</th>
@@ -61,6 +154,9 @@
                   <tbody>
                     <tr *ngFor="let achat of achat">
                       <th scope="row">{{ achat.id}}</th>
+                      <td class="product-thumbnail">
+                        <img  src="data:image/png;base64,{{achat.article.ImageName}}"  height="50" width="150" alt="" class="img-fluid">
+                      </td>
                       <td>{{ achat.article.Titre}}</td>
                       <td>{{ achat.commande.created_at}}</td>
                       <td>{{ achat.commande.statut_commande}}</td>
@@ -78,6 +174,7 @@
                   <thead>
                     <tr>
                       <th scope="col">Référence Article</th>
+                      <th scope="col">Image</th>
                       <th scope="col">Nom article</th>
                       <th scope="col">Prix TTC</th>
                       <th scope="col">Remove</th>
@@ -86,6 +183,9 @@
                   <tbody>
                     <tr *ngFor="let us of user">
                       <th scope="row">{{ us.article.id }}</th>
+                      <td class="product-thumbnail">
+                        <img  src="data:image/png;base64,{{us.article.ImageName}}"  height="50" width="150" alt="" class="img-fluid">
+                      </td>
                       <td>{{ us.article.Titre }}</td>
                       <td>{{ us.article.Prix }}</td>
                       <td><a (click)="remove(us.article.id)" class="btn btn-primary btn-sm">X</a></td>

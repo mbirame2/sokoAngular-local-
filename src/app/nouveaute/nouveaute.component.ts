@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
 import { Product } from '../Models/Product.Model';
 import { All } from '../Models/All.Model';
 import { SharedServiceService } from '../shared-service.service';
+
 @Component({
   selector: 'app-nouveaute',
   templateUrl: './nouveaute.component.html',
