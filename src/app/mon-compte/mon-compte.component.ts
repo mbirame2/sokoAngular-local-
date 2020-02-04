@@ -17,8 +17,10 @@ user:Vente[];
 achat:Vente[];
 all:Vente[];
 getuser:{}
+err:boolean=false
+loginUserData={}
   ngOnInit() {
-  
+ 
 
   this._auth.venteuser().subscribe(
     res => { 
@@ -50,7 +52,40 @@ this.user=res.body
          }
    )
   }
-
+update(){
+  console.log(this.loginUserData)
+ if(this.loginUserData['password'] && this.loginUserData['newpassword']!=this.loginUserData['cpassword']){
+    this.err=true
+ }else{
+    
+  Swal.fire({
+    title: 'Avertissement',
+    text: "Voulez vous vraiment modifier vos infos personnelles ? ",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Oui'
+  }).then((result) => {
+    if (result.value) {
+     
+  
+    this._auth.update(this.loginUserData).subscribe(
+      res => { 
+     //   if(this._auth.getToken()){
+      
+         }
+  
+            ,err =>{console.log(err)
+              if(err.status==200){
+                window.location.reload();
+       
+              }
+           }
+     )
+    }
+  })
+  }
+}
   remove(id){
 
     let tempProduct=this.user.find(p=>p.article_id==id);

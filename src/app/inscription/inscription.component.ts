@@ -2,6 +2,7 @@ import { SokoService } from './../soko.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { Router } from '@angular/router';
 
 // import custom validator to validate that password and confirm password fields match
 
@@ -12,10 +13,12 @@ import Swal from 'sweetalert2';
 })
 export class InscriptionComponent implements OnInit {
   loginUserData = {}
+  ok={telephone:Number, password:String}
   registerForm: FormGroup;
+  ale:boolean=false;
     submitted = false;
     phoneNumber = "^(\+\d{1,3}[- ]?)?\d{10}$";
-    constructor(private formBuilder: FormBuilder,private _auth: SokoService) { }
+    constructor(private formBuilder: FormBuilder,private _auth: SokoService, private router:Router) { }
 
     
     ngOnInit() {
@@ -48,15 +51,48 @@ inscrire(){
         {
          // position: 'top-end',
           icon: 'success',
-          title: 'Inscription reussie',
-          text: 'Veillez vous rendre en haut à droite du menu pour vous connectez',
+          title: 'Votre inscription a bien été enregistrée',
+          text: 'Veuillez cliquer sur l\'icône en haut à droite pour vous connecter',
           showConfirmButton: true,
 
         }
-       )
-       
+       ).then((result) => {
+        if (result.value) {
+        
+         
+    this._auth.removeToken();
+//console.log(this.registerForm.value)
+this.ok.telephone=this.registerForm.value.numtel;
+this.ok.password=this.registerForm.value.password;
+
+    this._auth.loginUser(this.ok ).subscribe(
+      res => { 
+   this._auth.saveToken(res.body);
+  
+ this.ngOnInit()
+ window.location.reload();
+
+ this.ale=true;
+   }     
+      ) 
+      this.router.navigateByUrl("/")
+
+    }    
+   })}
+   ,err=>{console.log(err);
+    if(err.status==500){
+      Swal.fire(
     
-   },err=>{console.log(err);
+        {
+         // position: 'top-end',
+          icon: 'warning',
+          title: 'Ce numero de téléphone existe déjà',
+          text: '',
+          showConfirmButton: false,
+  
+        }
+       )
+    }else{
     Swal.fire(
     
       {
@@ -67,7 +103,7 @@ inscrire(){
         showConfirmButton: false,
 
       }
-     )
+     )} 
 
   })
 

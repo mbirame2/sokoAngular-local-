@@ -23,12 +23,9 @@
               </li> 
       
               <li class="nav-item">
-                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Mes Ventes</a>
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Ma Boutique</a>
               </li>
 
-              <li class="nav-item">
-                  <a class="nav-link" id="pills-notif-tab" data-toggle="pill" href="#pills-notif" role="tab" aria-controls="pills-notif" aria-selected="false">Notifications</a>
-                </li>
   
             </ul>
           
@@ -70,6 +67,7 @@
                   <div class="card card-body">
                     <div class="card card-body">
                       <h4 class="text-black h3">Cochez la case que vous voulez modifier</h4> <br>
+                      <form method="post">
                       <div>
                         <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1'>
                         <label for="c_fname" class="text-black"> Prenom/Nom</label>
@@ -80,16 +78,17 @@
                           <div class="form-group col-5">
                             <label for="c_fname" class="text-black">Prenom <span class="text-danger">*</span></label>
             
-                              <input type="text"  class="form-control" />
+                            <input  type="text"class="form-control" name="user[username]" [(ngModel)]="loginUserData.prenom" />
                             
                           </div>
                           <div class="form-group col-5">
                             <label for="c_fname" class="text-black">Nom <span class="text-danger">*</span></label>
-                              <input type="text" class="form-control"  />
+                              <input type="text" name="nom" class="form-control" [(ngModel)]="loginUserData.nom" />
                       
                           </div>
-                          <a routerLink="/mon_compte"> modifier</a>
+                         
                       </div>
+                      <a  routerLink="/mon_compte" (click)="update()"> Modifier</a>
                       </div>
   
                       <div>
@@ -100,11 +99,12 @@
                
                           <div class="form-group col-5">
                             <label for="c_fname" class="text-black">Telephone <span class="text-danger">*</span></label>
-                              <input type="text" class="form-control"  />
+                              <input type="text" name="user[tel]" class="form-control" [(ngModel)]="loginUserData.telephone"  />
                       
                           </div>
-                          <a routerLink="/mon_compte" >Modifier</a>
+                          
                       </div>
+                      <a routerLink="/mon_compte" (click)="update()">Modifier</a>
                       </div>
   
                       <div>
@@ -117,23 +117,25 @@
                           <div class="form-group col-4">
                             <label for="c_fname" class="text-black">Mot de passe actuel <span class="text-danger">*</span></label>
             
-                              <input type="password"  class="form-control" />
+                              <input type="password"  class="form-control" name="user[d]" [(ngModel)]="loginUserData.password" />
                             
                           </div>
                           <div class="form-group col-4">
                             <label for="c_fname" class="text-black">Nouveau mot de passe <span class="text-danger">*</span></label>
-                              <input type="password" class="form-control"  />
+                              <input type="password" class="form-control" name="user[z]" [(ngModel)]="loginUserData.newpassword" />
                       
                           </div>
                           <div class="form-group col-4">
                             <label for="c_fname" class="text-black">Confirmer mot de passe <span class="text-danger">*</span></label>
-                              <input type="password"  class="form-control"  />
+                              <input type="password"  class="form-control"  name="user[a]" [(ngModel)]="loginUserData.cpassword"/>
                       
                           </div>
                       </div>
-                      <a routerLink="/mon_compte" >Modifier</a>
+                      <p *ngIf="err">Le mot de passe saisi ne correpond pas</p>
+                      <a routerLink="/mon_compte" (click)="update()">Modifier</a>
                       </div>
                   </div>
+                </form>
             </div>
                   </div>
                 </div>
