@@ -85,24 +85,30 @@
           <div class="col-md-3 order-1 mb-5 mb-md-0">
             
                   <div class="border p-4 rounded mb-4">
-                    <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+                    <h3 class="mb-3 h6 text-uppercase text-black d-block">Genre</h3>
                     <ul class="list-unstyled mb-0">
                       <li class="mb-1"><a  class="d-flex" (click)="tout()"  href="/new#"><span>Tout</span> </a></li>
-                      <li class="mb-1"><a  class="d-flex" (click)="homme()"  href="/new#"><span>Hommes</span> </a></li>
-                      <li class="mb-1"><a (click)="femme()"  href="/new#" class="d-flex"><span>Femmes</span> </a></li>
+                      <li class="mb-1"><a  class="d-flex" (click)="tout('Homme')"  href="/new#"><span>Hommes</span> </a></li>
+                      <li class="mb-1"><a (click)="tout('Femme')"  href="/new#" class="d-flex"><span>Femmes</span> </a></li>
                     </ul>
                   </div>
       
                   <div class="border p-4 rounded mb-4">
-                      <h3 class="mb-3 h6 text-uppercase text-black d-block">Sous Categories</h3>
+                      <h3 class="mb-3 h6 text-uppercase text-black d-block"> Categories</h3>
                       <ul class="list-unstyled mb-0">
-                        <li><a (click)="sscategorieVetements()"  href="/new#" class="d-flex">Vetements </a></li>
-                        <li><a (click)="sscategorieChaussures()" href="/new#" class="d-flex">Chaussures </a></li>
-                        <li><a (click)="sscategorieSacs()"  href="/new#" class="d-flex">Sacs</a></li>
+                        <li *ngFor="let cat of categories"><a  (click)="categorie(cat.name)"  href="/new#" class="d-flex">{{cat.name}} </a></li>
+                       
 
                       </ul>
                     </div>
-               
+                    <div class="border p-4 rounded mb-4">
+                      <h3 class="mb-3 h6 text-uppercase text-black d-block">Sous Categories</h3>
+                      <ul class="list-unstyled mb-0">
+                        <li class="mb-1" *ngFor="let sscat of sscategories" ><a (click)="sscategorie(sscat.name)"  href="/new#" class="d-flex">{{sscat.name}} </a></li>
+
+
+                      </ul>
+                    </div>
   
               <div class="border p-4 rounded mb-4">
               

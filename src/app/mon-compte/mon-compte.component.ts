@@ -36,7 +36,7 @@ this.user=res.body
         
   this.achat=res.body
   
-  console.log(this.user);
+ // console.log(this.user);
    }  
       ,err =>{console.log(err) })
 
@@ -44,7 +44,7 @@ this.user=res.body
     res => { 
    //   if(this._auth.getToken()){
       this.getuser=res.body
-      console.log(this.getuser);
+     // console.log(this.getuser);
        }
       //}
 
@@ -53,7 +53,7 @@ this.user=res.body
    )
   }
 update(){
-  console.log(this.loginUserData)
+  //console.log(this.loginUserData)
  if(this.loginUserData['password'] && this.loginUserData['newpassword']!=this.loginUserData['cpassword']){
     this.err=true
  }else{
@@ -75,7 +75,7 @@ update(){
       
          }
   
-            ,err =>{console.log(err)
+            ,err =>{//console.log(err)
               if(err.status==200){
                 window.location.reload();
        
@@ -104,7 +104,7 @@ if(tempProduct.article['Disponible']=="oui"){
           res => { 
          //   if(this._auth.getToken()){
            
-            console.log(res);
+      //      console.log(res);
             
              }
             //}

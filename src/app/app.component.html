@@ -55,7 +55,7 @@
                 <li  *ngIf="isLoggedIn">
                   <a routerLink="/mon_panier" class="site-cart">
                     <span class="icon icon-shopping_cart"></span>
-                    <span class="count">{{cartItemCount}}</span>
+                    <span class="count" *ngIf="cartItemCount">{{cartItemCount}}</span>
                   </a>
                 </li> 
                 <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>

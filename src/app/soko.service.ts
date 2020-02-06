@@ -10,7 +10,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class SokoService {
 
   private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-  public apiURL:string="api.sokodakar.com/";
+  public apiURL:string="http://127.0.0.1:8000/";
   private token=localStorage.getItem('token');
   
   jwt:string;
@@ -53,8 +53,8 @@ export class SokoService {
   vendre(user){
     const formData: FormData = new FormData();
     formData.append('imagename',user.imageName);
-  //  formData.append('imagename1',user.imageName1);
-    //formData.append('imagename2',user.imageName2);
+    formData.append('imagename1',user.imageName1);
+    formData.append('imagename2',user.imageName2);
     formData.append('titre',user.titre);
     formData.append('taille',user.taille);
     formData.append('prix',user.prix);

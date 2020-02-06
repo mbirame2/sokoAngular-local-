@@ -25,6 +25,8 @@ export class NouveauteComponent implements OnInit {
   proda:[];
   vete=""
   isLoggedIn:boolean=false;
+  categories:[]
+  sscategories:[]
   constructor(private _auth: SokoService ,private router: Router,private productService:ProductService,private sharedService:SharedServiceService) { }
 
   ngOnInit() {
@@ -33,14 +35,14 @@ export class NouveauteComponent implements OnInit {
               this.globalResponse = result.body;              
             },
             error => { //This is error part
-              console.log(error.message);
+        //      console.log(error.message);
             },
             () => {
-                console.log("Product fetched sucssesfully.");
+           //     console.log("Product fetched sucssesfully.");
                 //console.log(this.globalResponse);
                 this.allProducts=this.globalResponse;
                 this.prod=this.allProducts
-                console.log(this.prod);
+            //    console.log(this.prod);
 
                 }
               )
@@ -54,6 +56,19 @@ export class NouveauteComponent implements OnInit {
                
               }
               this.vete=""
+              this._auth.getcat().subscribe((result) => {
+                this.categories = result.body;     
+              },
+              error => { //This is error part
+         //       console.log(error.message);
+              },)
+              this._auth.getsscat().subscribe((result) => {
+                this.sscategories = result.body;     
+               // console.log( this.sscategorie);         
+              },
+              error => { //This is error part
+           //     console.log(error.message);
+              },)
 
  }
 
@@ -61,69 +76,59 @@ export class NouveauteComponent implements OnInit {
 
   this.proda=prod;
  }
- homme(){
-  this.allProducts=[]
-    for (var i = 0; i <this.prod.length ; i++) {
-      
-      if(this.prod[i].article.Genre=="Homme"){
-      //  console.log(this.allProducts[i])
-   this.allProducts.push(this.prod[i])
-       }
-    }
-  
-  this.vete="Homme"}
- 
- femme(){
-  this.allProducts=[]
-    for (var i = 0; i <this.prod.length ; i++) {
-      
-      if(this.prod[i].article.Genre=="Femme"){
-      //  console.log(this.allProducts[i])
-   this.allProducts.push(this.prod[i])
-       }
-    }
-  
-  this.vete="Femme"}
- tout(){
-  window.location.reload();
- }
- sscategorieVetements(vete){
-//this.prod=this.allProducts
-this.allProducts=[]
-console.log( vete);
-  for (var i = 0; i <this.prod.length ; i++) {
-    
-    if(this.prod[i].categorie.name=="Vetements"){
-    //  console.log(this.allProducts[i])
- this.allProducts.push(this.prod[i])
-     }
-  }
 
-this.vete="Vetements"}
-sscategorieChaussures(){
- // this.prod=this.allProducts
-  this.allProducts=[]
+
+ tout(genre:string){
+//  console.log(genre)
+    this.allProducts=[]
     for (var i = 0; i <this.prod.length ; i++) {
       
-      if(this.prod[i].categorie.name=="Chaussures"){
+      if(this.prod[i].article.Genre==genre){
       //  console.log(this.allProducts[i])
    this.allProducts.push(this.prod[i])
        }
     }
   
-  this.vete="Chaussures"}
-  sscategorieSacs(){
-  //  this.prod=this.allProducts
+  this.vete=genre
+  if(!genre){
+    window.location.reload();
+  }
+   }
+ //
+  
+ 
+ categorie(vete:string){
+  //this.prod=this.allProducts
+  this.allProducts=[]
+ // console.log( vete);
+    for (var i = 0; i <this.prod.length ; i++) {
+      
+      if(this.prod[i].categorie.name==vete){
+      //  console.log(this.allProducts[i])
+   this.allProducts.push(this.prod[i])
+       }
+    }
+  
+  this.vete=vete
+if(!vete){
+  window.location.reload();
+}
+}
+
+  sscategorie(vete:string){
+    //this.prod=this.allProducts
     this.allProducts=[]
+    console.log( vete);
       for (var i = 0; i <this.prod.length ; i++) {
         
-        if(this.prod[i].categorie.name=="Sacs"){
+        if(this.prod[i].sscategorie.name==vete){
         //  console.log(this.allProducts[i])
      this.allProducts.push(this.prod[i])
          }
       }
     
-    this.vete="Sacs"}
+    this.vete=vete}
+
  OnAddCart(product:Product)
  {
  //  console.log(product);

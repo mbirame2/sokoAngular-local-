@@ -89,11 +89,10 @@
         <div class="border p-4 rounded mb-4">
           <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
           <ul class="list-unstyled mb-0">
-            <li class="mb-1"><a (click)="tout()"  href="/femmes#" class="d-flex">Tout </a></li>
-            <li class="mb-1"><a (click)="sscategorieVetements()"  href="/femmes#" class="d-flex">Vetements </a></li>
-            <li class="mb-1"><a (click)="sscategorieChaussures()" href="/femmes#" class="d-flex">Chaussures </a></li>
-            <li class="mb-1"><a (click)="sscategorieSacs()" href="/femmes#" class="d-flex">Sacs</a></li>
-            <li class="mb-1"><a (click)="sscategorieAccessoires()" href="/femmes#" class="d-flex">Accessoires</a></li>
+            <li class="mb-1"><a (click)="categorie()"  href="/femmes#" class="d-flex">Tout </a></li>
+            <li *ngFor="let cat of categories"><a  (click)="categorie(cat.name)"  href="/femmes#" class="d-flex">{{cat.name}} </a></li>
+   
+
           </ul>
         </div>
 
@@ -101,10 +100,8 @@
             <h3 class="mb-3 h6 text-uppercase text-black d-block"> Sous Categories</h3>
             <ul class="list-unstyled mb-0">
           
-              <li class="mb-1"><a (click)="robe()"  href="/femmes#" class="d-flex">Robes </a></li>
-              <li class="mb-1"><a (click)="pantalon()"  href="/femmes#" class="d-flex">Pantalons</a></li>
-              <li class="mb-1"><a (click)="escarpin()"  href="/femmes#" class="d-flex">Escarpins</a></li>
-              <li class="mb-1"><a (click)="baskets()"  href="/femmes#" class="d-flex">Baskets</a></li>
+              <li class="mb-1" *ngFor="let sscat of sscategories" ><a (click)="sscategorie(sscat.name)"  href="/femmes#" class="d-flex">{{sscat.name}} </a></li>
+
             </ul>
           </div>
    

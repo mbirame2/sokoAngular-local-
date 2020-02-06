@@ -25,14 +25,14 @@
             </div>
             <div class="form-group row">
               <div class="col-md-6">
-                <label for="c_lname" class="text-black">Prix <span class="text-danger">*</span></label>
+                <label for="c_lname" class="text-black">Prix de vente public <span class="text-danger">*</span></label>
                 <input type="number" class="form-control" (input)="onSearchChange($event.target.value)" [(ngModel)]="loginUserData.prix" id="c_lname" name="c_lname" placeholder="en CFA" required>
               </div>
               <div class="col-md-6">
-                <label for="c_lname" class="text-black">Prix pour Vous <span class="text-danger">*</span></label>
+                <label for="c_lname" class="text-black">Prix payé au vendeur <span class="text-danger">*</span></label>
                 <div class="alert alert-primary" role="alert">{{pro}} FCFA</div>
               </div>
-              <label class="form-check-label"> Une comission de 15% nous sera attribué </label>
+              <label class="form-check-label">  Nous prélevons 15% de commission + 1000F une fois l'article vendu</label>
             </div>
             <div class="form-group row">
               <div class="col-md-12">
@@ -73,7 +73,7 @@
             
               <div class="col-md-12">
                   <div class="form-group row">
-                    <label for="c_fname" class="text-black">Sous Catégorie <span class="text-danger">*</span></label>
+                    <label for="c_fname" class="text-black">Sous-Catégorie <span class="text-danger">*</span></label>
                     <select class="custom-select col-md-12" name="sscategorie" [(ngModel)]="loginUserData.sscategorie" required>
                   
                  
@@ -94,8 +94,13 @@
                 <option value="rouge">Rouge </option>  
                 <option value="vert">Vert </option>
                 <option value="blanc">Blanc</option>  
-                <option value="bleu">Bleu</option>
-                <option value="jaune">Jaune </option>  
+                <option value="bleu clair">Bleu clair</option>
+                <option value="bleu fonce">Bleu foncé</option>
+                <option value="beige">Beige</option>
+                <option value="jaune">Jaune </option> 
+                <option value="marron">Marron </option>  
+                <option value="multicolor">Multicolor </option>  
+                <option value="rose">Rose </option>  
                 <option value="autres">Autres</option>          
               </select> 
 
@@ -109,21 +114,21 @@
                   </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" [(ngModel)]="loginUserData.condition" value="tres bon etat" checked>
-                <label class="form-check-label" for="exampleRadios1">
-                  Trés Bon Etat
-                </label>
+                <label class="text-black" for="exampleRadios1">
+                  Trés Bon Etat </label> <br>neuf, jamais ou peu porté, ne présentant pas de défauts, pas d'odeurs
+                
               </div>
               <div class="form-check">
                   <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="bon etat" [(ngModel)]="loginUserData.condition" >
-                  <label class="form-check-label" for="exampleRadios2">
-                    Bon Etat
-                  </label>
+                  <label class="text-black" for="exampleRadios2">
+                    Bon Etat </label> <br> article porté mais bien entretenu, quelques défauts, dont les photos doivent être visibles sur l'annonce
+                  
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="correct" [(ngModel)]="loginUserData.condition" >
-                    <label class="form-check-label" for="exampleRadios3">
-                      Correct
-                    </label>
+                    <label class="text-black" for="exampleRadios3">
+                      Correct </label> <br>des défauts très apparents, tâches visibles, déchirures réparables. Les photos des défauts doivent être visibles sur l'annonce. Seuls les articles rares et d'exception pourront être acceptés dans cet état.
+                    
 
 
             </div> <br>
@@ -137,29 +142,29 @@
           </form>
           </div>
       
-      <div class="col-md-6">
-          
-          <form method="POST">
-              <div class="row">
-                  <div class="col-md-12">
-                <div class="mdb-lightbox no-margin">
-                  <label for="c_fname" class="text-black">Inserer une Image <span class="text-danger">*</span></label>
+      <div class="col-6">
+        <label for="c_fname" class="text-black">Inserer une Image <span class="text-danger">*</span></label>
 
-                    <figure class="col-md-4" *ngFor="let url of urls">
-                      <a>
-                        <img alt="picture" [src]="url" class="img-fluid" />
-                      </a>
-                    </figure>
-                  </div></div>
-                </div>
+                
+       
+        <div class="container">
+          <div class="row ">
+            <div class="col-md-6" *ngFor="let url of urls">
+             
+                <a>
+                  <img alt="picture" [src]="url" class="img-fluid" />
+                </a>
+   
+            </div>
 
-        <div class="btn btn-primary btn-sm float-left">
-            <input type="file" #ImageFile accept="image/*" (change)="detectFiles($event)">
           </div>
+          <input type="file"  accept="image/*" class="col-md-6" (change)="detectFiles($event)" multiple>
 
-
-         
-        </form>
+        </div>
+               
+          
+              
+  
       </div>
     </div>
   </div></div>

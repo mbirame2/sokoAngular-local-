@@ -89,21 +89,22 @@
         <div class="border p-4 rounded mb-4">
             <h3 class="mb-3 h6 text-uppercase text-black d-block"> Categories</h3>
             <ul class="list-unstyled mb-0">
-              <li class="mb-1"><a (click)="tout()"  href="/hommes#" class="d-flex">Tout </a></li>
-              <li class="mb-1"><a (click)="sscategorieVetements()"  href="/hommes#" class="d-flex">Vetements </a></li>
-              <li class="mb-1"><a (click)="sscategorieChaussures()" href="/hommes#" class="d-flex">Chaussures </a></li>
-              <li class="mb-1"><a (click)="sscategorieSacs()" href="/hommes#" class="d-flex">Sacs</a></li>
-              <li class="mb-1"><a (click)="sscategorieAccessoires()" href="/hommes#" class="d-flex">Accessoires</a></li>
+              <li class="mb-1"><a (click)="categorie()"  href="/hommes#" class="d-flex">Tout </a></li>
+              <li><a (click)="categorie('Vetements')"  href="/hommes#" class="d-flex">Vetements </a></li>
+              <li><a (click)="categorie('Chaussures')" href="/hommes#" class="d-flex">Chaussures </a></li>
+              <li><a (click)="categorie('Sacs')"  href="/hommes#" class="d-flex">Sacs</a></li>
+
+              <li class="mb-1"><a (click)="categorie('Accessoires')" href="/hommes#" class="d-flex">Accessoires</a></li>
 
             </ul>
           </div>
           <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block"> Sous Categories</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a (click)="chemise()"  href="/hommes#" class="d-flex">Chemises </a></li>
-                <li class="mb-1"><a (click)="pantalon()"  href="/hommes#" class="d-flex">Pantalon</a></li>
-                <li class="mb-1"><a (click)="mocassins()"  href="/hommes#" class="d-flex">Mocassinsn</a></li>
-                <li class="mb-1"><a (click)="baskets()"  href="/hommes#" class="d-flex">Baskets</a></li>
+                <li class="mb-1"><a (click)="sscategorie('Chemise')"  href="/hommes#" class="d-flex">Chemises </a></li>
+                <li class="mb-1"><a (click)="sscategorie('Pantalon')"  href="/hommes#" class="d-flex">Pantalon</a></li>
+                <li class="mb-1"><a (click)="sscategorie('Mocassin')"  href="/hommes#" class="d-flex">Mocassinsn</a></li>
+                <li class="mb-1"><a (click)="sscategorie('Baskets')"  href="/hommes#" class="d-flex">Baskets</a></li>
               </ul>
             </div>
      

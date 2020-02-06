@@ -32,15 +32,15 @@ export class HommesComponent implements OnInit {
               this.globalResponse = result.body;              
             },
             error => { //This is error part
-              console.log(error.message);
+           //   console.log(error.message);
             },
             () => {
                 //  This is Success part
-                console.log("Product fetched sucssesfully.");
+             //   console.log("Product fetched sucssesfully.");
                 //console.log(this.globalResponse);
                 this.allProducts=this.globalResponse;
                 this.prod=this.allProducts
-                console.log(this.allProducts);
+           //     console.log(this.allProducts);
                 }
               )
               var token = localStorage.getItem('token');
@@ -65,7 +65,7 @@ export class HommesComponent implements OnInit {
  //  console.log(product);
    
    this.productAddedTocart=this.productService.getProductFromCart();
-   console.log( product.article_id);
+  // console.log( product.article_id);
    if(this.isLoggedIn){
    if(this.productAddedTocart==null)
    {
@@ -145,107 +145,38 @@ export class HommesComponent implements OnInit {
  tout(){
   window.location.reload();
  }
- chemise(){
-  this.allProducts=[]
-    for (var i = 0; i <this.prod.length ; i++) {
-      
-      if(this.prod[i].sscategorie.name=="Chemise"){
-      //  console.log(this.allProducts[i])
-   this.allProducts.push(this.prod[i])
-       }
-    }
-  
-  
-  this.vete="Chemise"
- }
- mocassins(){
-  this.allProducts=[]
-    for (var i = 0; i <this.prod.length ; i++) {
-      
-      if(this.prod[i].sscategorie.name=="Mocassin"){
-      //  console.log(this.allProducts[i])
-   this.allProducts.push(this.prod[i])
-       }
-    }
-  
-  
-  this.vete="Baskets"}
- 
- pantalon(){
-  this.allProducts=[]
-    for (var i = 0; i <this.prod.length ; i++) {
-      
-      if(this.prod[i].sscategorie.name=="Pantalon"){
-      //  console.log(this.allProducts[i])
-   this.allProducts.push(this.prod[i])
-       }
-    }
-  
-  
-  this.vete="Pantalon"}
- 
- baskets(){
-  this.allProducts=[]
-    for (var i = 0; i <this.prod.length ; i++) {
-      
-      if(this.prod[i].sscategorie.name=="Baskets"){
-      //  console.log(this.allProducts[i])
-   this.allProducts.push(this.prod[i])
-       }
-    }
-  
-  
-  this.vete="Baskets"}
- 
- sscategorieVetements(vete){
-//this.prod=this.allProducts
-this.allProducts=[]
-console.log( vete);
-  for (var i = 0; i <this.prod.length ; i++) {
-    
-    if(this.prod[i].categorie.name=="Vetements"){
-    //  console.log(this.allProducts[i])
- this.allProducts.push(this.prod[i])
-     }
-  }
-
-
-this.vete="Vetements"}
-sscategorieAccessoires(vete){
+ categorie(vete:string){
   //this.prod=this.allProducts
   this.allProducts=[]
-  console.log( vete);
+  //console.log( vete);
     for (var i = 0; i <this.prod.length ; i++) {
       
-      if(this.prod[i].categorie.name=="Accessoires"){
-      //  console.log(this.allProducts[i])
-   this.allProducts.push(this.prod[i])
-       }
-    }
-    this.vete="Accessoires"}
-sscategorieChaussures(){
- // this.prod=this.allProducts
-  this.allProducts=[]
-    for (var i = 0; i <this.prod.length ; i++) {
-      
-      if(this.prod[i].categorie.name=="Chaussures"){
+      if(this.prod[i].categorie.name==vete){
       //  console.log(this.allProducts[i])
    this.allProducts.push(this.prod[i])
        }
     }
   
-  this.vete="Chaussures"}
-  sscategorieSacs(){
-  //  this.prod=this.allProducts
+  this.vete=vete
+if(!vete){
+  window.location.reload();
+}
+}
+
+  sscategorie(vete:string){
+    //this.prod=this.allProducts
     this.allProducts=[]
+  //  console.log( vete);
       for (var i = 0; i <this.prod.length ; i++) {
         
-        if(this.prod[i].categorie.name=="Sacs"){
+        if(this.prod[i].sscategorie.name==vete){
         //  console.log(this.allProducts[i])
      this.allProducts.push(this.prod[i])
          }
       }
     
-    this.vete="Sacs"}
+    this.vete=vete}
+
+
 
 }

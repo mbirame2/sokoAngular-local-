@@ -26,6 +26,8 @@ export class FemmesComponent implements OnInit {
   nom:string
   vete=""
   isLoggedIn:boolean=false;
+  categories:[]
+  sscategories:[]
   constructor(private productService:ProductService,private router: Router,private _auth: SokoService ,private sharedService:SharedServiceService) { }
   ngOnInit() {
     this.productService.getAllNouveaute()
@@ -36,11 +38,11 @@ export class FemmesComponent implements OnInit {
               console.log(error.message);
             },
             () => {
-                console.log("Product fetched sucssesfully.");
+           //     console.log("Product fetched sucssesfully.");
                 //console.log(this.globalResponse);
                 this.allProducts=this.globalResponse;
                 this.prod=this.allProducts
-                console.log(this.prod);
+         //       console.log(this.prod);
 
                 }
               )
@@ -55,6 +57,18 @@ export class FemmesComponent implements OnInit {
               }
               this.vete=""
 
+              this._auth.getcat().subscribe((result) => {
+                this.categories = result.body;     
+              },
+              error => { //This is error part
+              },)
+              this._auth.getsscat().subscribe((result) => {
+                this.sscategories = result.body;     
+               // console.log( this.sscategorie);         
+              },
+              error => { //This is error part
+              },)
+
  }
 
  display(prod,id){
@@ -68,7 +82,7 @@ export class FemmesComponent implements OnInit {
   //  console.log(product);
     
     this.productAddedTocart=this.productService.getProductFromCart();
-    console.log( product.article_id);
+  //  console.log( product.article_id);
     if(this.isLoggedIn){
     if(this.productAddedTocart==null)
     {
@@ -149,108 +163,38 @@ export class FemmesComponent implements OnInit {
   tout(){
     window.location.reload();
    }
-   robe(){
-    this.allProducts=[]
-      for (var i = 0; i <this.prod.length ; i++) {
-        
-        if(this.prod[i].sscategorie.name=="Robe"){
-        //  console.log(this.allProducts[i])
-     this.allProducts.push(this.prod[i])
-         }
-      }
-    
-    
-    this.vete="Robe"
-   }
-   escarpin(){
-    this.allProducts=[]
-      for (var i = 0; i <this.prod.length ; i++) {
-        
-        if(this.prod[i].sscategorie.name=="Escarpin"){
-        //  console.log(this.allProducts[i])
-     this.allProducts.push(this.prod[i])
-         }
-      }
-    
-    
-    this.vete="Escarpin"}
-   
-   pantalon(){
-    this.allProducts=[]
-      for (var i = 0; i <this.prod.length ; i++) {
-        
-        if(this.prod[i].sscategorie.name=="Pantalon"){
-        //  console.log(this.allProducts[i])
-     this.allProducts.push(this.prod[i])
-         }
-      }
-    
-    
-    this.vete="Pantalon"}
-   
-   baskets(){
-    this.allProducts=[]
-      for (var i = 0; i <this.prod.length ; i++) {
-        
-        if(this.prod[i].sscategorie.name=="Baskets"){
-        //  console.log(this.allProducts[i])
-     this.allProducts.push(this.prod[i])
-         }
-      }
-    
-    
-    this.vete="Baskets"}
-   
-   sscategorieVetements(vete){
-  //this.prod=this.allProducts
-  this.allProducts=[]
-  console.log( vete);
-    for (var i = 0; i <this.prod.length ; i++) {
-      
-      if(this.prod[i].categorie.name=="Vetements"){
-      //  console.log(this.allProducts[i])
-   this.allProducts.push(this.prod[i])
-       }
-    }
-  
-  
-  this.vete="Vetements"}
-  sscategorieAccessoires(vete){
+   categorie(vete:string){
     //this.prod=this.allProducts
     this.allProducts=[]
-    console.log( vete);
+ //   console.log( vete);
       for (var i = 0; i <this.prod.length ; i++) {
         
-        if(this.prod[i].categorie.name=="Accessoires"){
-        //  console.log(this.allProducts[i])
-     this.allProducts.push(this.prod[i])
-         }
-      }
-      this.vete="Accessoires"}
-  sscategorieChaussures(){
-   // this.prod=this.allProducts
-    this.allProducts=[]
-      for (var i = 0; i <this.prod.length ; i++) {
-        
-        if(this.prod[i].categorie.name=="Chaussures"){
+        if(this.prod[i].categorie.name==vete){
         //  console.log(this.allProducts[i])
      this.allProducts.push(this.prod[i])
          }
       }
     
-    this.vete="Chaussures"}
-    sscategorieSacs(){
-    //  this.prod=this.allProducts
+    this.vete=vete
+  if(!vete){
+    window.location.reload();
+  }
+  }
+  
+    sscategorie(vete:string){
+      //this.prod=this.allProducts
       this.allProducts=[]
+ //     console.log( vete);
         for (var i = 0; i <this.prod.length ; i++) {
           
-          if(this.prod[i].categorie.name=="Sacs"){
+          if(this.prod[i].sscategorie.name==vete){
           //  console.log(this.allProducts[i])
        this.allProducts.push(this.prod[i])
            }
         }
       
-      this.vete="Sacs"}
+      this.vete=vete}
+
   
 inscrire(){
   this.router.navigate(['/inscrire']);
