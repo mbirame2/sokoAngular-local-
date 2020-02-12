@@ -48,10 +48,7 @@ if(this.isLoggedIn){
   this.router.navigateByUrl("/vendre")
 }else{
   this.aler=true;
- 
-    // this.router.navigateByUrl("/inscription")
 
- 
 }
   }
   verification2(){
@@ -72,7 +69,7 @@ if(this.isLoggedIn){
   loginUser(){
     this.isLoggedIn=false;
     this._auth.removeToken();
-console.log(this.loginUserData)
+//console.log(this.loginUserData)
     this._auth.loginUser(this.loginUserData ).subscribe(
       res => { 
    this._auth.saveToken(res.body);

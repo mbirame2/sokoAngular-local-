@@ -24,7 +24,7 @@ export class PanierComponent implements OnInit {
   ngOnInit() {
       this.productAddedTocart=this.productService.getProductFromCart();
 
-    if(this.productAddedTocart.length==0){
+    if(this.productAddedTocart.length==0 && this.productAddedTocart){
       this.isLoggedIn=false;
      }else{
       this.isLoggedIn=true;

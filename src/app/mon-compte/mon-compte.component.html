@@ -92,8 +92,28 @@
                       </div>
   
                       <div>
+                        <input type='checkbox' data-toggle='collapse' data-target='#collapsediv5'>
+                        <label for="c_fname" class="text-black"> Adresse</label>
+                      </div>
+                      <div id='collapsediv5' class='collapse div1'>
+                        <div class="form-row">
+               
+                          <div class="form-group col-5">
+                            <label for="c_fname" class="text-black">Adresse <span class="text-danger">*</span></label>
+            
+                            <input  type="text"class="form-control" name="user[adresse]" [(ngModel)]="loginUserData.adresse" />
+                            
+                          </div>
+                  
+                         
+                      </div>
+                      <a  routerLink="/mon_compte" (click)="update()"> Modifier</a>
+                      </div>
+
+                      <div>
                         <input type='checkbox' data-toggle='collapse' data-target='#collapsediv3'>
                         <label for="c_fname" class="text-black">Telephone</label>
+                      </div>
                       <div id='collapsediv3' class='collapse div1'>
                         <div class="form-row">
                
@@ -134,7 +154,7 @@
                       <p *ngIf="err">Le mot de passe saisi ne correpond pas</p>
                       <a routerLink="/mon_compte" (click)="update()">Modifier</a>
                       </div>
-                  </div>
+                 
                 </form>
             </div>
                   </div>
@@ -146,11 +166,11 @@
                   <thead>
                     <tr>
                       <th scope="col">N. Commande</th>
-                      <th scope="col">Image</th>
-                      <th scope="col">Nom du Produit</th>
+                      <th scope="col">Photo</th>
+                      <th scope="col">Nom article</th>
                       <th scope="col">Date</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Montant TTC</th>
+                      <th scope="col">Statut</th>
+                      <th scope="col">Prix</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -175,11 +195,11 @@
               <table class="table table-hover">
                   <thead>
                     <tr>
-                      <th scope="col">Référence Article</th>
-                      <th scope="col">Image</th>
+                      <th scope="col">Référence </th>
+                      <th scope="col">Photo</th>
                       <th scope="col">Nom article</th>
-                      <th scope="col">Prix TTC</th>
-                      <th scope="col">Remove</th>
+                      <th scope="col">Prix</th>
+                      <th scope="col">Supprimer</th>
                     </tr>
                   </thead>
                   <tbody>

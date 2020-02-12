@@ -13,7 +13,7 @@ export class VendreComponent implements OnInit {
   imageError: string;
   isImageSaved: boolean;
   cardImageBase64: string;
-  loginUserData = {imageName : File = null,imageName1 : File = null,imageName2 : File = null};
+  loginUserData = {imageName : File = null,imageName1 : File = null,imageName2 : File = null,imageName3 : File = null};
   imgURL =[];
   categorie:[]
   sscategorie:[]
@@ -56,10 +56,11 @@ export class VendreComponent implements OnInit {
     this.url = [];
 
     let files = event.target.files;
-    if(files.length<4){
+    if(files.length<5){
     this.loginUserData.imageName=(files[0])
     this.loginUserData.imageName1=(files[1])
     this.loginUserData.imageName2=(files[2])
+    this.loginUserData.imageName3=(files[3])
     if (files) {
       for (let file of files) {
         let reader = new FileReader();
@@ -77,7 +78,7 @@ export class VendreComponent implements OnInit {
   }else{
     Swal.fire(
       'Trop d\'images',
-      'Vous ne pouvez pas depassez 3 images',
+      'Vous ne pouvez pas depassez 4 images',
       'error'
     )
     
