@@ -17,10 +17,21 @@ export class VendreComponent implements OnInit {
   imgURL =[];
   categorie:[]
   sscategorie:[]
+  allProducts: any;
   pro:number
   urls = new Array<string>();
   url = new Array<string>();
-  constructor(private aut:SokoService, private router:Router) { }
+  constructor(private aut:SokoService, private router:Router) { 
+    var token = localStorage.getItem('token');
+
+    // It should work, but I think it's far less comprehensive
+    if(typeof token === 'undefined' || token === null || token === 'undefined'){
+ 
+ this.router.navigateByUrl("/")
+    }else{
+      console.log("ok")
+    }
+  }
 
   @Input() depuisHTML:any;
 
@@ -28,27 +39,28 @@ export class VendreComponent implements OnInit {
 
   
   ngOnInit() {
+  
     
     this.aut.getcat().subscribe((result) => {
       this.categorie = result.body;     
-      console.log( this.categorie);         
+     // console.log( this.categorie);         
     },
     error => { //This is error part
-      console.log(error.message);
+    //  console.log(error.message);
     },)
     this.aut.getsscat().subscribe((result) => {
       this.sscategorie = result.body;     
      // console.log( this.sscategorie);         
     },
     error => { //This is error part
-      console.log(error.message);
+  //    console.log(error.message);
     },)
     this.pro=0
     
   }
   onSearchChange(searchValue: number) {  
   //  console.log(searchValue);
-    this.pro=searchValue*85/100
+    this.pro=searchValue*85/100 -1000
   }
   detectFiles(event) {
     this.imageError = null;
@@ -86,10 +98,10 @@ export class VendreComponent implements OnInit {
 
   }
   vente(){
-    console.log(this.loginUserData)
+  //  console.log(this.loginUserData)
     this.aut.vendre(this.loginUserData).subscribe((result) => {
     // result.body;     
-      console.log( result);    
+  //    console.log( result);    
         Swal.fire({
           text: " Nous avons bien enregistré votre produit, nous vous recontacterons une fois qu\'il sera en ligne sur le site",
           icon: 'success',
@@ -103,7 +115,7 @@ export class VendreComponent implements OnInit {
           }})
           },
     error => { //This is error part
-      console.log(error.message);
+    //  console.log(error.message);
       Swal.fire(
         'Erreur',
         'Veillez verifier la saisie de vos champs',

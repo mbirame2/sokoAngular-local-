@@ -52,7 +52,6 @@ inscrire(){
          // position: 'top-end',
           icon: 'success',
           title: 'Votre inscription a bien été enregistrée',
-          text: 'Veuillez cliquer sur l\'icône en haut à droite pour vous connecter',
           showConfirmButton: true,
 
         }
