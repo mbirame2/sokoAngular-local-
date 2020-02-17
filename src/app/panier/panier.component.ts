@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import {Location} from '@angular/common';
 import Swal from 'sweetalert2';
+import {Router} from '@angular/router';
 
 import { Product } from '../Models/Product.Model';
 import { SharedServiceService } from '../shared-service.service';
@@ -19,12 +20,12 @@ export class PanierComponent implements OnInit {
   rm:Product
   tok:boolean;
 
-  constructor(private productService:ProductService,private _location: Location,  private sharedService:SharedServiceService) { }
+  constructor(private productService:ProductService,private _location: Location,  private sharedService:SharedServiceService,private router: Router,) { }
 
   ngOnInit() {
       this.productAddedTocart=this.productService.getProductFromCart();
-
-    if(this.productAddedTocart.length==0 && this.productAddedTocart){
+//console.log(this.productAddedTocart)
+    if(this.productAddedTocart.length==0){
       this.isLoggedIn=false;
      }else{
       this.isLoggedIn=true;
@@ -48,8 +49,8 @@ export class PanierComponent implements OnInit {
 
   let tempProduct=this.productAddedTocart.findIndex(p=>p==product);
   if(tempProduct!=null){
-    console.log(tempProduct)
-    console.log(this.productAddedTocart[tempProduct])
+ //   console.log(tempProduct)
+//    console.log(this.productAddedTocart[tempProduct])
     this.productAddedTocart.splice(tempProduct,1)
   }
     this.productService.removeAllProductFromCart();

@@ -10,7 +10,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class SokoService {
 
   private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-  public apiURL:string="api.sokodakar.com/";
+  public apiURL:string="http://127.0.0.1:8000/";
   private token=localStorage.getItem('token');
   
   jwt:string;
@@ -18,7 +18,7 @@ export class SokoService {
   roles:string;
   constructor(private httpClient: HttpClient) { }
   loginUser(user){
-    
+ 
     return this.httpClient.post<any>(this.apiURL+`api/login`, user,{observe:'response'});
   }
   update(user){

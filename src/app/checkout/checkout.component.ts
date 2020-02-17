@@ -14,7 +14,8 @@ export class CheckoutComponent implements OnInit {
   cartItemCount: number = 0;
   productAddedTocart:Product[];
   allTotal:number;
-  loginUserData = {product:[]}
+  prix:any
+  loginUserData = {product:[],}
 
   constructor(private productService:ProductService,private router:Router,private aut:SokoService) { }
 
@@ -34,8 +35,9 @@ export class CheckoutComponent implements OnInit {
       this.loginUserData.product.push(allItems[i].article_id)
      // console.log(allItems[i].article.Prix)
    }
-  
    this.allTotal=total+1500;
+   this.loginUserData['total']=total
+
   // console.log(this.allTotal)
   }
   commande(){
