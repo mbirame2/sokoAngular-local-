@@ -50,6 +50,11 @@ export class SokoService {
     //console.log(this.headers);
     return this.httpClient.get<any>(this.apiURL+`api/allachat`,{headers:this.headers,observe:'response'});
   }
+  pay(){
+   
+    //console.log(this.headers);
+    return this.httpClient.get<any>(this.apiURL+`api/pay`,{headers:this.headers,observe:'response'});
+  }
   vendre(user){
     const formData: FormData = new FormData();
     formData.append('imagename',user.imageName);

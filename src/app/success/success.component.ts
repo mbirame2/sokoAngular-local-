@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SokoService } from './../soko.service';
 
 @Component({
   selector: 'app-success',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuccessComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _auth: SokoService ) { }
 
   ngOnInit() {
+    this._auth.pay().subscribe(
+      res => { 
+        
+console.log(res)  
+  //console.log(this.user);
+   }  
+      ,err =>{console.log(err) })
   }
 
 }
