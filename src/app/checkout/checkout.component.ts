@@ -45,16 +45,20 @@ export class CheckoutComponent implements OnInit {
     this.aut.commande(this.loginUserData).subscribe((result) => {
      
 
-          this.productService.removeAllProductFromCart();
-          this.router.navigateByUrl("/success")
+         
+         
             },
       error => {
         console.log(error);
+        if(error.status==200){
+          window.location.href =error.error.text;
+          this.productService.removeAllProductFromCart();
+          }else{
         Swal.fire(
           'Erreur',
           'Veillez verifier la saisie de vos champs',
           'error'
-        )
+        )}
       },)
     }
   
