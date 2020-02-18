@@ -14,22 +14,22 @@ export class AcceuilComponent implements OnInit {
   constructor(private productService:ProductService) { }
 
   ngOnInit() {
-    this.productService.getAllNouveaute()
-    .subscribe((result) => {
-      this.globalResponse = result.body;              
-    },
-    error => { //This is error part
+  //  this.productService.getAllNouveaute()
+    //.subscribe((result) => {
+      //this.globalResponse = result.body;              
+    //},
+   // error => { //This is error part
 //      console.log(error.message);
-    },
-    () => {
+    //},
+    //() => {
    //     console.log("Product fetched sucssesfully.");
         //console.log(this.globalResponse);
-        this.allProducts=this.globalResponse;
-        this.prod=this.allProducts
-        console.log(this.prod);
+      //  this.allProducts=this.globalResponse;
+        //this.prod=this.allProducts
+        //console.log(this.prod);
 
-        }
-      )
+        //}
+      //)
   }
 
 }

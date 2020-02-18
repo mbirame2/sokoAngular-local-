@@ -42,19 +42,51 @@
                 <form method="POST">
               <div class="form-row">
                 <div class="form-group col">
-                    <label for="c_fname" class="text-black">Adresse <span class="text-danger">*</span></label>
+                    <label for="c_fname" class="text-black font-weight-bold"> <strong>Adresse</strong> <span class="text-danger">*</span></label>
                     <input type="text"  class="form-control" placeholder="Adresse exacte pour la livraison" name="adresse" [(ngModel)]="loginUserData.adresse" />
                   </div>
                 </div>
-                <label for="c_fname" class="text-black">Mode de Paiement  <span class="text-danger">*</span> </label><br>
-                <label for="c_fname" class="text-black"> Mobile Money - Carte bancaire <span><img src="https://developers.paydunya.com/logo_doc.png" width="60px" alt=""></span></label>
-                <p class="text-black">Assurer vous d'avoir le montant nécessaire avant de valider la commande</p>
+                <label for="c_fname" class="text-black font-weight-bold"> <strong>Mode de Paiement</strong>  <span class="text-danger">*</span> </label><br>
+                <label for="c_fname" class="text-black"> Mobile Money - Carte bancaire <span><img src="https://developers.paydunya.com/logo_doc.png" width="80px" alt=""></span></label>
+                <p class="mb-0">Assurer vous d'avoir le montant nécessaire avant de valider la commande</p>
 
-     
-
-         
-
-      
+                <div class="container">
+                  <div class="row">
+                    <div class="col-sm">
+                      <div class="border p-3 mb-3">
+                        <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsebank" role="button" aria-expanded="false" aria-controls="collapsebank">PROCHAINES ETAPES</a></h3>
+    
+                        <div>
+                          <div class="py-2">
+                            <p class="mb-0">Nous récupérons votre article chez le vendeur et nous vous le livrons sous 24 à 48h</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm">
+                      <div class="border p-3 mb-3">
+                        <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsecheque" role="button" aria-expanded="false" aria-controls="collapsecheque">PAIEMENT SECURISÉ</a></h3>
+    
+                        <div>
+                          <div class="py-2">
+                            <p class="mb-0">Payez votre commande en toute sécurité grace à notre partenaire PayDunya</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm">
+                      <div class="border p-3 mb-5">
+                        <h3 class="h6 mb-0"><a class="d-block" data-toggle="collapse" href="#collapsepaypal" role="button" aria-expanded="false" aria-controls="collapsepaypal">SATISFAIT(E) OU REMBOURSÉ(E)</a></h3>
+    
+                        <div>
+                          <div class="py-2">
+                            <p class="mb-0">Votre article ne vous plait pas? Vous pouvez nous le retourner et être remboursé(e) </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>    
 
               <div class="form-group">
                 <button class="btn btn-primary btn-lg py-3 btn-block" (click)="commande()">Valider</button>

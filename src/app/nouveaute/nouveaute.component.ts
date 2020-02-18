@@ -141,17 +141,21 @@ if(!vete){
        this.productAddedTocart = [];
      this.productAddedTocart.push(product);
      this.productService.addProductToCart(this.productAddedTocart);
-   
      Swal.fire(
     
-       {
-      //   position: 'top-end',
-         icon: 'success',
-         title: 'Produit bien ajouté',
-         showConfirmButton: false,
-         timer: 1000
-       }
-      )
+      {
+       // position: 'top-end',
+       titleText: 'Produit ajouté au panier.',
+       icon: 'success',
+        showCancelButton: true,
+        confirmButtonText: 'Payer ma commande',
+        cancelButtonText: 'Continuer mes achats',
+      }).then((result) => {
+        if (result.value) {
+this.router.navigateByUrl('/mon_panier')
+        } 
+      }
+     )
 
 
    }
