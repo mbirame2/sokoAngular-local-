@@ -49,10 +49,13 @@ export class CheckoutComponent implements OnInit {
          
             },
       error => {
+        
+        var yup:string;
+        yup=error.error.text;
         console.log(error);
         if(error.status==200){
-          window.location.href =error.error.text;
-          this.productService.removeAllProductFromCart();
+       window.location.href =yup;
+        //  this.productService.removeAllProductFromCart();
           }else{
         Swal.fire(
           'Erreur',
