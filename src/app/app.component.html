@@ -94,14 +94,14 @@
           <li><a routerLink="/marques">Marques</a></li>
           <span class="menu-desktop-separator"></span>
       
-          <li > <a (click)="verification1()">Vendre</a></li>
-          <li ><a (click)="verification2()">Mon Compte</a></li>
+          <li > <a  routerLink="/vendre">Vendre</a></li>
+          <li ><a  routerLink="/mon_compte">Mon Compte</a></li>
       
         </ul>
       </div>
     </nav>
   </header>
-  <div #alert class="alert alert-warning alert-dismissible fade show" *ngIf="aler" role="alert">
+  <div #alert class="alert alert-warning alert-dismissible fade show" role="alert">
     <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
       <span aria-hidden="true">&times;</span>
     </button>

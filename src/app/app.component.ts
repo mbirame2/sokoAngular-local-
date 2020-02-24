@@ -47,7 +47,11 @@ export class AppComponent {
 if(this.isLoggedIn){
   this.router.navigateByUrl("/vendre")
 }else{
-  this.aler=true;
+  Swal.fire(
+    'Erreur',
+    'Username ou Mot de passe incorrecte',
+    'error'
+   )
 
 }
   }
@@ -55,7 +59,11 @@ if(this.isLoggedIn){
     if(this.isLoggedIn){
       this.router.navigateByUrl("/mon_compte")
     }else{
-      this.aler=true;
+      Swal.fire(
+        'Erreur',
+        'Username ou Mot de passe incorrecte',
+        'error'
+       )
     }
   }
   LogOut()

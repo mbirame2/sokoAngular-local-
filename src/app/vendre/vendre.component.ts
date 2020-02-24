@@ -60,7 +60,7 @@ export class VendreComponent implements OnInit {
   }
   onSearchChange(searchValue: number) {  
   //  console.log(searchValue);
-    this.pro=searchValue*85/100 -1000
+    this.pro=searchValue*85/100 
   }
   detectFiles(event) {
     this.imageError = null;

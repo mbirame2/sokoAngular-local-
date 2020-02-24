@@ -20,7 +20,17 @@ export class PanierComponent implements OnInit {
   rm:Product
   tok:boolean;
 
-  constructor(private productService:ProductService,private _location: Location,  private sharedService:SharedServiceService,private router: Router,) { }
+  constructor(private productService:ProductService,private _location: Location,  private sharedService:SharedServiceService,private router: Router,) { 
+    var token = localStorage.getItem('token');
+
+    // It should work, but I think it's far less comprehensive
+    if(typeof token === 'undefined' || token === null || token === 'undefined'){
+ 
+ this.router.navigateByUrl("/")
+    }else{
+      console.log("ok")
+    }
+  }
 
   ngOnInit() {
       this.productAddedTocart=this.productService.getProductFromCart();

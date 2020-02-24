@@ -12,6 +12,15 @@ import{ Vente } from './../vente';
 export class MonCompteComponent implements OnInit {
 
   constructor(private _auth: SokoService , private router:Router){
+    var token = localStorage.getItem('token');
+
+    // It should work, but I think it's far less comprehensive
+    if(typeof token === 'undefined' || token === null || token === 'undefined'){
+ 
+ this.router.navigateByUrl("/")
+    }else{
+      console.log("ok")
+    }
   }
 user:Vente[];
 achat:Vente[];
