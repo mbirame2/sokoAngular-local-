@@ -1,0 +1,231 @@
+<div class="bg-light py-3">
+    <div class="container">
+      <div class="row">
+<br><div class="col-md-12 mb-0"><a routerLink="/">Accueil</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Mon Compte</strong></div> <br>
+</div>
+</div>
+</div>
+
+<div class="container">
+<div class="col-md-12">
+        <nav class="site-navigation text-right text-md-center" role="navigation">
+           
+<br>
+              <ul class="nav nav-pills mb-8  " id="pills-tab" role="tablist">
+                
+            
+              <li class="nav-item">
+                <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Informations Personnelles</a>
+              </li>
+          
+              <li class="nav-item">
+                <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Mes Achats</a>
+              </li> 
+      
+              <li class="nav-item">
+                <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Ma Boutique</a>
+              </li>
+
+  
+            </ul>
+          
+        
+       </nav>
+     
+         
+       <div class="tab-content" id="pills-tabContent">
+          <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> <br>
+              <h2 class="text-black h3">Informations du compte</h2> <br>
+          
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Nom</th>
+                      <th scope="col">Prenom</th>
+                      <th scope="col">N. Téléphone</th>
+                      <th scope="col">Adresse</th>
+                      <th scope="col">Inscrit depuis</th>
+                      <th scope="col">Modifier Information</th>
+                    
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr  *ngIf="getuser">
+                      <th scope="row">{{ getuser.nom}}</th>
+                      <th scope="row">{{ getuser.prenom}}</th>
+                      <td>{{ getuser.telephone}}</td>
+                      <td>{{ getuser.adresse}}</td>
+                      <td>{{ getuser.created_at}}</td>
+                      <td><button type="button" class="btn btn-outline-primary" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample" >Modifier</button>   </td>
+                    </tr>
+                
+                  
+                 
+                  </tbody>
+                </table>
+                <div class="collapse" id="collapseExample">
+                  <div class="card card-body">
+                    <div class="card card-body">
+                      <h4 class="text-black h3">Cochez la case que vous voulez modifier</h4> <br>
+                      <form method="post">
+                      <div>
+                        <input type='checkbox' data-toggle='collapse' data-target='#collapsediv1'>
+                        <label for="c_fname" class="text-black"> Prenom/Nom</label>
+                      </div>
+                      <div id='collapsediv1' class='collapse div1'>
+                        <div class="form-row">
+               
+                          <div class="form-group col-5">
+                            <label for="c_fname" class="text-black">Prenom <span class="text-danger">*</span></label>
+            
+                            <input  type="text"class="form-control" name="user[username]" [(ngModel)]="loginUserData.prenom" />
+                            
+                          </div>
+                          <div class="form-group col-5">
+                            <label for="c_fname" class="text-black">Nom <span class="text-danger">*</span></label>
+                              <input type="text" name="nom" class="form-control" [(ngModel)]="loginUserData.nom" />
+                      
+                          </div>
+                         
+                      </div>
+                      <a  routerLink="/mon_compte" (click)="update()"> Modifier</a>
+                      </div>
+  
+                      <div>
+                        <input type='checkbox' data-toggle='collapse' data-target='#collapsediv5'>
+                        <label for="c_fname" class="text-black"> Adresse</label>
+                      </div>
+                      <div id='collapsediv5' class='collapse div1'>
+                        <div class="form-row">
+               
+                          <div class="form-group col-5">
+                            <label for="c_fname" class="text-black">Adresse <span class="text-danger">*</span></label>
+            
+                            <input  type="text"class="form-control" name="user[adresse]" [(ngModel)]="loginUserData.adresse" />
+                            
+                          </div>
+                  
+                         
+                      </div>
+                      <a  routerLink="/mon_compte" (click)="update()"> Modifier</a>
+                      </div>
+
+                      <div>
+                        <input type='checkbox' data-toggle='collapse' data-target='#collapsediv3'>
+                        <label for="c_fname" class="text-black">Telephone</label>
+                      </div>
+                      <div id='collapsediv3' class='collapse div1'>
+                        <div class="form-row">
+               
+                          <div class="form-group col-5">
+                            <label for="c_fname" class="text-black">Telephone <span class="text-danger">*</span></label>
+                              <input type="text" name="user[tel]" class="form-control" [(ngModel)]="loginUserData.telephone"  />
+                      
+                          </div>
+                          
+                      </div>
+                      <a routerLink="/mon_compte" (click)="update()">Modifier</a>
+                      </div>
+  
+                      <div>
+                        <input type='checkbox' data-toggle='collapse' data-target='#collapsediv2'> 
+                        <label for="c_fname" class="text-black">Mot de Passe</label>
+                      </div>
+                      <div id='collapsediv2' class='collapse div2'>
+                        <div class="form-row">
+               
+                          <div class="form-group col-4">
+                            <label for="c_fname" class="text-black">Mot de passe actuel <span class="text-danger">*</span></label>
+            
+                              <input type="password"  class="form-control" name="user[d]" [(ngModel)]="loginUserData.password" />
+                            
+                          </div>
+                          <div class="form-group col-4">
+                            <label for="c_fname" class="text-black">Nouveau mot de passe <span class="text-danger">*</span></label>
+                              <input type="password" class="form-control" name="user[z]" [(ngModel)]="loginUserData.newpassword" />
+                      
+                          </div>
+                          <div class="form-group col-4">
+                            <label for="c_fname" class="text-black">Confirmer mot de passe <span class="text-danger">*</span></label>
+                              <input type="password"  class="form-control"  name="user[a]" [(ngModel)]="loginUserData.cpassword"/>
+                      
+                          </div>
+                      </div>
+                      <p *ngIf="err">Le mot de passe saisi ne correpond pas</p>
+                      <a routerLink="/mon_compte" (click)="update()">Modifier</a>
+                      </div>
+                 
+                </form>
+            </div>
+                  </div>
+                </div>
+          </div>  <br>
+          <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"> <br>
+            <h2 class="text-black h3">Détails des Achats éffectués</h2> <br>
+              <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">N. Commande</th>
+                      <th scope="col">Photo</th>
+                      <th scope="col">Nom article</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Statut</th>
+                      <th scope="col">Prix</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let achat of achat">
+                      <th scope="row">{{ achat.id}}</th>
+                      <td class="product-thumbnail">
+                        <img  src="{{url}}/api/images/{{achat.article.ImageName}}"  height="50" width="150" alt="" class="img-fluid">
+                      </td>
+                      <td>{{ achat.article.Titre}}</td>
+                      <td>{{ achat.commande.created_at}}</td>
+                      <td>{{ achat.commande.statut_commande}}</td>
+                      <td>{{ achat.article.Prix}} FCFA</td>
+                    </tr>
+                
+                  
+                 
+                  </tbody>
+                </table>
+          </div>
+          <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"> <br>
+            <h2 class="text-black h3">Article(s) en vente / vendu(s)</h2> <br>
+              <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th scope="col">Référence </th>
+                      <th scope="col">Photo</th>
+                      <th scope="col">Nom article</th>
+                      <th scope="col">Prix</th>
+                      <th scope="col">Supprimer</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let us of user">
+                      <th scope="row">{{ us.article.id }}</th>
+                      <td class="product-thumbnail">
+                        <img  src="{{url}}/api/images/{{us.article.ImageName}}"  height="50" width="150" alt="" class="img-fluid">
+                      </td>
+                      <td>{{ us.article.Titre }}</td>
+                      <td>{{ us.article.Prix }}</td>
+                      <td><a (click)="remove(us.article.id)" class="btn btn-primary btn-sm">X</a></td>
+                 
+                    </tr>
+                   
+                  </tbody>
+                </table>
+          </div>
+          <div class="tab-pane fade" id="pills-notif" role="tabpanel" aria-labelledby="pills-notif-tab">Cette fonctionnalité n'est pas nécessaire pour le lancement du site.
+
+            </div>
+     
+    </div>
+  </div>  </div>
+
+
+
+
+
+
