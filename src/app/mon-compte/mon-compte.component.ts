@@ -10,7 +10,7 @@ import{ Vente } from './../vente';
   styleUrls: ['./mon-compte.component.css']
 })
 export class MonCompteComponent implements OnInit {
-  url:string="http://127.0.0.1:8000"
+  url:string="api.sokodakar.com"
 
   constructor(private _auth: SokoService , private router:Router){
     var token = localStorage.getItem('token');

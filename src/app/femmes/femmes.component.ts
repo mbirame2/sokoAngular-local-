@@ -28,7 +28,7 @@ export class FemmesComponent implements OnInit {
   isLoggedIn:boolean=false;
   categories:[]
   sscategories:[]
-  url:string="http://127.0.0.1:8000"
+  url:string="api.sokodakar.com"
 
   constructor(private productService:ProductService,private router: Router,private _auth: SokoService ,private sharedService:SharedServiceService) { }
   ngOnInit() {

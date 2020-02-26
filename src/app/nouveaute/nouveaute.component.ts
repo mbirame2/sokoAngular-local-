@@ -23,7 +23,7 @@ export class NouveauteComponent implements OnInit {
   allProducts: any;
   prod: Product[];
   proda:[];
-  url:string="http://127.0.0.1:8000"
+  url:string="api.sokodakar.com"
   vete=""
   isLoggedIn:boolean=false;
   categories:[]
