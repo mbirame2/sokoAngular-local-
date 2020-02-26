@@ -29,7 +29,7 @@ export class VendreComponent implements OnInit {
  
  this.router.navigateByUrl("/")
     }else{
-      console.log("ok")
+     // console.log("ok")
     }
   }
 
@@ -115,7 +115,7 @@ export class VendreComponent implements OnInit {
           }})
           },
     error => { //This is error part
-    //  console.log(error.message);
+      console.log(error);
       Swal.fire(
         'Erreur',
         'Veillez verifier la saisie de vos champs',

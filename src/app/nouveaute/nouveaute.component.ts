@@ -23,6 +23,7 @@ export class NouveauteComponent implements OnInit {
   allProducts: any;
   prod: Product[];
   proda:[];
+  url:string="http://127.0.0.1:8000"
   vete=""
   isLoggedIn:boolean=false;
   categories:[]
@@ -30,6 +31,7 @@ export class NouveauteComponent implements OnInit {
   constructor(private _auth: SokoService ,private router: Router,private productService:ProductService,private sharedService:SharedServiceService) { }
 
   ngOnInit() {
+ 
     this.productService.getAllNouveaute()
             .subscribe((result) => {
               this.globalResponse = result.body;              

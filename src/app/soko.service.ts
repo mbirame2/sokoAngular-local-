@@ -10,7 +10,7 @@ import { HttpHeaders } from '@angular/common/http';
 export class SokoService {
 
   private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'));
-  public apiURL:string="api.sokodakar.com/";
+  public apiURL:string="http://127.0.0.1:8000/";
   private token=localStorage.getItem('token');
   
   jwt:string;
@@ -90,6 +90,9 @@ console.log(formData);
   }
   remove(id){
     return this.httpClient.get<any>(this.apiURL+`api/remove/`+id,{headers:this.headers,observe:'response'});
+  }
+  img(id){
+    return this.httpClient.get<any>(this.apiURL+`api/images/`+id,{headers:this.headers,observe:'response'});
   }
   removeToken(){
     localStorage.removeItem('token')

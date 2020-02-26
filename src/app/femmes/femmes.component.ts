@@ -28,9 +28,11 @@ export class FemmesComponent implements OnInit {
   isLoggedIn:boolean=false;
   categories:[]
   sscategories:[]
+  url:string="http://127.0.0.1:8000"
+
   constructor(private productService:ProductService,private router: Router,private _auth: SokoService ,private sharedService:SharedServiceService) { }
   ngOnInit() {
-    this.productService.getAllNouveaute()
+    this.productService.getAllFemme()
             .subscribe((result) => {
               this.globalResponse = result.body;              
             },
