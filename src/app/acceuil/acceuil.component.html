@@ -5,13 +5,13 @@
  
     
 
-    <div class="site-blocks-cover" style="background-image: url(/../../assets/images/hero_1.jpg);" data-aos="fade">
+    <div class="site-blocks-cover"   data-aos="fade">
+<div class="img-fluid" style=" background-image: url(/../../assets/images/hero_1.jpg);  background-size: cover;">
       <div class="container">
         <div class="row align-items-start align-items-md-center justify-content-end">
           <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-            <h1 class="mb-2">SOKO DAKAR</h1>
+            <h1 class="mb-2">A AJOUTER ........</h1>
             <div class="intro-text text-center text-md-left">
-              <p class="mb-4">Soko est la première plateforme de vente d'articles de mode d'occasion entre particuliers. Avec Soko, vous pouvez revendre les vêtements que vous ne portez plus et en acheter d'autres à petits prix. </p>
               <p>
                 <a routerLink="/à_propos" class="btn btn-sm btn-warning">En savoir plus</a>
               </p>
@@ -20,48 +20,77 @@
         </div>
       </div>
     </div>
-
-    
-      <div class="site-section site-blocks-2">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0" data-aos="fade" data-aos-delay="">
-             
-              <a class="block-2-item" routerLink="/new">
-                <figure class="image">
-                  <img src="/../../assets/images/children.jpg" alt="" class="img-fluid">
-                </figure>
-                <div class="text">
-                  <span class="text-uppercase">Collections</span>
-                  <h3>Nouveautés</h3>
-                </div>
-              </a>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="100">
-              <a class="block-2-item" routerLink="/femmes">
-                <figure class="image">
-                  <img src="/../../assets/images/women.jpg" alt="" class="img-fluid">
-                </figure>
-                <div class="text">
-                  <span class="text-uppercase">Collections</span>
-                  <h3>Femmes</h3>
-                </div>
-              </a>
-            </div>
-            <div class="col-sm-6 col-md-6 col-lg-4 mb-5 mb-lg-0" data-aos="fade" data-aos-delay="200">
-              <a class="block-2-item" routerLink="/hommes">
-                <figure class="image">
-                  <img src="/../../assets/images/men.jpg" alt="" routerLink="/" class="img-fluid">
-                </figure>
-                <div class="text">
-                  <span class="text-uppercase">Collections</span>
-                  <h3>Hommes</h3>
-                </div>
-              </a>
-            </div>
+  </div>
+    <div class="site-section block-3 site-blocks-2 bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7 site-section-heading text-center pt-4">
+            <h2>Nouveautés</h2> <br>
           </div>
         </div>
+        <div class="row">
+          <div class="col-md-12">
+        <div class="container-fluid" >
+          <div id="carouselExample" class="carouselPrograms carousel slide" data-ride="carousel" data-interval="false">
+              <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                  <div class="carousel-item col-md-4  active">
+                     <div class="panel panel-default">
+                        <div class="panel-thumbnail" *ngIf="pro">
+                          <figure class="block-4-image">
+                            <a routerLink="{{pro.article.Genre}}s" data-toggle="modal" data-target=".bd-example-modal-lg">
+                        
+                              <img  src="{{url}}/api/images/{{pro.article.ImageName}}" class="img-fluid" alt="">
+          
+                           </a>
+                          </figure>
+                          <div class="block-4-text p-4">
+                            <h3><a href="/voir_produit">{{pro.article.Titre}}</a></h3>
+                            <p class="mb-0">Categorie: {{pro.categorie.name}}</p>
+                            <p> Sous Categorie: {{pro.sscategorie.name}} </p>
+                            <p class="text-primary font-weight-bold">{{pro.article.Prix}} FCFA</p>
+                        
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="carousel-item col-md-4 " *ngFor="let prod   of allProducts">
+                     <div class="panel panel-default">
+                        <div class="panel-thumbnail">
+                          <figure class="block-4-image">
+                            <a routerLink="{{prod.article.Genre}}s" data-toggle="modal" data-target=".bd-example-modal-lg">
+                        
+                              <img  src="{{url}}/api/images/{{prod.article.ImageName}}" class="img-fluid"  alt="">
+          
+                           </a>
+                          </figure>
+                          <div class="block-4-text p-4">
+                            <h3><a href="/voir_produit">{{prod.article.Titre}}</a></h3>
+                            <p class="mb-0">Categorie: {{prod.categorie.name}}</p>
+                            <p> Sous Categorie: {{prod.sscategorie.name}} </p>
+                            <p class="text-primary font-weight-bold">{{prod.article.Prix}} FCFA</p>
+                        
+                          </div>
+                        </div>
+                      </div>
+                  </div>
+           
+              </div>
+              <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+              </a>
+              <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+              </a>
+          </div>
       </div>
+   
+      </div>
+    </div>
+  </div>
+</div>
+ 
 
       <div class="site-section site-section-sm site-blocks-1">
         <div class="container">
@@ -99,16 +128,5 @@
         </div>
       </div>
 
-         <div class="site-section block-3 site-blocks-2 bg-light">
-      <div class="container">
-        <div class="row justify-content-center">
-          <div class="col-md-7 site-section-heading text-center pt-4">
-            <h2>Featured Products</h2>
-          </div>
-        </div>
-    
-  
-      </div>
-    </div>
 
 </body>

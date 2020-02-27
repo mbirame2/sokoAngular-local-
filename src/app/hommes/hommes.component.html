@@ -20,13 +20,13 @@
             <div class="d-flex">
               <div class="dropdown mr-1 ml-md-auto">
                 <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Trier par
+                 Sous Categorie
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                  <a class="dropdown-item" (click)="sscategorieVetements()"  href="/hommes#">Vetements</a>
-                  <a class="dropdown-item" (click)="sscategorieChaussures()" href="/hommes#">Chaussures</a>
-                  <a class="dropdown-item" (click)="sscategorieSacs()" href="/hommes#">Sacs</a>
-                  <a class="dropdown-item" (click)="sscategorieAccessoires()" href="/hommes#">Accéssoires</a>
+                  <li class="mb-1"><a (click)="sscategorie('Chemise')"  href="/hommes#" class="d-flex">Chemises </a></li>
+                <li class="mb-1"><a (click)="sscategorie('Pantalon')"  href="/hommes#" class="d-flex">Pantalon</a></li>
+                <li class="mb-1"><a (click)="sscategorie('Mocassin')"  href="/hommes#" class="d-flex">Mocassins</a></li>
+                <li class="mb-1"><a (click)="sscategorie('Baskets')"  href="/hommes#" class="d-flex">Baskets</a></li>
                 </div>
               </div>
             </div>
@@ -122,18 +122,6 @@
 
             </ul>
           </div>
-          <div class="border p-4 rounded mb-4">
-              <h3 class="mb-3 h6 text-uppercase text-black d-block"> Sous Categories</h3>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a (click)="sscategorie('Chemise')"  href="/hommes#" class="d-flex">Chemises </a></li>
-                <li class="mb-1"><a (click)="sscategorie('Pantalon')"  href="/hommes#" class="d-flex">Pantalon</a></li>
-                <li class="mb-1"><a (click)="sscategorie('Mocassin')"  href="/hommes#" class="d-flex">Mocassinsn</a></li>
-                <li class="mb-1"><a (click)="sscategorie('Baskets')"  href="/hommes#" class="d-flex">Baskets</a></li>
-              </ul>
-            </div>
-     
-
-
        
       </div>
     </div>

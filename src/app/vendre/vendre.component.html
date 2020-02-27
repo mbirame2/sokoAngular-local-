@@ -138,20 +138,15 @@
 
         <label for="c_fname" class="text-black">Inserer une Image <span class="text-danger">*</span></label>
 
-                
-       
-            <div class="col-md-6" *ngFor="let url of urls">
-             
-                <a>
-                  <img alt="picture" [src]="url" class="img-fluid" />
-                </a>
-   
+        <div class="upload-btn-wrapper">
+          <button style=" border: 2px solid gray; color: gray; background-color: white;padding: 8px 20px;border-radius: 8px;font-size: 20px;font-weight: bold;">
+            <div class="img-fluid" *ngFor="let url of urls" >
+              <img alt="picture" [src]="url" class="img-fluid" />
             </div>
-            <input type="file"  accept="image/*" class="col-md-6" (change)="detectFiles($event)" multiple>
+          </button>
+          <input type="file" (change)="detectFiles($event)" name="myfile" multiple />
+        </div>
        
-               
-          
-              
   
       </div>
     </div>

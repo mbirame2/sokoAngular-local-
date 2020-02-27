@@ -24,7 +24,7 @@ export class HommesComponent implements OnInit {
   tele:number;
   nom:string
   vete=""
-  url:string="api.sokodakar.com"
+  url:string="api.sokodakar.com "
   constructor(private productService:ProductService,private router: Router,private _auth: SokoService ,private sharedService:SharedServiceService) { }
 
   ngOnInit() {

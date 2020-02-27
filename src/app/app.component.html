@@ -102,10 +102,8 @@
     </nav>
   </header>
   <div #alert *ngIf="!this.isLoggedIn" class="alert alert-warning alert-dismissible fade show" role="alert">
-    <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-    <strong>Vous n'etes pas connectés !</strong> Connectez vous d'abord pour continuer . Pas de compte? <a routerLink="/inscription" (click)="closeAlert()">Inscrivez-vous</a> maintenant.
+  
+    <strong>Vous n'etes pas connectés !</strong> Connectez vous pour acceder à certaines fonctionnalités. Pas de compte? <a routerLink="/inscription" (click)="closeAlert()">Inscrivez-vous</a> maintenant.
   </div>
   <div class="alert alert-success" role="alert" *ngIf="ale">
     <button type="button" class="close" aria-label="Close" (click)="closeAlert()">

@@ -19,6 +19,7 @@ export class PanierComponent implements OnInit {
   allTotal:number;
   rm:Product
   tok:boolean;
+  url:string="api.sokodakar.com"
 
   constructor(private productService:ProductService,private _location: Location,  private sharedService:SharedServiceService,private router: Router,) { 
     var token = localStorage.getItem('token');

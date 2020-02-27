@@ -69,6 +69,7 @@ export class VendreComponent implements OnInit {
 
     let files = event.target.files;
     if(files.length<5){
+
     this.loginUserData.imageName=(files[0])
     this.loginUserData.imageName1=(files[1])
     this.loginUserData.imageName2=(files[2])
@@ -76,15 +77,23 @@ export class VendreComponent implements OnInit {
     if (files) {
       for (let file of files) {
         let reader = new FileReader();
+        if (file.size < 1000000){
         reader.onload = (e: any) => {
           this.urls.push(e.target.result);
          // this.loginUserData.imageName=(file)
         }
       
-        reader.readAsDataURL(file);
-       
+        reader.readAsDataURL(file);}
+       else {
+        Swal.fire(
+          'Erreur',
+          'La taille de l\'image ne doit pas dépasser 1MB ',
+          'error'
+        )
+        this.loginUserData.imageName=this.loginUserData.imageName1=this.loginUserData.imageName3=this.loginUserData.imageName2=null
+       }
       }
-      console.log(this.loginUserData)
+  //    console.log(this.loginUserData)
     //console.log(this.imgURL.length)
     }
   }else{
@@ -93,7 +102,7 @@ export class VendreComponent implements OnInit {
       'Vous ne pouvez pas depassez 4 images',
       'error'
     )
-    
+    this.loginUserData.imageName=this.loginUserData.imageName1=this.loginUserData.imageName3=this.loginUserData.imageName2=null
   }
 
   }

@@ -18,18 +18,16 @@
           <div class="col-md-12 mb-5">
             <div class="float-md-left mb-4"><h1 class="text-black h5">Femmes </h1><a href="/femmes#"> {{vete}}</a></div>
             <div class="d-flex">
+      
               <div class="dropdown mr-1 ml-md-auto">
-                <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Trier par
+                <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Sous Catégorie
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                  <a class="dropdown-item" (click)="sscategorieVetements()"  href="/femmes#">Vetements</a>
-                  <a class="dropdown-item" (click)="sscategorieChaussures()" href="/femmes#">Chaussures</a>
-                  <a class="dropdown-item" (click)="sscategorieSacs()" href="/femmes#">Sacs</a>
-                  <a class="dropdown-item" (click)="sscategorieAccessoires()" href="/femmes#">Accéssoires</a>
-                </div>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset1">
+                 <a *ngFor="let sscat of sscategories" (click)="sscategorie(sscat.name)"  href="/femmes#" class="d-flex">{{sscat.name}} </a>
+             
+                </div> 
               </div>
-           
             </div>
           </div>
         </div>
@@ -120,14 +118,7 @@
           </ul>
         </div>
 
-        <div class="border p-4 rounded mb-4">
-            <h3 class="mb-3 h6 text-uppercase text-black d-block"> Sous Categories</h3>
-            <ul class="list-unstyled mb-0">
-          
-              <li class="mb-1" *ngFor="let sscat of sscategories" ><a (click)="sscategorie(sscat.name)"  href="/femmes#" class="d-flex">{{sscat.name}} </a></li>
 
-            </ul>
-          </div>
    
 
       </div>
