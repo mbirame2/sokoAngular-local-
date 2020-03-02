@@ -135,18 +135,60 @@
           </div>
       
       <div class="col-md-6">
+        
+        <label for="c_fname" class="text-black">Inserer une ou des Image(s) de l'article <span class="text-danger">*</span></label>
 
-        <label for="c_fname" class="text-black">Inserer une Image <span class="text-danger">*</span></label>
-
-        <div class="upload-btn-wrapper">
-          <button style=" border: 2px solid gray; color: gray; background-color: white;padding: 8px 20px;border-radius: 8px;font-size: 20px;font-weight: bold;">
-            <div class="img-fluid" *ngFor="let url of urls" >
-              <img alt="picture" [src]="url" class="img-fluid" />
-            </div>
-          </button>
-          <input type="file" (change)="detectFiles($event)" name="myfile" multiple />
-        </div>
        
+     
+        
+        <div class="container">
+          <div class="row">
+            <div class="col">
+               <div class="upload-btn-wrapper">
+              <button style=" background-color: white;">
+                  <img alt="picture" [src]="urlone" class="img-fluid" />
+              </button>
+              <input type="file" (change)="detectFiles($event,'1')" name="myfile"  />
+            </div>
+          <a href="/vendre#" (click)="remove('1')">Supprimer</a>
+          </div>
+            <div class="col">
+              <div class="upload-btn-wrapper">
+                <button style="background-color: white;">
+                    <img alt="picture" [src]="urltwo" class="img-fluid" />
+                </button>
+                <input type="file" (change)="detectFiles($event,'2')" name="myfile"  />
+              </div>
+              <a href="/vendre#" (click)="remove('2')">Supprimer</a>
+
+            </div>
+            <div class="w-100"></div>
+            <div class="col">
+               <div class="upload-btn-wrapper">
+              <button style="background-color: white;">
+           
+                  <img alt="picture" [src]="urlthree" class="img-fluid" />
+          
+              </button>
+              <input type="file" (change)="detectFiles($event,'3')" name="myfile"  />
+            </div>
+            <a href="/vendre#" (click)="remove('3')">Supprimer</a>
+
+          </div>
+            <div class="col">
+              <div class="upload-btn-wrapper">
+                <button style="background-color: white;">
+                 
+                    <img alt="picture" [src]="urlfour" class="img-fluid" />
+                
+                </button>
+                <input type="file" (change)="detectFiles($event,'4')" name="myfile"  />
+              </div>
+              <a href="/vendre#" (click)="remove('4')">Supprimer</a>
+
+            </div>
+          </div>
+        </div>
   
       </div>
     </div>

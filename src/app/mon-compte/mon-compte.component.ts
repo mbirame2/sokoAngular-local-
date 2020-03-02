@@ -20,7 +20,7 @@ export class MonCompteComponent implements OnInit {
  
  this.router.navigateByUrl("/")
     }else{
-      console.log("ok")
+     // console.log("ok")
     }
   }
 user:Vente[];
@@ -39,7 +39,7 @@ this.user=res.body
 
 //console.log(this.user);
  }  
-    ,err =>{console.log(err) })
+    ,err =>{ })
 
     this._auth.allachat().subscribe(
       res => { 
@@ -48,7 +48,7 @@ this.user=res.body
   
  // console.log(this.user);
    }  
-      ,err =>{console.log(err) })
+      ,err =>{ })
 
    this._auth.getUser().subscribe(
     res => { 
@@ -112,9 +112,7 @@ if(tempProduct.article['Disponible']=="oui"){
       if (result.value) {
         this._auth.remove(id).subscribe(
           res => { 
-         //   if(this._auth.getToken()){
-           
-      //      console.log(res);
+     
             
              }
             //}

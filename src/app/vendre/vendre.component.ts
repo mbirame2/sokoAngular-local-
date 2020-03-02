@@ -19,7 +19,10 @@ export class VendreComponent implements OnInit {
   sscategorie:[]
   allProducts: any;
   pro:number
-  urls = new Array<string>();
+  urlone = "/../../assets/images/icons8-aperture-100.png";
+  urltwo="/../../assets/images/icons8-aperture-100.png";
+  urlthree="/../../assets/images/icons8-aperture-100.png";
+  urlfour="/../../assets/images/icons8-aperture-100.png";
   url = new Array<string>();
   constructor(private aut:SokoService, private router:Router) { 
     var token = localStorage.getItem('token');
@@ -62,55 +65,66 @@ export class VendreComponent implements OnInit {
   //  console.log(searchValue);
     this.pro=searchValue*85/100 
   }
-  detectFiles(event) {
-    this.imageError = null;
-    this.urls = [];
-    this.url = [];
-
-    let files = event.target.files;
-    if(files.length<5){
-
-    this.loginUserData.imageName=(files[0])
-    this.loginUserData.imageName1=(files[1])
-    this.loginUserData.imageName2=(files[2])
-    this.loginUserData.imageName3=(files[3])
-    if (files) {
-      for (let file of files) {
-        let reader = new FileReader();
-        if (file.size < 1000000){
+  detectFiles(event,one) {
+    
+    
+   // if(one==1){
+      let reader = new FileReader();
+      
+        if (event.target.files[0].size < 1000000){
         reader.onload = (e: any) => {
-          this.urls.push(e.target.result);
-         // this.loginUserData.imageName=(file)
+          if(one==1){
+          this.loginUserData.imageName=event.target.files[0]
+          this.urlone=(e.target.result);
+        }else if(one==2){
+          this.loginUserData.imageName1=event.target.files[0]
+          this.urltwo=(e.target.result);
+        }else if(one==3){
+          this.loginUserData.imageName2=event.target.files[0]
+          this.urlthree=(e.target.result);
+        }else if(one==4){
+          this.loginUserData.imageName3=event.target.files[0]
+          this.urlfour=(e.target.result);
+        }
+
         }
       
-        reader.readAsDataURL(file);}
+        reader.readAsDataURL(event.target.files[0]);
+     //   console.log(this.loginUserData)
+      }
        else {
         Swal.fire(
           'Erreur',
           'La taille de l\'image ne doit pas dépasser 1MB ',
           'error'
         )
-        this.loginUserData.imageName=this.loginUserData.imageName1=this.loginUserData.imageName3=this.loginUserData.imageName2=null
+        
        }
-      }
-  //    console.log(this.loginUserData)
-    //console.log(this.imgURL.length)
-    }
-  }else{
-    Swal.fire(
-      'Trop d\'images',
-      'Vous ne pouvez pas depassez 4 images',
-      'error'
-    )
-    this.loginUserData.imageName=this.loginUserData.imageName1=this.loginUserData.imageName3=this.loginUserData.imageName2=null
-  }
+   // }
 
+
+  }
+  remove(one){
+    if(one==1){
+      this.loginUserData.imageName=null
+      this.urlone="/../../assets/images/icons8-aperture-100.png";
+    }else if(one==2){
+      this.loginUserData.imageName1=null
+      this.urltwo="/../../assets/images/icons8-aperture-100.png";
+    }else if(one==3){
+      this.loginUserData.imageName2=null
+      this.urlthree="/../../assets/images/icons8-aperture-100.png";
+    }else if(one==4){
+      this.loginUserData.imageName3=null
+      this.urlfour="/../../assets/images/icons8-aperture-100.png";
+    }
   }
   vente(){
   //  console.log(this.loginUserData)
     this.aut.vendre(this.loginUserData).subscribe((result) => {
     // result.body;     
-  //    console.log( result);    
+ console.log( result);    
+  if(result.body=="bien fait"){
         Swal.fire({
           text: " Nous avons bien enregistré votre produit, nous vous recontacterons une fois qu\'il sera en ligne sur le site",
           icon: 'success',
@@ -121,7 +135,14 @@ export class VendreComponent implements OnInit {
           if (result.value) {
     this.router.navigateByUrl("/new")
 
-          }})
+          }})}else{
+            Swal.fire(
+              'Erreur',
+              'Veillez verifier la saisie de vos champs',
+              'error'
+            )
+          }
+     
           },
     error => { //This is error part
       console.log(error);
