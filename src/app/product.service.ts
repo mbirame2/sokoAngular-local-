@@ -48,13 +48,13 @@ export class ProductService {
 
   getAllFemme(){
     return this.httpClient.get<any>(this.apiURL+"api/allfemme",{headers:this.headers,observe:'response'})
-  
   }
+
   addProductToCart(prodcuts: any) {
     localStorage.setItem("product", JSON.stringify(prodcuts));
   }
+
   getProductFromCart() {
-    //return localStorage.getItem("product");
     return JSON.parse(localStorage.getItem('product'));
   }
   getToken() {
