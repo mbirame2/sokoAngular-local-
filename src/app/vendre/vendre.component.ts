@@ -13,7 +13,7 @@ export class VendreComponent implements OnInit {
   imageError: string;
   isImageSaved: boolean;
   cardImageBase64: string;
-  loginUserData = {imageName : File = null,imageName1 : File = null,imageName2 : File = null,imageName3 : File = null,titre:String,prix:Number,description:String,taille:String,genre:String,categorie:String,sscategorie:String,couleur:String,condition:String};
+  loginUserData = {imageName : File = null,imageName1 : File = null,imageName2 : File = null,imageName3 : File = null,titre:null,prix:null,description:null,taille:null,genre:null,categorie:null,sscategorie:null,couleur:null,condition:null};
   imgURL =[];
   categorie:[]
   sscategorie:[]

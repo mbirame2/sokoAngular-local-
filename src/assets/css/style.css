@@ -448,7 +448,7 @@ a {
 .site-blocks-cover {
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center center; }
+  background-position: center ; }
   .site-blocks-cover, .site-blocks-cover .row {
     min-height: 500px;
     height: calc(100vh - 174px); }
@@ -457,6 +457,12 @@ a {
     font-weight: 900;
     color: #000; }
     @media (min-width: 768px) {
+      .site-blocks-cover {
+        background-size: cover;
+ background-repeat: no-repeat;
+ background-position: center ;
+      
+      }
       .site-blocks-cover h1 {
         font-size: 50px; } }
   .site-blocks-cover p {

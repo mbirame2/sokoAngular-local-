@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class InscriptionComponent implements OnInit {
   loginUserData = {}
-  ok={telephone:Number, password:String}
+  ok={telephone:null, password:null}
   registerForm: FormGroup;
   ale:boolean=false;
     submitted = false;
