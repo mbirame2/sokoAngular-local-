@@ -28,7 +28,7 @@ achat:Vente[];
 all:Vente[];
 getuser:{}
 err:boolean=false
-loginUserData={}
+loginUserData={prenom:String,nom:String,adresse:String,telephone:String,password:String,newpassword:String,cpassword:String}
   ngOnInit() {
  
 

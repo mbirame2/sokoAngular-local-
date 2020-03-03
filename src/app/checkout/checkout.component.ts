@@ -15,7 +15,7 @@ export class CheckoutComponent implements OnInit {
   productAddedTocart:Product[];
   allTotal:number;
   prix:any
-  loginUserData = {product:[],}
+  loginUserData = {product:[],adresse:String}
 
   constructor(private productService:ProductService,private router:Router,private aut:SokoService) { }
 

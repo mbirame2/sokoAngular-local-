@@ -116,6 +116,9 @@ if(!vete){
   window.location.reload();
 }
 }
+reload(){
+  window.location.reload();
+}
 
   sscategorie(vete:string){
     //this.prod=this.allProducts
