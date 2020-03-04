@@ -12,10 +12,10 @@
             </div>
          
 
-          <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center">
-            <div class="site-logo">
-              <a href="index.html" class="js-logo-clone">Soko</a>
-            </div>
+          <div class="col-12 mb-3 mb-md-0 col-md-4 order-1 order-md-2 text-center ">
+            
+              <img src="../favicon.ico" class="img-fluid" style="width: 90px;height=50px" alt="">
+           
           </div>
 
           <div class="col-12 col-md-2 order-2 order-md-2 text-right">
@@ -105,9 +105,10 @@
       </div>
     </nav>
   </header>
+  
   <div #alert *ngIf="!this.isLoggedIn" class="alert alert-warning alert-dismissible fade show" role="alert">
   
-    <strong>Vous n'etes pas connectés !</strong> Connectez vous pour acceder à certaines fonctionnalités. Pas de compte? <a routerLink="/inscription" (click)="closeAlert()">Inscrivez-vous</a> maintenant.
+    <strong>Vous n'etes pas connectés !</strong> Connectez vous pour acceder à certaines fonctionnalités. Pas de compte? <a routerLink="/inscription">Inscrivez-vous</a> maintenant.
   </div>
   <div class="alert alert-success" role="alert" *ngIf="aler">
     <button type="button" class="close" aria-label="Close" (click)="closeAlert()">

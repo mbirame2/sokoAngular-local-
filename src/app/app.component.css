@@ -79,3 +79,8 @@ transition: all 250ms ease-in-out 0s;
 body {
 	padding-right: 0 !important;
   }	
+
+.dropdown-menu {
+    max-width: none;
+    width: auto;
+}
