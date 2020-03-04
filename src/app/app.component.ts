@@ -72,6 +72,7 @@ if(this.isLoggedIn){
     this._auth.removeToken();
     this._auth.removeproduct();
     this.loginUserData={}
+    window.location.reload();
 
   }
   loginUser(){
