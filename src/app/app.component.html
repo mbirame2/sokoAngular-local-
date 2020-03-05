@@ -107,7 +107,7 @@
   
   <div #alert *ngIf="!this.isLoggedIn" class="alert alert-warning alert-dismissible fade show" role="alert">
   
-    <strong>Vous n'etes pas connectés !</strong> Connectez vous pour acceder à certaines fonctionnalités. Pas de compte? <a routerLink="/inscription">Inscrivez-vous</a> maintenant.
+    <strong>Vous n'êtes pas connectés !</strong> Connectez vous pour acceder à certaines fonctionnalités. Pas de compte? <a routerLink="/inscription">Inscrivez-vous</a> maintenant.
   </div>
   <div class="alert alert-success" role="alert" *ngIf="aler">
     <button type="button" class="close" aria-label="Close" (click)="closeAlert()">
@@ -152,9 +152,7 @@
     <div class="widget no-box">
     <h5 class="widget-title">Achats et ventes<span></span></h5>
     <ul class="thumbnail-widget">
-    <li>
-      <div class="thumb-content"><a routerLink="/comment_acheter">Comment acheter ?</a></div>	
-      </li>
+
       <li>
       <div class="thumb-content"><a routerLink="/comment_vendre">Comment vendre ?</a></div>	
       </li>
