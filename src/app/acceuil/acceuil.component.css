@@ -60,6 +60,12 @@
         visibility: visible;
     }
 }
+.carousel-control-prev-icon{
+    background-color: blueviolet;
+}
+.carousel-control-next-icon{
+    background-color: blueviolet;
+}
 #wrapper {
     width: 100%;
     height: 400px;
