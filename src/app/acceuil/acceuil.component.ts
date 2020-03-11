@@ -64,9 +64,10 @@ export class AcceuilComponent implements OnInit {
               //     console.log("Product fetched sucssesfully.");
                    //console.log(this.globalResponse);
                    this.allProducts=this.globalResponse;
+                  this.allProducts=this.allProducts.slice(0,8)
                    this.prod=this.allProducts
                //    console.log(this.prod);
-   this.pro=this.prod[5]
+   this.pro=this.prod[8]
                    }
                  )
 
