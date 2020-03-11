@@ -17,7 +17,7 @@ export class AcceuilComponent implements OnInit {
   url:string="api.sokodakar.com"
   prod: Product[];
   pro:{}
-  proda:[];
+  proda=new Array(8)
   cartItemCount: number = 0;
   productAddedTocart:Product[];
   yourByteArray:any;
@@ -66,7 +66,7 @@ export class AcceuilComponent implements OnInit {
                    this.allProducts=this.globalResponse;
                    this.prod=this.allProducts
                //    console.log(this.prod);
-   this.pro=this.prod[this.prod.length-1]
+   this.pro=this.prod[5]
                    }
                  )
 

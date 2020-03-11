@@ -1,7 +1,6 @@
 import Swal  from 'sweetalert2';
 import { SokoService } from './../soko.service';
 import { Component, OnInit,Input } from '@angular/core';
-import * as _ from 'lodash';
 import { Router } from '@angular/router';
 
 @Component({
