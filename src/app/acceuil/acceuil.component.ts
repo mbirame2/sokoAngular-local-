@@ -67,7 +67,7 @@ export class AcceuilComponent implements OnInit {
                   this.allProducts=this.allProducts.slice(0,8)
                    this.prod=this.allProducts
                //    console.log(this.prod);
-   this.pro=this.prod[8]
+   this.pro=this.prod[7]
                    }
                  )
 
