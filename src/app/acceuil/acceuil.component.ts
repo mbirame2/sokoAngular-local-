@@ -13,7 +13,7 @@ import { SharedServiceService } from '../shared-service.service';
 })
 export class AcceuilComponent implements OnInit {
   public globalResponse: any;
-  allProducts: any;
+  allProducts=new Array(8)
   url:string="api.sokodakar.com"
   prod: Product[];
   pro:{}
