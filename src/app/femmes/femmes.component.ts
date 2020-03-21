@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../product.service';
 import Swal from 'sweetalert2';
 import { SokoService } from './../soko.service';
-import {Router} from '@angular/router';
+import {Router,ActivatedRoute} from '@angular/router';
 import { Product } from '../Models/Product.Model';
 import { All } from '../Models/All.Model';
 import { SharedServiceService } from '../shared-service.service';
@@ -30,46 +30,76 @@ export class FemmesComponent implements OnInit {
   sscategories:[]
   url:string="api.sokodakar.com"
 
-  constructor(private productService:ProductService,private router: Router,private _auth: SokoService ,private sharedService:SharedServiceService) { }
+  constructor(private productService:ProductService,private route: ActivatedRoute,private router: Router,private _auth: SokoService ,private sharedService:SharedServiceService) {
+
+ 
+ 
+
+   }
   ngOnInit() {
+    var token = localStorage.getItem('token');
+
+    // It should work, but I think it's far less comprehensive
+    if(typeof token === 'undefined' || token === null || token === 'undefined'){
+      this.isLoggedIn=false;
+    }else{
+      this.isLoggedIn=true;
+     
+    }
+    this.vete=""
+
+    this._auth.getcat().subscribe((result) => {
+      this.categories = result.body;     
+    },
+    error => { //This is error part
+    },)
+    this._auth.getsscat().subscribe((result) => {
+      this.sscategories = result.body;     
+     // console.log( this.sscategorie);         
+    },
+    error => { //This is error part
+    },)
     this.productService.getAllFemme()
-            .subscribe((result) => {
-              this.globalResponse = result.body;              
-            },
-            error => { //This is error part
-              console.log(error.message);
-            },
-            () => {
-           //     console.log("Product fetched sucssesfully.");
-                //console.log(this.globalResponse);
-                this.allProducts=this.globalResponse;
-                this.prod=this.allProducts
-         //       console.log(this.prod);
+    .subscribe((result) => {
+      this.globalResponse = result.body;              
+    },
+    error => { //This is error part
+      console.log(error.message);
+    },
+    () => {
+   //     console.log("Product fetched sucssesfully.");
+        //console.log(this.globalResponse);
+     //   this.allProducts=this.globalResponse;
+       // this.prod=this.allProducts
+ //       console.log(this.prod);
+ let id = this.route.snapshot.params.cat;
+  
+          
+ if(id){
+  this.allProducts=this.globalResponse;
+  this.prod=this.allProducts
+  this.allProducts=[]
+ for (var i = 0; i <this.prod.length ; i++) {
+        
+  if(this.prod[i].categorie.name==id){
+  //  console.log(this.allProducts[i])
+ 
+this.allProducts.push(this.prod[i])
+   }
+}
 
-                }
-              )
-              var token = localStorage.getItem('token');
+this.vete=id
+}else if(!id){
+  this.allProducts=this.globalResponse;
+  this.prod=this.allProducts
+}
+        }
+      )
 
-              // It should work, but I think it's far less comprehensive
-              if(typeof token === 'undefined' || token === null || token === 'undefined'){
-                this.isLoggedIn=false;
-              }else{
-                this.isLoggedIn=true;
-               
-              }
-              this.vete=""
+   
+             
 
-              this._auth.getcat().subscribe((result) => {
-                this.categories = result.body;     
-              },
-              error => { //This is error part
-              },)
-              this._auth.getsscat().subscribe((result) => {
-                this.sscategories = result.body;     
-               // console.log( this.sscategorie);         
-              },
-              error => { //This is error part
-              },)
+          
 
  }
 
@@ -78,7 +108,19 @@ export class FemmesComponent implements OnInit {
     this.proda=prod;
    }
 
- 
+   sscategorie(vete:string){
+    //this.prod=this.allProducts
+    this.allProducts=[]
+  //  console.log( vete);
+      for (var i = 0; i <this.prod.length ; i++) {
+        
+        if(this.prod[i].sscategorie.name==vete){
+        //  console.log(this.allProducts[i])
+     this.allProducts.push(this.prod[i])
+         }
+      }
+    
+    this.vete=vete}
   OnAddCart(product:Product)
   {
   //  console.log(product);
@@ -175,37 +217,7 @@ this.router.navigateByUrl('/mon_panier')
   tout(){
     window.location.reload();
    }
-   categorie(vete:string){
-    //this.prod=this.allProducts
-    this.allProducts=[]
- //   console.log( vete);
-      for (var i = 0; i <this.prod.length ; i++) {
-        
-        if(this.prod[i].categorie.name==vete){
-        //  console.log(this.allProducts[i])
-     this.allProducts.push(this.prod[i])
-         }
-      }
-    
-    this.vete=vete
-  if(!vete){
-    window.location.reload();
-  }
-  }
-  
-    sscategorie(vete:string){
-      //this.prod=this.allProducts
-      this.allProducts=[]
- //     console.log( vete);
-        for (var i = 0; i <this.prod.length ; i++) {
-          
-          if(this.prod[i].sscategorie.name==vete){
-          //  console.log(this.allProducts[i])
-       this.allProducts.push(this.prod[i])
-           }
-        }
-      
-      this.vete=vete}
+
 
   
 inscrire(){

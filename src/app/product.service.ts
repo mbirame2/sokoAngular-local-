@@ -10,7 +10,7 @@ import { SokoService } from './soko.service';
 })
 export class ProductService {
 
-  public apiURL:string="api.sokodakar.com/";
+  public apiURL:string="http://127.0.0.1:8000/";
   private headers= new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token')).append('content-type', 'application/json');
 
   constructor(private httpClient:HttpClient,private _auth: SokoService ) { }

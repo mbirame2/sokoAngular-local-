@@ -24,7 +24,7 @@
                      Catégorie
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset1">
-                <a *ngFor="let cat of categories" (click)="categorie(cat.name)"  href="/new#" class="d-flex">{{cat.name}} </a>
+                <a *ngFor="let cat of categories" (click)="categorie(cat.name)"  href="#{{cat.name}}" class="d-flex">{{cat.name}} </a>
                  
                     </div>
                   </div>

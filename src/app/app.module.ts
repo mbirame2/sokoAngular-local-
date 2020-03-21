@@ -31,6 +31,8 @@ const appRoutes: Routes=[
   { path: '', component:AcceuilComponent} ,
   { path: 'new', component:NouveauteComponent} ,
   { path: 'hommes', component:HommesComponent} ,
+  { path: 'hommes/:cat', component:HommesComponent} ,
+  { path: 'femmes/:cat', component:FemmesComponent} ,
   { path: 'femmes', component:FemmesComponent} ,
   { path: 'marques', component:MarqueComponent} ,
   { path: 'vendre', component:VendreComponent} ,
