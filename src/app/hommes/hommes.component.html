@@ -3,7 +3,7 @@
 <div class="bg-light py-3">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 mb-0"><a href="index.html">Accueil</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Hommes</strong></div>
+      <div class="col-md-12 mb-0"><a routerLink="/">Accueil</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Hommes</strong></div>
     </div>
   </div>
 </div>
@@ -32,69 +32,18 @@
             </div>
           </div>
         </div>
-        <div class="modal fade bd-example-modal-lg"  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-              <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body" *ngIf="proda" >
-                <div class="row">
-                  <div class="col-md-6">
-                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-                      <div class="carousel-inner">
-                        <div class="carousel-item active" >
-                          <img src="{{url}}/api/images/{{proda.article.ImageName}}" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item" *ngIf="proda.article.ImageName1">
-                          <img src="{{url}}/api/images/{{proda.article.ImageName1}}" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item" *ngIf="proda.article.ImageName2">
-                          <img src="{{url}}/api/images/{{proda.article.ImageName2}}" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item" *ngIf="proda.article.ImageName3">
-                          <img src="{{url}}/api/images/{{proda.article.ImageName3}}" class="d-block w-100" alt="...">
-                        </div>
-                      </div>
-                      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                      </a>
-                      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                      </a>
-                    </div>
-                  </div>
-                  <div class="col-md-6">
-                    <h1 class="text-black">{{proda.article.Titre}}</h1>
-                    <p>{{proda.article.Description}}</p>
-                    <p>{{proda.article.Taille}}</p>
-                    <p><strong class="text-primary h4">{{proda.article.Prix}} FCFA</strong></p>
-                    <p><a (click)="OnAddCart(proda)" *ngIf="proda.article.Disponible=='oui'" class="buy-now btn btn-sm btn-primary" data-dismiss="modal" aria-label="Close">Ajouter au panier</a></p>
-                    <p><strong *ngIf="proda.article.Disponible=='non'" class="text-primary h4"> VENDU</strong></p>
-                    </div> 
-                </div>
-              </div>
-
-
-        
-            </div>
-          </div>
-        </div>
+    
         
         <div class="row mb-5" >
           <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" *ngFor="let prod of allProducts">
             <div class="block-4 text-center border">
               <figure class="block-4-image">
-                <a routerLink="/voir_produit" data-toggle="modal" data-target=".bd-example-modal-lg">
-                  <img  src="{{url}}/api/images/{{prod.article.ImageName}}" class="img-fluid" (click)="display(prod)" alt="">
+                <a routerLink="/single-shop/{{prod.article.id}}" data-toggle="modal" data-target=".bd-example-modal-lg">
+                  <img  src="{{url}}/api/images/{{prod.article.ImageName}}" class="img-fluid" alt="">
                 </a>
               </figure>
               <div class="block-4-text p-4">
-                <h3><a href="/hommes#">{{prod.article.Titre}}</a></h3>
+                <h3><a routerLink="/single-shop/{{prod.article.id}}">{{prod.article.Titre}}</a></h3>
                 <p class="mb-0">Categorie: {{prod.categorie.name}}</p>
                 <p> Sous Categorie: {{prod.sscategorie.name}} </p>
                 <p class="text-primary font-weight-bold">{{prod.article.Prix}} FCFA</p>
@@ -114,11 +63,11 @@
             <h3 class="mb-3 h6 text-uppercase text-black d-block"> Categories</h3>
             <ul class="list-unstyled mb-0">
               <li class="mb-1"><a (click)="tout()"  href="/hommes#" class="d-flex">Tout ({{allProducts.length}}) </a></li>
-              <li><a   href="/hommes/Vetements" class="d-flex">Vetements </a></li>
-              <li><a  href="/hommes/Chaussures" class="d-flex">Chaussures </a></li>
-              <li><a  href="/hommes/Sacs" class="d-flex">Sacs</a></li>
+              <li><a   routerLink="/hommes/Vetements" class="d-flex">Vetements </a></li>
+              <li><a  routerLink="/hommes/Chaussures" class="d-flex">Chaussures </a></li>
+              <li><a  routerLink="/hommes/Sacs" class="d-flex">Sacs</a></li>
 
-              <li class="mb-1"><a href="/hommes/Accessoires" class="d-flex">Accessoires</a></li>
+              <li class="mb-1"><a routerLink="/hommes/Accessoires" class="d-flex">Accessoires</a></li>
 
             </ul>
           </div>

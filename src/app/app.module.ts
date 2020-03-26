@@ -25,10 +25,12 @@ import { SokoService } from './soko.service';
 import { SharedServiceService } from './shared-service.service';
 import { SuccessComponent } from './success/success.component';
 import { SecureComponent } from './secure/secure.component';
+import { SingleShopComponent } from './single-shop/single-shop.component';
 
 const appRoutes: Routes=[
 
   { path: '', component:AcceuilComponent} ,
+  { path: 'single-shop/:id', component:SingleShopComponent} ,
   { path: 'new', component:NouveauteComponent} ,
   { path: 'hommes', component:HommesComponent} ,
   { path: 'hommes/:cat', component:HommesComponent} ,
@@ -73,6 +75,7 @@ const appRoutes: Routes=[
     MonCompteComponent,
     SuccessComponent,
     SecureComponent,
+    SingleShopComponent,
   ],
   imports: [
     BrowserModule,

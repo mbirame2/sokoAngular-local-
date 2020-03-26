@@ -1,0 +1,139 @@
+<div class="bg-light py-3">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 mb-0"><a routerLink="/">Accueil</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Article</strong></div>
+    </div>
+  </div>
+</div>  
+
+<div class="site-section">
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-6" >
+        <div class="row">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active" >
+              <img src="{{url}}/api/images/{{pro.article.ImageName}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" *ngIf="pro.article.ImageName1">
+              <img src="{{url}}/api/images/{{pro.article.ImageName1}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" *ngIf="pro.article.ImageName2">
+              <img src="{{url}}/api/images/{{pro.article.ImageName2}}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item" *ngIf="pro.article.ImageName3">
+              <img src="{{url}}/api/images/{{pro.article.ImageName3}}" class="d-block w-100" alt="..."> 
+            </div>
+          </div> <br>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+      <div>
+
+      </div>
+      <div class="row">
+     <div class="col-3">
+          <img src="{{url}}/api/images/{{pro.article.ImageName}}" class="img-fluid" alt="...">
+        </div>
+        <div class="col-3" *ngIf="pro.article.ImageName1">
+          <img src="{{url}}/api/images/{{pro.article.ImageName1}}" class="d-block w-100" alt="...">
+        </div>
+        <div class="col-3" *ngIf="pro.article.ImageName2">
+          <img src="{{url}}/api/images/{{pro.article.ImageName2}}" class="d-block w-100" alt="...">
+        </div>
+        <div class="col-3" *ngIf="pro.article.ImageName3">
+          <img src="{{url}}/api/images/{{pro.article.ImageName3}}" class="d-block w-100" alt="...">
+        </div>
+      </div>
+    </div> 
+      <div class="col-md-6">
+        <h1 class="text-black">{{pro.article.Titre}}</h1>
+        <p>{{pro.article.Description}}</p>
+        <p>{{pro.article.Taille}}</p>
+        <p> <strong>Catégorie</strong>  : {{pro.categorie.name}}</p>
+        <p>Sous Categorie : {{pro.sscategorie.name}}</p>
+        <p><strong class="text-primary h4">{{pro.article.Prix}} FCFA</strong></p>
+        <p><a (click)="OnAddCart(pro)" style="color: white;" class="buy-now btn btn-sm btn-primary">Ajouter au panier</a></p>
+        </div> 
+    </div>
+  </div>
+</div>
+
+<div class="site-section block-3 site-blocks-2 bg-light">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-7 site-section-heading text-center pt-4">
+        <h2>Voir aussi</h2> <br>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+    <div class="container-fluid" >
+      <div id="carouselExample" class="carouselPrograms carousel slide" data-ride="carousel" data-interval="false">
+          <div class="carousel-inner row w-100 mx-auto" role="listbox">
+              <div class="carousel-item col-md-4  active">
+                 <div class="panel panel-default">
+                    <div class="panel-thumbnail" *ngIf="pro">
+                      <figure class="block-4-image">
+                        <a routerLink="/single-shop/{{pro.article.id}}">
+                    
+                          <img  src="{{url}}/api/images/{{pro.article.ImageName}}" class="img-fluid" alt="">
+      
+                       </a>
+                      </figure>
+                      <div class="block-4-text p-4">
+                        <h3><a routerLink="/single-shop/{{pro.article.id}}" (click)="display(pro)">{{pro.article.Titre}}</a></h3>
+                        <p class="mb-0">Categorie: {{pro.categorie.name}}</p>
+                        <p> Sous Categorie: {{pro.sscategorie.name}} </p>
+                        <p class="text-primary font-weight-bold">{{pro.article.Prix}} FCFA</p>
+                    
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              <div class="carousel-item col-md-4 " *ngFor="let prod   of allProducts">
+                 <div class="panel panel-default">
+                    <div class="panel-thumbnail">
+                      <figure class="block-4-image">
+                        <a routerLink="/single-shop/{{prod.article.id}}" (click)="display(prod)" >
+                    
+                          <img  src="{{url}}/api/images/{{prod.article.ImageName}}" class="img-fluid"  alt="">
+      
+                       </a>
+                      </figure>
+                      <div class="block-4-text p-4">
+                        <h3><a routerLink="/single-shop/{{prod.article.id}}"  (click)="display(prod)">{{prod.article.Titre}}</a></h3>
+                        <p class="mb-0">Categorie: {{prod.categorie.name}}</p>
+                        <p> Sous Categorie: {{prod.sscategorie.name}} </p>
+                        <p class="text-primary font-weight-bold">{{prod.article.Prix}} FCFA</p>
+                    
+                      </div>
+                    </div>
+                  </div>
+              </div>
+       
+          </div>
+          <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next text-faded" href="#carouselExample" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+          </a>
+      </div>
+  </div>
+
+  </div>
+</div>
+</div>
+</div>
