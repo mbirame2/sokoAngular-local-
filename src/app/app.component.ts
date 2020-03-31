@@ -14,6 +14,7 @@ export class AppComponent {
   title = 'sokoAngular';
   isLoggedIn:boolean=false;
   aler:boolean=false;
+  name= {};
   loginUserData = {};
   ok:{prenom:string,nom:string};
   cartItemCount:number=0;
@@ -99,5 +100,8 @@ if(this.isLoggedIn){
 
 
 }
+search(){
+  this.router.navigateByUrl('/search/'+this.name['name'])
 
+}
 }

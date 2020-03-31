@@ -26,11 +26,13 @@ import { SharedServiceService } from './shared-service.service';
 import { SuccessComponent } from './success/success.component';
 import { SecureComponent } from './secure/secure.component';
 import { SingleShopComponent } from './single-shop/single-shop.component';
+import { SearchComponent } from './search/search.component';
 
 const appRoutes: Routes=[
 
   { path: '', component:AcceuilComponent} ,
   { path: 'single-shop/:id', component:SingleShopComponent} ,
+  { path: 'search/:name', component:SearchComponent} ,
   { path: 'new', component:NouveauteComponent} ,
   { path: 'hommes', component:HommesComponent} ,
   { path: 'hommes/:cat', component:HommesComponent} ,
@@ -76,6 +78,7 @@ const appRoutes: Routes=[
     SuccessComponent,
     SecureComponent,
     SingleShopComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

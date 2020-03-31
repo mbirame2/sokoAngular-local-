@@ -29,7 +29,11 @@ export class SokoService {
     
     return this.httpClient.post<any>(this.apiURL+`api/commande`, user,{headers:this.headers,observe:'response'});
   }
-
+  search(name){
+    const formData: FormData = new FormData();
+    formData.append('name',name);
+    return this.httpClient.post<any>(this.apiURL+`api/search`, formData,{headers:this.headers,observe:'response'});
+  }
 
   getUser(){
     return this.httpClient.get<any>(this.apiURL+`api/getuser`,{headers:this.headers,observe:'response'});

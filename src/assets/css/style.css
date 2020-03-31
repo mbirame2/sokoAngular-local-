@@ -149,8 +149,9 @@ a {
         padding-top: 40px;
         padding-bottom: 40px; } }
   .site-navbar .site-search-icon a span {
-    display: inline-block;
-    margin-right: 10px; }
+  
+    margin-right: 100px; 
+  }
   .site-navbar .site-search-icon a:hover {
     text-decoration: none; }
   .site-navbar .site-logo a {
@@ -665,7 +666,7 @@ a {
   position: relative; }
   .site-block-top-search .icon {
     position: absolute;
-    left: 0;
+    left: 70%;
     top: 50%;
     -webkit-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
