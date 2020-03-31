@@ -16,7 +16,7 @@ export class SearchComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,private sokok:SokoService,private router: Router,private sharedService:SharedServiceService) { }
   name:string
-recherche={}
+recherche={name:String=null}
 user:Vente[];
 ok:Boolean
   ngOnInit() {
