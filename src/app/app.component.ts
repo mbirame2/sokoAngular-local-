@@ -14,7 +14,7 @@ export class AppComponent {
   title = 'sokoAngular';
   isLoggedIn:boolean=false;
   aler:boolean=false;
-  name= {};
+  name= {name:null};
   loginUserData = {};
   ok:{prenom:string,nom:string};
   cartItemCount:number=0;
