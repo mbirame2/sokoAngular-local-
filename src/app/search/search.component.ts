@@ -19,6 +19,8 @@ export class SearchComponent implements OnInit {
 recherche={name:null}
 user:Vente[];
 ok:Boolean
+url:string="api.sokodakar.com"
+
   ngOnInit() {
     var nam = this.route.snapshot.params.name; 
 this.name=nam
