@@ -54,10 +54,10 @@ export class SokoService {
     //console.log(this.headers);
     return this.httpClient.get<any>(this.apiURL+`api/allachat`,{headers:this.headers,observe:'response'});
   }
-  pay(){
+  pay(token){
    
     //console.log(this.headers);
-    return this.httpClient.get<any>(this.apiURL+`api/pay`,{headers:this.headers,observe:'response'});
+    return this.httpClient.get<any>(this.apiURL+`api/pay/`+token,{headers:this.headers,observe:'response'});
   }
   vendre(user){
     const formData: FormData = new FormData();
