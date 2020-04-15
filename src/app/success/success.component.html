@@ -1,7 +1,7 @@
 <div class="bg-light py-3">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 mb-0"><a href="index.html">Accueil</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Succés</strong></div>
+      <div class="col-md-12 mb-0"><a href="index.html">Accueil</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Verification</strong></div>
     </div>
   </div>
 </div>  
@@ -9,11 +9,17 @@
 <div class="site-section">
   <div class="container">
     <div class="row">
-      <div class="col-md-12 text-center">
+      <div class="col-md-12 text-center" *ngIf="invoice">
         <span class="icon-check_circle display-3 text-success"></span>
         <h2 class="display-3 text-black">Merci!</h2>
-        <p class="lead mb-5">Votre commande a été effectuée avec succès.</p>
+        <p class="lead mb-5">Nous vous confirmons que votre commande numéro XXX a bien été enregistré.
+          Nous vous tiendrons informé des suites de votre achat très vite ! </p>
         <p><a routerLink="/new" class="btn btn-sm btn-primary">Retour à la boutique</a></p>
+      </div>
+      <div  class="col-md-12 text-center" *ngIf="error">
+        <span class="icon-check_circle display-3 text-error"></span>
+        <h2 class="display-3 text-black">Echec !</h2>
+        <p class="lead mb-5">Merci de verifier le montant de votre compte et ressayer  <a routerLink="/finaliser_commande">ici</a> </p>
       </div>
     </div>
   </div>

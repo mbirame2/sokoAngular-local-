@@ -58,12 +58,15 @@
       <div class="col-md-6">
         <h1 class="text-black">{{pro.article.Titre}}</h1>
         <p>{{pro.article.Description}}</p>
-        <p>{{pro.article.Taille}}</p>
+        <p>Taille: {{pro.article.Taille}}</p>
         <p> <strong>Catégorie</strong>  : {{pro.categorie.name}}</p>
         <p>Sous Categorie : {{pro.sscategorie.name}}</p>
+        <p>Référence : #{{pro.article.id}}</p>
         <p><strong class="text-primary h4">{{pro.article.Prix}} FCFA</strong></p>
-        <p><a (click)="OnAddCart(pro)" style="color: white;" class="buy-now btn btn-sm btn-primary">Ajouter au panier</a></p>
-        </div> 
+        <p *ngIf="pro.article.Disponible=='oui'"><a (click)="OnAddCart(pro)" style="color: white;" class="buy-now btn btn-sm btn-primary" >Ajouter au panier</a></p>
+        <p *ngIf="pro.article.Disponible=='non'"><strong class="text-primary h2">VENDU</strong></p>
+
+      </div> 
     </div>
   </div>
 </div>

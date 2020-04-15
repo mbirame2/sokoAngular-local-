@@ -57,7 +57,7 @@ export class SokoService {
   pay(token){
    
     //console.log(this.headers);
-    return this.httpClient.get<any>(this.apiURL+`api/pay/`+token,{headers:this.headers,observe:'response'});
+    return this.httpClient.post<any>(this.apiURL+`api/pay`,token,{headers:this.headers,observe:'response'});
   }
   vendre(user){
     const formData: FormData = new FormData();

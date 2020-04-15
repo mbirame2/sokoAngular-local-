@@ -41,7 +41,7 @@ export class CheckoutComponent implements OnInit {
   // console.log(this.allTotal)
   }
   commande(){
-
+localStorage.setItem("adresse",this.loginUserData.adresse)
     this.aut.commande(this.loginUserData).subscribe((result) => {
      
 

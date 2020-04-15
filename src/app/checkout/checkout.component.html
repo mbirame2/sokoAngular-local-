@@ -89,7 +89,12 @@
                 </div>    
 
               <div class="form-group">
-                <button class="btn btn-primary btn-lg py-3 btn-block" (click)="commande()">Valider</button>
+                <button class="btn btn-primary btn-lg py-3 btn-block" (click)="error()" *ngIf="!this.loginUserData.adresse" disabled>Valider</button>
+              </div>
+               <p *ngIf="!this.loginUserData.adresse">    <strong>Renseigner d'abord l'adresse de livraison</strong> <span class="text-danger">*</span> </p>
+               <div class="form-group">
+               <button class="btn btn-primary btn-lg py-3 btn-block" (click)="commande()" *ngIf="this.loginUserData.adresse" >Valider</button>
+
               </div>
             </form>
             </div>
