@@ -50,8 +50,8 @@ export class SingleShopComponent implements OnInit {
   //  console.log(this.prod)
     //  console.log(this.id)
     for (var i = 0; i <this.prod.length ; i++) {
-     
-      if(this.prod[i].article.id==this.id){
+
+      if(this.prod[i].article['Titre']==this.id){
         
    this.pro=this.prod[i]
        }

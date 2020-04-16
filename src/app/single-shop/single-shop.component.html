@@ -107,14 +107,14 @@
                  <div class="panel panel-default">
                     <div class="panel-thumbnail">
                       <figure class="block-4-image">
-                        <a routerLink="/single-shop/{{prod.article.id}}" (click)="display(prod)" >
+                        <a routerLink="/single-shop/{{prod.article.Titre}}" (click)="display(prod)" >
                     
                           <img  src="{{url}}/api/images/{{prod.article.ImageName}}" class="img-fluid"  alt="">
       
                        </a>
                       </figure>
                       <div class="block-4-text p-4">
-                        <h3><a routerLink="/single-shop/{{prod.article.id}}"  (click)="display(prod)">{{prod.article.Titre}}</a></h3>
+                        <h3><a routerLink="/single-shop/{{prod.article.Titre}}"  (click)="display(prod)">{{prod.article.Titre}}</a></h3>
                         <p class="mb-0">Categorie: {{prod.categorie.name}}</p>
                         <p> Sous Categorie: {{prod.sscategorie.name}} </p>
                         <p class="text-primary font-weight-bold">{{prod.article.Prix}} FCFA</p>

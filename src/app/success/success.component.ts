@@ -39,9 +39,16 @@ export class SuccessComponent implements OnInit {
            
    console.log(res)  
      //console.log(this.user);
-     this._auth.removeproduct();
-localStorage.removeItem("adresse")
-this.invoice=res;
+  
+if(res.body=="failed"){
+  
+    this.error="failed"
+   
+}else{
+  this._auth.removeproduct();
+  localStorage.removeItem("adresse")
+  this.invoice=res;
+}
       }  
          ,err =>{console.log(err) 
           if(err){

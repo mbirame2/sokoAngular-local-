@@ -38,12 +38,12 @@
           <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" *ngFor="let prod of allProducts">
             <div class="block-4 text-center border">
               <figure class="block-4-image">
-                <a routerLink="/single-shop/{{prod.article.id}}">
+                <a routerLink="/single-shop/{{prod.article.Titre}}">
                   <img  src="{{url}}/api/images/{{prod.article.ImageName}}" class="img-fluid" alt="">
                 </a>
               </figure>
               <div class="block-4-text p-4">
-                <h3><a routerLink="/single-shop/{{prod.article.id}}">{{prod.article.Titre}}</a></h3>
+                <h3><a routerLink="/single-shop/{{prod.article.Titre}}">{{prod.article.Titre}}</a></h3>
                 <p class="mb-0">Categorie: {{prod.categorie.name}}</p>
                 <p> Sous Categorie: {{prod.sscategorie.name}} </p>
                 <p class="text-primary font-weight-bold">{{prod.article.Prix}} FCFA</p>
