@@ -43,7 +43,6 @@ export class InscriptionComponent implements OnInit {
 
     // convenience getter for easy access to form fields
 inscrire(){
-  console.log(this.registerForm.value);
   this._auth.inscripion(this.registerForm.value).subscribe(
     res => {console.log(res);
       Swal.fire(
@@ -55,30 +54,8 @@ inscrire(){
           showConfirmButton: true,
 
         }
-       ).then((result) => {
-        if (result.value) {
-        
-         
-    this._auth.removeToken();
-//console.log(this.registerForm.value)
-this.ok.telephone=this.registerForm.value.numtel;
-this.ok.password=this.registerForm.value.password;
-
-    this._auth.loginUser(this.ok ).subscribe(
-      res => { 
-   this._auth.saveToken(res.body);
-  
- this.ngOnInit()
- window.location.reload();
-
- this.ale=true;
-   }     
-      ) 
-      this.router.navigateByUrl("/")
-
-    }    
-   })}
-   ,err=>{console.log(err);
+       )}
+   ,err=>{
     if(err.status==500){
       Swal.fire(
     

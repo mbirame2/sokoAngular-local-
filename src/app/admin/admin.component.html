@@ -1,0 +1,151 @@
+<div class="container">
+  <div class="row">
+<div class="col-md-3" >
+  <div class="site-wrap"  >
+    <header class="site-navbar" role="banner" >
+            
+        <img src="../favicon.ico" class="img-fluid"  alt="">
+     
+
+  <nav class="site-navigation" role="navigation">
+    <div class="container">
+      <ul class="site-menu js-clone-nav d-none d-md-block nav "  id="pills-tab" >
+          <li class="active "> <a class="nav-link " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"> <strong>Membres Inscrits</strong></a></li>
+        
+        <li class="active">
+          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"> <strong>Articles Commandés</strong></a>
+
+       
+        </li>
+        <li class="active ">
+          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><strong>Articles Mis en Vente</strong></a>
+          </li>   
+
+    
+      </ul>
+    </div>
+  </nav>
+  </header>
+  </div>
+</div>
+<div class="col-9">
+  <nav class="navbar navbar-light bg-light">
+    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+
+    <a class="navbar-brand" *ngIf="getuser">ADMIN( {{getuser.nom}} {{getuser.prenom}} ) DASHBOARD</a>
+    <form class="form-inline">
+      <button type="button" class="btn btn-warning" (click)="logout()" >Se Deconnecter</button>
+    </form>
+  </nav> <br> <br>
+  
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <div class="alert alert-dismissible alert-success"> 
+          <strong *ngIf="alluser">  Nombre de membres inscrits sur le site: {{alluser.length}}</strong>  
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="alert alert-dismissible alert-info">
+          <strong *ngIf="achat">  Nombre d'articles commandés: {{achat.length}}</strong>
+        </div>
+      </div>
+      <div class="col-sm">
+        <div class="alert alert-dismissible alert-warning">
+          <strong *ngIf="user"> Nombre d'articles mis en vente: {{user.length}}</strong>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> <br>
+    <h2 class="text-black h3">Informations des membres inscrits</h2> <br>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nom</th>
+            <th scope="col">Prenom</th>
+            <th scope="col">N. Téléphone</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Inscrit depuis</th>
+            <th scope="col">Modifier Information</th>
+          
+          </tr>
+        </thead>
+        <tbody>
+          <tr  *ngFor="let alluser of alluser">
+            <th scope="row">{{ alluser.nom}}</th>
+            <th scope="row">{{ alluser.prenom}}</th>
+            <td>{{ alluser.telephone}}</td>
+            <td>{{ alluser.adresse}}</td>
+            <td>{{ alluser.created_at}}</td>
+            <td></td>
+          </tr>
+      
+        
+       
+        </tbody>
+      </table>
+   
+</div>  <br>
+<div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"> <br>
+  <h2 class="text-black h3">Détails des Achats Commandés</h2> <br>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">N. Commande</th>
+            <th scope="col">Photo</th>
+            <th scope="col">Nom article</th>
+            <th scope="col">Date</th>
+            <th scope="col">Statut</th>
+            <th scope="col">Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let achat of achat">
+            <th scope="row">{{ achat.id}}</th>
+            <td class="product-thumbnail">
+              <img  src="{{url}}/api/images/{{achat.article.ImageName}}"  height="50" width="150" alt="" class="img-fluid">
+            </td>
+            <td>{{ achat.article.Titre}}</td>
+            <td>{{ achat.commande.created_at}}</td>
+            <td>{{ achat.commande.statut_commande}}</td>
+            <td>{{ achat.article.Prix}} FCFA</td>
+          </tr>
+      
+        
+       
+        </tbody>
+      </table>
+</div>
+<div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"> <br>
+  <h2 class="text-black h3">Article(s) en vente / vendu(s)</h2> <br>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Référence </th>
+            <th scope="col">Photo</th>
+            <th scope="col">Nom article</th>
+            <th scope="col">Prix</th>
+            <th scope="col">Supprimer</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let us of user">
+            <th scope="row">{{ us.article.id }}</th>
+            <td class="product-thumbnail">
+              <img  src="{{url}}/api/images/{{us.article.ImageName}}"  height="50" width="150" alt="" class="img-fluid">
+            </td>
+            <td>{{ us.article.Titre }}</td>
+            <td>{{ us.article.Prix }}</td>
+            <td><a (click)="remove(us.article.id)" class="btn btn-primary btn-sm">X</a></td>
+       
+          </tr>
+         
+        </tbody>
+      </table>
+</div> </div>
+</div>
+</div>
+</div>

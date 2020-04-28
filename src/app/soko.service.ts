@@ -49,10 +49,24 @@ export class SokoService {
    // console.log(this.headers);
     return this.httpClient.get<any>(this.apiURL+`api/allvente`,{headers:this.headers,observe:'response'});
   }
+  allvente(){
+    return this.httpClient.get<any>(this.apiURL+`api/allvente`,{headers:this.headers,observe:'response'});
+  }
   allachat(){
    
     //console.log(this.headers);
     return this.httpClient.get<any>(this.apiURL+`api/allachat`,{headers:this.headers,observe:'response'});
+  }
+  allventeone(){
+    return this.httpClient.get<any>(this.apiURL+`api/allventeone`,{headers:this.headers,observe:'response'});
+  }
+  allachatone(){
+    //console.log(this.headers);
+    return this.httpClient.get<any>(this.apiURL+`api/allachatone`,{headers:this.headers,observe:'response'});
+  }
+  alluser(){
+    return this.httpClient.get<any>(this.apiURL+`api/alluser`,{headers:this.headers,observe:'response'});
+
   }
   pay(token){
    

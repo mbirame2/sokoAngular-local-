@@ -27,12 +27,14 @@ import { SuccessComponent } from './success/success.component';
 import { SecureComponent } from './secure/secure.component';
 import { SingleShopComponent } from './single-shop/single-shop.component';
 import { SearchComponent } from './search/search.component';
+import { AdminComponent } from './admin/admin.component';
 
 const appRoutes: Routes=[
 
   { path: '', component:AcceuilComponent} ,
   { path: 'single-shop/:id', component:SingleShopComponent} ,
   { path: 'search/:name', component:SearchComponent} ,
+  { path: 'admin', component:AdminComponent} ,
   { path: 'new', component:NouveauteComponent} ,
   { path: 'hommes', component:HommesComponent} ,
   { path: 'hommes/:cat', component:HommesComponent} ,
@@ -79,6 +81,7 @@ const appRoutes: Routes=[
     SecureComponent,
     SingleShopComponent,
     SearchComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

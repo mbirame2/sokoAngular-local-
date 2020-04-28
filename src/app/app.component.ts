@@ -13,12 +13,22 @@ export class AppComponent {
   @ViewChild('alert') alert: ElementRef;
   title = 'sokoAngular';
   isLoggedIn:boolean=false;
+  admin:boolean=false;
   aler:boolean=false;
   name= {name:null};
   loginUserData = {};
-  ok:{prenom:string,nom:string};
+  ok:{prenom:string,nom:string,role:string};
   cartItemCount:number=0;
   constructor(private _auth: SokoService , private sharedService: SharedServiceService ,private router:Router){
+    var admi = localStorage.getItem('admin');
+
+    // It should work, but I think it's far less comprehensive
+    if(typeof admi === 'undefined' || admi === null || admi === 'undefined'){
+ 
+      
+    }else{
+      this.admin=true;
+    }
   }
 
   ngOnInit(){
@@ -34,8 +44,17 @@ export class AppComponent {
         res => { 
     this.ok=res.body;
     this.isLoggedIn=true;
- 
+   
+ if(this.ok.role=="admin"){
+ // console.log(this.ok)
+ localStorage.setItem('admin',"admin");
+this.admin=true;
+this.router.navigateByUrl("/admin")
+ }else{
+   this.admin=false
+ }
      }
+     
      )
     }
   }
@@ -69,12 +88,15 @@ if(this.isLoggedIn){
   }
   LogOut()
   {
-    this.isLoggedIn=false;
+
+    localStorage.removeItem("admin")
     this._auth.removeToken();
     this._auth.removeproduct();
-    this.loginUserData={}
+    this.isLoggedIn=false;
+    this.admin=false;
     window.location.reload();
-
+    this.loginUserData={}
+    
   }
   loginUser(){
     this.isLoggedIn=false;
