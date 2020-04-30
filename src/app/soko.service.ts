@@ -70,7 +70,6 @@ export class SokoService {
   }
   pay(token){
    
-    //console.log(this.headers);
     return this.httpClient.post<any>(this.apiURL+`api/pay`,token,{headers:this.headers,observe:'response'});
   }
   vendre(user){
