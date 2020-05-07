@@ -25,6 +25,10 @@ export class SokoService {
     
     return this.httpClient.post<any>(this.apiURL+`api/update`, user,{headers:this.headers,observe:'response'});
   }
+  updateadmin(user){
+    
+    return this.httpClient.post<any>(this.apiURL+`api/updateadmin`, user,{headers:this.headers,observe:'response'});
+  }
   commande(user){
     
     return this.httpClient.post<any>(this.apiURL+`api/commande`, user,{headers:this.headers,observe:'response'});

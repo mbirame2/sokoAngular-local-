@@ -32,7 +32,7 @@ export class AdminComponent implements OnInit {
    getuser:{}
    alluser:[]
    err:boolean=false
-   loginUserData={prenom:null,nom:null,adresse:null,telephone:null,password:null,newpassword:null,cpassword:null}
+   loginUserData={id:null,prenom:null,nom:null,adresse:null,telephone:null}
      ngOnInit() {
     
    
@@ -121,5 +121,22 @@ logout(){
   
 
 this.app.LogOut()
+}
+update(id){
+  this.loginUserData.id=id
+  console.log(this.loginUserData)
+  this._auth.updateadmin(this.loginUserData).subscribe(
+    res => { 
+   //   if(this._auth.getToken()){
+    
+       }
+
+          ,err =>{//console.log(err)
+            if(err.status==200){
+              window.location.reload();
+     
+            }
+         }
+   )
 }
 }

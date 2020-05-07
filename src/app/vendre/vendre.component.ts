@@ -24,22 +24,9 @@ export class VendreComponent implements OnInit {
   urlfour="/../../assets/images/icons8-aperture-100.png";
   url = new Array<string>();
   constructor(private aut:SokoService, private router:Router) { 
-    var token = localStorage.getItem('token');
 
-    // It should work, but I think it's far less comprehensive
-    if(typeof token === 'undefined' || token === null || token === 'undefined'){
- 
- this.router.navigateByUrl("/")
-    }else{
-     // console.log("ok")
-    }
   }
 
-  @Input() depuisHTML:any;
-
-
-
-  
   ngOnInit() {
   
     
@@ -70,7 +57,7 @@ export class VendreComponent implements OnInit {
    // if(one==1){
       let reader = new FileReader();
       
-        if (event.target.files[0].size < 1000000){
+        if (event.target.files[0].size < 3000000){
         reader.onload = (e: any) => {
           if(one==1){
           this.loginUserData.imageName=event.target.files[0]
@@ -94,7 +81,7 @@ export class VendreComponent implements OnInit {
        else {
         Swal.fire(
           'Erreur',
-          'La taille de l\'image ne doit pas dépasser 1MB ',
+          'La taille de l\'image ne doit pas dépasser 3MB ',
           'error'
         )
         

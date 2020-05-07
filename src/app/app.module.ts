@@ -28,30 +28,31 @@ import { SecureComponent } from './secure/secure.component';
 import { SingleShopComponent } from './single-shop/single-shop.component';
 import { SearchComponent } from './search/search.component';
 import { AdminComponent } from './admin/admin.component';
+import { AuthGuardService } from './auth-guard.service';
 
 const appRoutes: Routes=[
 
   { path: '', component:AcceuilComponent} ,
   { path: 'single-shop/:id', component:SingleShopComponent} ,
   { path: 'search/:name', component:SearchComponent} ,
-  { path: 'admin', component:AdminComponent} ,
+  { path: 'admin',canActivate: [AuthGuardService], component:AdminComponent} ,
   { path: 'new', component:NouveauteComponent} ,
   { path: 'hommes', component:HommesComponent} ,
   { path: 'hommes/:cat', component:HommesComponent} ,
   { path: 'femmes/:cat', component:FemmesComponent} ,
   { path: 'femmes', component:FemmesComponent} ,
   { path: 'marques', component:MarqueComponent} ,
-  { path: 'vendre', component:VendreComponent} ,
+  { path: 'vendre',canActivate: [AuthGuardService], component:VendreComponent} ,
   { path: 'comment_acheter', component:CoachatComponent} ,
   { path: 'comment_vendre', component:CovendreComponent} ,
   { path: 'faq', component:FaqComponent} ,
   { path: 'cgv', component:CgvComponent} ,
   { path: 'à_propos', component:AproposComponent} ,
   { path: 'mon_panier', component:PanierComponent} ,
-  { path: 'finaliser_commande', component:CheckoutComponent} ,
+  { path: 'finaliser_commande',canActivate: [AuthGuardService], component:CheckoutComponent} ,
   { path: 'inscription', component:InscriptionComponent} ,
-  { path: 'mon_compte', component:MonCompteComponent} ,
-  { path: 'success', component:SuccessComponent} ,
+  { path: 'mon_compte', canActivate: [AuthGuardService],component:MonCompteComponent} ,
+  { path: 'success',canActivate: [AuthGuardService], component:SuccessComponent} ,
   { path: 'secureinfo', component:SecureComponent} ,
   { path: 'retour&remboursement', component:RetourremboComponent} ,
 
@@ -92,7 +93,7 @@ const appRoutes: Routes=[
 ReactiveFormsModule,
 
   ],
-  providers: [SokoService,SharedServiceService],
+  providers: [SokoService,SharedServiceService,AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
