@@ -29,13 +29,15 @@ import { SingleShopComponent } from './single-shop/single-shop.component';
 import { SearchComponent } from './search/search.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuardService } from './auth-guard.service';
+import { HeaderadminComponent } from './headeradmin/headeradmin.component';
+import { GestadminComponent } from './admin/gestadmin/gestadmin.component';
 
 const appRoutes: Routes=[
 
   { path: '', component:AcceuilComponent} ,
   { path: 'single-shop/:id', component:SingleShopComponent} ,
   { path: 'search/:name', component:SearchComponent} ,
-  { path: 'admin',canActivate: [AuthGuardService], component:AdminComponent} ,
+  { path: 'admin/user',canActivate: [AuthGuardService], component:AdminComponent} ,
   { path: 'new', component:NouveauteComponent} ,
   { path: 'hommes', component:HommesComponent} ,
   { path: 'hommes/:cat', component:HommesComponent} ,
@@ -54,6 +56,7 @@ const appRoutes: Routes=[
   { path: 'mon_compte', canActivate: [AuthGuardService],component:MonCompteComponent} ,
   { path: 'success',canActivate: [AuthGuardService], component:SuccessComponent} ,
   { path: 'secureinfo', component:SecureComponent} ,
+  { path: 'admin/admin',canActivate: [AuthGuardService], component:GestadminComponent} ,
   { path: 'retour&remboursement', component:RetourremboComponent} ,
 
 ] ;
@@ -83,6 +86,8 @@ const appRoutes: Routes=[
     SingleShopComponent,
     SearchComponent,
     AdminComponent,
+    HeaderadminComponent,
+    GestadminComponent
   ],
   imports: [
     BrowserModule,

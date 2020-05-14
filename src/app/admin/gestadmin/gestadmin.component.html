@@ -1,0 +1,97 @@
+<div class="container">
+  <div class="row">
+  
+  <div class="col-2">
+  <app-headeradmin> </app-headeradmin> 
+  </div>
+   
+   
+    <div class="col-10">
+      <nav class="navbar navbar-light bg-light">
+        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+      
+        <a class="navbar-brand" *ngIf="getuser">ADMIN( {{getuser.nom}} {{getuser.prenom}} ) DASHBOARD</a>
+        <form class="form-inline">
+          <button type="button" class="btn btn-warning" (click)="logout()" >Se Deconnecter</button>
+        </form>
+      </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <div class="alert alert-dismissible alert-warning">
+            <strong *ngIf="user"> Le nombre d'administrateurs: {{user.length}}</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <h2 class="text-black h3">Ajouter un administrateur</h2> <br>
+      <form method="post"> 
+        <ul>
+          <input type="text" placeholder="Prenom" class="form-control" name="prenom" [(ngModel)]="formadmin.prenom" />
+          <input type="text" placeholder="Nom" class="form-control" name="nom" [(ngModel)]="formadmin.nom" />
+            <input type="number" placeholder="numéro Téléphone" class="form-control" name="numtel" [(ngModel)]="formadmin.telephone" />
+            <input type="password" placeholder="Mot de passe" class="form-control" name="password" [(ngModel)]="formadmin.password"/>
+            <input type="password" placeholder="Confirmer mot de passe" class="form-control" name="c_password" [(ngModel)]="formadmin.c_password" />
+                <button type="submit" (click)="inscrire()">Enregistrer</button> <br> <br>
+        </ul>
+      </form>
+    </div>
+    <div class="tab-pane fade show active" > <br>
+      <h2 class="text-black h3">Informations des Administrateurs du site</h2> <br>
+      <form method="post">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Role</th>
+              <th scope="col">Nom</th>
+              <th scope="col">Prenom</th>
+              <th scope="col">N. Téléphone</th>
+              <th scope="col">Adresse</th>
+              
+              <th scope="col">Inscrit depuis</th>
+              <th scope="col">Modifier Information</th>
+            
+            </tr>
+          </thead>
+          <tbody *ngFor="let alluser of user; let i = index">
+            <tr  >
+              <th scope="row">{{ alluser.role}}</th>
+              <th scope="row">{{ alluser.nom}}</th>
+              <th scope="row">{{ alluser.prenom}}</th>
+              <td>{{ alluser.telephone}}</td>
+              <td>{{ alluser.adresse}}</td>
+              <td>{{ alluser.created_at}}</td>
+              <td><a type="button" class="btn btn-outline-primary" data-toggle="collapse" href="#collapseExample-{{ i }}" aria-expanded="false" >Modifier</a>   </td>
+  
+            </tr> 
+            <tr class="collapse" id="collapseExample-{{ i }}">
+              <td>
+  
+              </td>
+              <td>
+                <input placeholder="Nom" type="text" name="nom" class="form-control" [(ngModel)]="loginUserData.nom" />
+              </td>
+              <td>
+                <input placeholder="Prenom" type="text"class="form-control" name="user[username]" [(ngModel)]="loginUserData.prenom" />
+              </td>
+              <td>
+                <input type="text" placeholder="Ex 770000000" name="user[tel]" class="form-control" [(ngModel)]="loginUserData.telephone"  />
+              </td>
+              <td>
+                <input  type="text"class="form-control" placeholder="Adresse" name="user[adresse]" [(ngModel)]="loginUserData.adresse" />
+              </td>
+              <td>
+              </td>
+             
+              <td>
+                <button class="btn btn-primary" (click)="update(alluser.id)">SAUVEGARDER</button>
+              </td>
+             
+            </tr>
+           
+          </tbody>
+        </table>
+      </form>
+  </div>
+  </div></div></div>

@@ -49,7 +49,7 @@ export class AppComponent {
  // console.log(this.ok)
  localStorage.setItem('admin',"admin");
 this.admin=true;
-this.router.navigateByUrl("/admin")
+this.router.navigateByUrl("/admin/user")
  }else{
    this.admin=false
  }
@@ -106,7 +106,6 @@ if(this.isLoggedIn){
       res => { 
    this._auth.saveToken(res.body);
   
- this.ngOnInit()
  window.location.reload();
 
    }   

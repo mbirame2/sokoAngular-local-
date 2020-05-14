@@ -42,6 +42,9 @@ export class SokoService {
   getUser(){
     return this.httpClient.get<any>(this.apiURL+`api/getuser`,{headers:this.headers,observe:'response'});
   }
+  liste(){
+    return this.httpClient.get<any>(this.apiURL+`api/adminliste`,{headers:this.headers,observe:'response'});
+  }
   getcat(){
     return this.httpClient.get<any>(this.apiURL+`api/allcat`,{headers:this.headers,observe:'response'});
   }
@@ -105,6 +108,10 @@ export class SokoService {
 
 console.log(formData);
     return this.httpClient.post<any>(this.apiURL+`api/register`,formData,{headers:this.headers,observe:'response'});
+  }
+  inscripionadmin(user){
+
+    return this.httpClient.post<any>(this.apiURL+`api/adminregister`,user,{headers:this.headers,observe:'response'});
   }
   onevente(id){
     return this.httpClient.get<any>(this.apiURL+`api/onevente/`+id,{headers:this.headers,observe:'response'});

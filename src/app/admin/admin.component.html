@@ -1,43 +1,20 @@
 <div class="container">
-  <div class="row">
-<div class="col-md-3" >
-  <div class="site-wrap"  >
-    <header class="site-navbar" role="banner" >
-            
-        <img src="../favicon.ico" class="img-fluid"  alt="">
-     
+<div class="row">
 
-  <nav class="site-navigation" role="navigation">
-    <div class="container">
-      <ul class="site-menu js-clone-nav d-none d-md-block nav "  id="pills-tab" >
-          <li class="active "> <a class="nav-link " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"> <strong>Membres Inscrits</strong></a></li>
-        
-        <li class="active">
-          <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"> <strong>Articles Commandés</strong></a>
-
-       
-        </li>
-        <li class="active ">
-          <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><strong>Articles Mis en Vente</strong></a>
-          </li>   
-
-    
-      </ul>
-    </div>
-  </nav>
-  </header>
-  </div>
+<div class="col-2">
+<app-headeradmin> </app-headeradmin> 
 </div>
-<div class="col-9">
-  <nav class="navbar navbar-light bg-light">
-    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
-
-    <a class="navbar-brand" *ngIf="getuser">ADMIN( {{getuser.nom}} {{getuser.prenom}} ) DASHBOARD</a>
-    <form class="form-inline">
-      <button type="button" class="btn btn-warning" (click)="logout()" >Se Deconnecter</button>
-    </form>
-  </nav> <br> <br>
-  
+ 
+ 
+  <div class="col-10">
+    <nav class="navbar navbar-light bg-light">
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+    
+      <a class="navbar-brand" *ngIf="getuser">ADMIN( {{getuser.nom}} {{getuser.prenom}} ) DASHBOARD</a>
+      <form class="form-inline">
+        <button type="button" class="btn btn-warning" (click)="logout()" >Se Deconnecter</button>
+      </form>
+    </nav>
   <div class="container">
     <div class="row">
       <div class="col-sm">
@@ -57,6 +34,22 @@
       </div>
     </div>
   </div>
+  <nav class="site-navigation text-right text-md-center" role="navigation">
+  <ul class="site-menu js-clone-nav d-none d-md-block nav "  id="pills-tab" >
+    <li class="active "> <button class="nav-link " id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"> <strong>Membres Inscrits</strong></button></li>
+  
+  <li class="active">
+    <button class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"> <strong>Articles Commandés</strong></button>
+
+ 
+  </li>
+  <li class="active ">
+    <button class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><strong>Articles Mis en Vente</strong></button>
+    </li>   
+
+
+</ul>
+</nav>
   <div class="tab-content" id="pills-tabContent">
   <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"> <br>
     <h2 class="text-black h3">Informations des membres inscrits</h2> <br>
@@ -170,8 +163,5 @@
           </tr>
          
         </tbody>
-      </table>
-</div> </div>
-</div>
-</div>
-</div>
+      </table></div>
+</div> </div></div> </div>

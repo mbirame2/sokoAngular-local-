@@ -74,6 +74,9 @@ export class AdminComponent implements OnInit {
             }
       )
      }
+     forall(){
+       
+     }
      remove(id){
 
       let tempProduct=this.user.find(p=>p.article_id==id);
