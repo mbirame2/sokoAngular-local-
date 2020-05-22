@@ -33,6 +33,7 @@ export class AdminComponent implements OnInit {
    alluser:[]
    err:boolean=false
    loginUserData={id:null,prenom:null,nom:null,adresse:null,telephone:null}
+   upcommande={id:null,status:null}
      ngOnInit() {
     
    
@@ -77,10 +78,41 @@ export class AdminComponent implements OnInit {
      forall(){
        
      }
+     removeuser(id){
+      Swal.fire({
+        title: 'Avertissement',
+        text: "Voulez vous vraiment supprimer cet article de vos listes des ventes ? ",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Oui ,Supprimer le'
+      }).then((result) => {
+        if (result.value) {
+      this._auth.removeuser(id).subscribe(
+        res => { 
+   
+          
+           }
+          //}
+    
+              ,err =>{console.log(err)
+                if(err.status==200){
+                Swal.fire(
+                  'Succés',
+                  'Supprimé avec succés',
+                  'success'
+                 )
+             }
+            this.ngOnInit()
+            
+          })}}
+       )
+     }
      remove(id){
 
       let tempProduct=this.user.find(p=>p.article_id==id);
-  if(tempProduct.article['Disponible']=="oui"){
+ // if(tempProduct.article['Disponible']=="oui"){
       Swal.fire({
         title: 'Avertissement',
         text: "Voulez vous vraiment supprimer cet article de vos listes des ventes ? ",
@@ -111,13 +143,8 @@ export class AdminComponent implements OnInit {
            )
         }
       })
-    }else if(tempProduct.article['Disponible']=="non"){
-      Swal.fire(
-        'Erreur',
-        'Ce produit a deja été commandé. Impossible de le supprimer',
-        'error'
-       )
-    }
+  //  }else if(tempProduct.article['Disponible']=="non"){
+ //   }
     
   }
 logout(){
@@ -131,14 +158,28 @@ update(id){
   this._auth.updateadmin(this.loginUserData).subscribe(
     res => { 
    //   if(this._auth.getToken()){
-    
+    window.location.reload();
        }
 
           ,err =>{//console.log(err)
             if(err.status==200){
               window.location.reload();
-     
-            }
+            } this.ngOnInit()
+         }
+   )
+}
+updatecommande(id){
+  this.upcommande.id=id
+  this._auth.updatecommande(this.upcommande).subscribe(
+    res => { 
+   //   if(this._auth.getToken()){
+    
+       }
+
+          ,err =>{console.log(err)
+            if(err.status==200){
+              this.ngOnInit()
+                        }
          }
    )
 }

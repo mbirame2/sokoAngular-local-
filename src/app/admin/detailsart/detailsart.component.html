@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="row">
+  
+  <div class="col-2">
+  <app-headeradmin> </app-headeradmin> 
+  </div>
+  <div class="col-10" >
+    <nav class="navbar navbar-light bg-light">
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user-check"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><polyline points="17 11 19 13 23 9"></polyline></svg>
+    
+      <a class="navbar-brand" *ngIf="getuser">ADMIN ( {{getuser.nom}} {{getuser.prenom}} ) DASHBOARD </a>
+      <form class="form-inline">
+        <button type="button" class="btn btn-warning" (click)="logout()" >Se Deconnecter</button>
+      </form>
+    </nav>
+    
+    <h2 class="text-black h3">Détails de {{ pro.article.Titre }}</h2> <br>
+    <form method="post">
+      <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">N. Commande</th>
+              <th scope="col">Photo</th>
+              <th scope="col">Nom article</th>
+            
+              <th scope="col">Description</th>
+              <th scope="col">Prix</th>
+              <th scope="col">Taille</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr >
+              <th scope="row">{{ pro.id}}</th>
+              <td class="product-thumbnail">
+                <img  src="{{url}}/api/images/{{pro.article.ImageName}}"  height="50" width="150" alt="" class="img-fluid">
+              </td>
+              <td>{{ pro.article.Titre}}</td>
+              
+              <td>{{ pro.commande.Description}}</td>
+              <td>{{ pro.article.Prix}} FCFA</td>
+              <td>{{ pro.article.Taille}} </td>
+              <td>{{ pro.commande.created_at}}</td>
+              <td><a type="button" class="btn btn-outline-primary" data-toggle="collapse" href="#collapseExampl1" aria-expanded="false" >Modifier</a>   </td>
+             
+            </tr>
+            <tr class="collapse" id="collapseExampl1">
+              <td>
+              </td>
+              <td>
+                </td>
+              <td>
+                <input  type="text"class="form-control" placeholder="Nom de l'article" name="user[status]" [(ngModel)]="upcommande.titre" />
+              </td>
+              <td>
+                <input  type="text"class="form-control" placeholder="Description" name="user[status]" [(ngModel)]="upcommande.description" />
+              </td>
+              <td>
+                <input  type="number"class="form-control" placeholder="Prix" name="user[status]" [(ngModel)]="upcommande.prix" />
+              </td>
+              <td>
+                <input  type="text"class="form-control" placeholder="Taille" name="user[status]" [(ngModel)]="upcommande.taille" />
+
+              </td>
+             
+              <td>
+                <button class="btn btn-primary" (click)="updatearticle(pro.article.id)">SAUVEGARDER</button>
+              </td>
+             
+            </tr>
+          
+         
+          </tbody>
+        </table>  </form>
+ 
+  </div></div></div>

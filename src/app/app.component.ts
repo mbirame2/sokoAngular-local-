@@ -34,28 +34,17 @@ export class AppComponent {
   ngOnInit(){
     this.sharedService.currentMessage.subscribe(msg => this.cartItemCount = msg);
     var token = localStorage.getItem('token');
-
+    var admin =localStorage.getItem('admin');
     // It should work, but I think it's far less comprehensive
     if(typeof token === 'undefined' || token === null || token === 'undefined'){
       this.isLoggedIn=false;
     }else{
       this.isLoggedIn=true;
-      this._auth.getUser().subscribe(
-        res => { 
-    this.ok=res.body;
-    this.isLoggedIn=true;
-   
- if(this.ok.role=="admin"){
- // console.log(this.ok)
- localStorage.setItem('admin',"admin");
-this.admin=true;
-this.router.navigateByUrl("/admin/user")
- }else{
-   this.admin=false
- }
-     }
-     
-     )
+      if(typeof admin === 'undefined' || admin === null || admin === 'undefined'){
+        
+      }else{
+      //  this.router.navigateByUrl("/admin/user")
+      }
     }
   }
   closeAlert() {
@@ -104,10 +93,18 @@ if(this.isLoggedIn){
 //console.log(this.loginUserData)
     this._auth.loginUser(this.loginUserData ).subscribe(
       res => { 
-   this._auth.saveToken(res.body);
-  
- window.location.reload();
+   this._auth.saveToken(res.body[0]);
+ 
 
+ this.isLoggedIn=true;
+ if(res.body[1].role=="admin"){
+  console.log(res)
+  localStorage.setItem('admin',"admin");
+ this.admin=true;
+ this.router.navigateByUrl("/admin/user")
+  }else{
+    this.admin=false
+  }  
    }   
    ,err =>{console.log(err)
     if(err.status==401 ||   err.error=="Unauthorised"){

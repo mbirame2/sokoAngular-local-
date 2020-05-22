@@ -29,6 +29,14 @@ export class SokoService {
     
     return this.httpClient.post<any>(this.apiURL+`api/updateadmin`, user,{headers:this.headers,observe:'response'});
   }
+  updatearticle(user){
+    
+    return this.httpClient.post<any>(this.apiURL+`api/updatearticle`, user,{headers:this.headers,observe:'response'});
+  }
+  updatecommande(user){
+    return this.httpClient.post<any>(this.apiURL+`api/updatecommande`, user,{headers:this.headers,observe:'response'});
+
+  }
   commande(user){
     
     return this.httpClient.post<any>(this.apiURL+`api/commande`, user,{headers:this.headers,observe:'response'});
@@ -116,8 +124,14 @@ console.log(formData);
   onevente(id){
     return this.httpClient.get<any>(this.apiURL+`api/onevente/`+id,{headers:this.headers,observe:'response'});
   }
+  onearticle(id){
+    return this.httpClient.get<any>(this.apiURL+`api/onearticle/`+id,{headers:this.headers,observe:'response'});
+  }
   remove(id){
     return this.httpClient.get<any>(this.apiURL+`api/remove/`+id,{headers:this.headers,observe:'response'});
+  }
+  removeuser(id){
+    return this.httpClient.get<any>(this.apiURL+`api/removeuser/`+id,{headers:this.headers,observe:'response'});
   }
   img(id){
     return this.httpClient.get<any>(this.apiURL+`api/images/`+id,{headers:this.headers,observe:'response'});

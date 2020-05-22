@@ -7,7 +7,6 @@ import { AcceuilComponent } from './acceuil/acceuil.component';
 import { NouveauteComponent } from './nouveaute/nouveaute.component';
 import { FemmesComponent } from './femmes/femmes.component';
 import { HommesComponent } from './hommes/hommes.component';
-import { MarqueComponent } from './marque/marque.component';
 import { VendreComponent } from './vendre/vendre.component';
 import { CoachatComponent } from './coachat/coachat.component';
 import { CovendreComponent } from './covendre/covendre.component';
@@ -31,19 +30,30 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthGuardService } from './auth-guard.service';
 import { HeaderadminComponent } from './headeradmin/headeradmin.component';
 import { GestadminComponent } from './admin/gestadmin/gestadmin.component';
+import { DetailsartComponent } from './admin/detailsart/detailsart.component';
 
 const appRoutes: Routes=[
 
   { path: '', component:AcceuilComponent} ,
   { path: 'single-shop/:id', component:SingleShopComponent} ,
   { path: 'search/:name', component:SearchComponent} ,
-  { path: 'admin/user',canActivate: [AuthGuardService], component:AdminComponent} ,
+  { path: 'admin/user', children:[
+    {
+      path:'',
+      component:AdminComponent,
+      canActivate: [AuthGuardService]
+    },
+    {
+      path:'detailsart/:cat',
+      component:DetailsartComponent,
+      canActivate: [AuthGuardService]
+    }
+  ]} ,
   { path: 'new', component:NouveauteComponent} ,
   { path: 'hommes', component:HommesComponent} ,
   { path: 'hommes/:cat', component:HommesComponent} ,
   { path: 'femmes/:cat', component:FemmesComponent} ,
   { path: 'femmes', component:FemmesComponent} ,
-  { path: 'marques', component:MarqueComponent} ,
   { path: 'vendre',canActivate: [AuthGuardService], component:VendreComponent} ,
   { path: 'comment_acheter', component:CoachatComponent} ,
   { path: 'comment_vendre', component:CovendreComponent} ,
@@ -69,7 +79,6 @@ const appRoutes: Routes=[
     NouveauteComponent,
     FemmesComponent,
     HommesComponent,
-    MarqueComponent,
     VendreComponent,
     CoachatComponent,
     CovendreComponent,
@@ -87,7 +96,8 @@ const appRoutes: Routes=[
     SearchComponent,
     AdminComponent,
     HeaderadminComponent,
-    GestadminComponent
+    GestadminComponent,
+    DetailsartComponent
   ],
   imports: [
     BrowserModule,
