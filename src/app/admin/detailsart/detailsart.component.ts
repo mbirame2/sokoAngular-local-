@@ -48,7 +48,7 @@ pro:any;
       res => { 
         
   this.pro=res.body
-//  console.log( this.pro);
+ console.log( this.pro);
  
    }  
       ,err =>{ console.log(err); })

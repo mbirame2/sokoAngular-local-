@@ -81,7 +81,7 @@ export class AdminComponent implements OnInit {
      removeuser(id){
       Swal.fire({
         title: 'Avertissement',
-        text: "Voulez vous vraiment supprimer cet article de vos listes des ventes ? ",
+        text: "Voulez vous vraiment supprimer cet utilisateur de vos membres ? ",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
@@ -103,8 +103,9 @@ export class AdminComponent implements OnInit {
                   'Supprimé avec succés',
                   'success'
                  )
+                 this.ngOnInit()
              }
-            this.ngOnInit()
+            
             
           })}}
        )

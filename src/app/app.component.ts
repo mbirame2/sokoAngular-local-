@@ -28,6 +28,7 @@ export class AppComponent {
       
     }else{
       this.admin=true;
+      this.router.navigateByUrl("admin/user")
     }
   }
 

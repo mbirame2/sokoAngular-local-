@@ -121,6 +121,9 @@
             <th scope="col">Date</th>
             <th scope="col">Statut</th>
             <th scope="col">Prix</th>
+            <th></th>
+            <th></th>
+            <th>Supprimer</th>
           </tr>
         </thead>
         <tbody *ngFor="let achat of achat ; let j = index">
@@ -134,7 +137,8 @@
             <td>{{ achat.commande.statut_commande}}</td>
             <td>{{ achat.article.Prix}} FCFA</td>
             <td><a type="button" class="btn btn-outline-primary" data-toggle="collapse" href="#collapseExampl-{{ j }}" aria-expanded="false" >Modifier</a>   </td>
-            <td><a href="admin/user/detailsart/{{achat.id}}">Voir Plus</a></td>
+            <td><a routerLink="detailsart/{{achat.id}}">Voir Plus</a></td>
+            <td><a (click)="remove(achat.article.id)" class="btn btn-primary btn-sm">X</a></td>
           </tr>
           <tr class="collapse" id="collapseExampl-{{ j }}">
             <td>
@@ -183,7 +187,8 @@
             <td>{{ us.article.Titre }}</td>
             <td>{{ us.article.Prix }}</td>
             <td><a (click)="remove(us.article.id)" class="btn btn-primary btn-sm">X</a></td>
-       
+            <td><a routerLink="detailsart/{{achat.id}}">Voir Plus</a></td>
+
           </tr>
          
         </tbody>
