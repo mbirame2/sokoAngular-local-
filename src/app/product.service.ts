@@ -15,28 +15,6 @@ export class ProductService {
 
   constructor(private httpClient:HttpClient,private _auth: SokoService ) { }
 
-  saveProductInfo (product:any)
-  {
-    var reqHeader = new HttpHeaders({ 'Authorization':'Bearer '+this._auth.getToken()});
-        reqHeader.append('Content-Type', 'application/json');
-        const formData: FormData = new FormData();
-         formData.append('UnitPrice', product['Price']);
-         formData.append('Name', product.Name.toString());
-         formData.append('SellerId', product.SellerId.toString());
-         formData.append('SellerName', product.SellerName.toString());
-         formData.append('Category', product.Category.toString());
-         formData.append('TC', product['Conditions']);
-         formData.append('Quantity', product.Quantity.toString());
-         formData.append('Description', product.Description.toString());
-         formData.append('Image', product['ImageFile']);
-         
-        
-    return this.httpClient.post(this.apiURL,formData,{ headers: reqHeader })
-    .pipe(
-      map(res => res),
-       catchError( this.errorHandler)
-      );
-  }
 
   getAllNouveaute(){
     return this.httpClient.get<any>(this.apiURL+"api/allnew",{headers:this.headers,observe:'response'})

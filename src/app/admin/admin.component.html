@@ -100,7 +100,7 @@
             </td>
            
             <td>
-              <button class="btn btn-primary" (click)="update(alluser.id)">SAUVEGARDER</button>
+              <button class="btn btn-primary" data-toggle="collapse" (click)="update(alluser.id)">SAUVEGARDER</button>
             </td>
            
           </tr>
@@ -137,7 +137,7 @@
             <td>{{ achat.commande.statut_commande}}</td>
             <td>{{ achat.article.Prix}} FCFA</td>
             <td><a type="button" class="btn btn-outline-primary" data-toggle="collapse" href="#collapseExampl-{{ j }}" aria-expanded="false" >Modifier</a>   </td>
-            <td><a routerLink="detailsart/{{achat.id}}">Voir Plus</a></td>
+            <td><a routerLink="detailsart/{{achat.article.id}}">Voir Plus</a></td>
             <td><a (click)="remove(achat.article.id)" class="btn btn-primary btn-sm">X</a></td>
           </tr>
           <tr class="collapse" id="collapseExampl-{{ j }}">
@@ -157,7 +157,7 @@
             </td>
            
             <td>
-              <button class="btn btn-primary" (click)="updatecommande(achat.commande.id)">SAUVEGARDER</button>
+              <button class="btn btn-primary" data-toggle="collapse" (click)="updatecommande(achat.article.id)">SAUVEGARDER</button>
             </td>
            
           </tr>

@@ -41,20 +41,21 @@ pro:any;
          }
         //}
   
-            ,err =>{console.log(err)
+            ,err =>{//console.log(err)
            }
      )
      this._auth.onearticle(this.id).subscribe(
       res => { 
         
   this.pro=res.body
- console.log( this.pro);
+// console.log( this.pro);
  
    }  
-      ,err =>{ console.log(err); })
+      ,err =>{  })
   }
   updatearticle(id){
     this.upcommande.id=id
+//console.log(this.upcommande)
     this._auth.updatearticle(this.upcommande).subscribe(
       res => { 
      //   if(this._auth.getToken()){
@@ -63,7 +64,7 @@ pro:any;
   
             ,err =>{//console.log(err)
               if(err.status==200){
-                window.location.reload();
+                this.ngOnInit()
               }
            }
      )

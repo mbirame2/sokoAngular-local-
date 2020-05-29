@@ -23,10 +23,10 @@
                  Sous Categorie
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                  <li class="mb-1"><a (click)="sscategorie('Chemise')"  href="/hommes#" class="d-flex">Chemises </a></li>
-                <li class="mb-1"><a (click)="sscategorie('Pantalon')"  href="/hommes#" class="d-flex">Pantalon</a></li>
-                <li class="mb-1"><a (click)="sscategorie('Mocassin')"  href="/hommes#" class="d-flex">Mocassins</a></li>
-                <li class="mb-1"><a (click)="sscategorie('Baskets')"  href="/hommes#" class="d-flex">Baskets</a></li>
+                  <li class="mb-1"><a (click)="sscategorie('Chemise')"  href="/hommes/Chemise" class="d-flex">Chemises </a></li>
+                <li class="mb-1"><a (click)="sscategorie('Pantalon')"  href="/hommes/Pantalon" class="d-flex">Pantalon</a></li>
+                <li class="mb-1"><a (click)="sscategorie('Mocassin')"  href="/hommes/Mocassin" class="d-flex">Mocassins</a></li>
+                <li class="mb-1"><a (click)="sscategorie('Baskets')"  href="/hommes/Baskets" class="d-flex">Baskets</a></li>
                 </div>
               </div>
             </div>
@@ -63,11 +63,11 @@
             <h3 class="mb-3 h6 text-uppercase text-black d-block"> Categories</h3>
             <ul class="list-unstyled mb-0">
               <li class="mb-1"><a (click)="tout()"  href="/hommes#" class="d-flex">Tout ({{allProducts.length}}) </a></li>
-              <li><a   routerLink="/hommes/Vetements" class="d-flex">Vetements </a></li>
-              <li><a  routerLink="/hommes/Chaussures" class="d-flex">Chaussures </a></li>
-              <li><a  routerLink="/hommes/Sacs" class="d-flex">Sacs</a></li>
+              <li><a   href="/hommes/Vetements" class="d-flex">Vetements </a></li>
+              <li><a  href="/hommes/Chaussures" class="d-flex">Chaussures </a></li>
+              <li><a  href="/hommes/Sacs" class="d-flex">Sacs</a></li>
 
-              <li class="mb-1"><a routerLink="/hommes/Accessoires" class="d-flex">Accessoires</a></li>
+              <li class="mb-1"><a href="/hommes/Accessoires" class="d-flex">Accessoires</a></li>
 
             </ul>
           </div>

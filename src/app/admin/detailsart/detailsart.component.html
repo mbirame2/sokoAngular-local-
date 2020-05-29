@@ -14,12 +14,12 @@
       </form>
     </nav>
     
-    <h2 class="text-black h3">Détails de {{ pro.article.Titre }}</h2> <br>
+    <h2 class="text-black h3" *ngIf="pro">Détails de {{ pro.Titre }}</h2> <br>
     <form method="post">
       <table class="table table-hover">
           <thead>
             <tr>
-              <th scope="col">N. Commande</th>
+              <th scope="col">Référence</th>
               <th scope="col">Photo</th>
               <th scope="col">Nom article</th>
             
@@ -30,17 +30,17 @@
             </tr>
           </thead>
           <tbody >
-            <tr >
-              <th scope="row">{{ pro.id}}</th>
+            <tr *ngIf="pro">
+              <th scope="row">#{{ pro.id}}</th>
               <td class="product-thumbnail">
-                <img  src="{{url}}/api/images/{{pro.article.ImageName}}"  height="50" width="150" alt="" class="img-fluid">
+                <img  src="{{url}}/api/images/{{pro.ImageName}}"  height="50" width="150" alt="" class="img-fluid">
               </td>
-              <td>{{ pro.article.Titre}}</td>
+              <td>{{ pro.Titre}}</td>
               
-              <td>{{ pro.commande.Description}}</td>
-              <td>{{ pro.article.Prix}} FCFA</td>
-              <td>{{ pro.article.Taille}} </td>
-              <td>{{ pro.commande.created_at}}</td>
+              <td>{{ pro.Description}}</td>
+              <td>{{ pro.Prix}} FCFA</td>
+              <td>{{ pro.Taille}} </td>
+              <td>{{ pro.created_at}}</td>
               <td><a type="button" class="btn btn-outline-primary" data-toggle="collapse" href="#collapseExampl1" aria-expanded="false" >Modifier</a>   </td>
              
             </tr>
@@ -64,7 +64,7 @@
               </td>
              
               <td>
-                <button class="btn btn-primary" (click)="updatearticle(pro.article.id)">SAUVEGARDER</button>
+                <button  class="btn btn-primary"  data-toggle="collapse" (click)="updatearticle(pro.id)">SAUVEGARDER</button>
               </td>
              
             </tr>

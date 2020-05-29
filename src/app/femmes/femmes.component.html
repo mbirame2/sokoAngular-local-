@@ -24,7 +24,7 @@
                   Sous Catégorie
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset1">
-                 <a *ngFor="let sscat of sscategories" (click)="sscategorie(sscat.name)"  href="/femmes#" class="d-flex">{{sscat.name}} </a>
+                 <a *ngFor="let sscat of sscategories" (click)="sscategorie(sscat.name)"  href="/femmes/{{sscat.name}}" class="d-flex">{{sscat.name}} </a>
              
                 </div> 
               </div>
